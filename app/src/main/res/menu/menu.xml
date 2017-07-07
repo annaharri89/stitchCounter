@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <!-- "Create new counter", should always appear as action button -->
+    <item
+        android:id="@+id/action_new_counter"
+        android:icon="@drawable/ic_add_circle_outline_black_48dp"
+        android:title="@string/action_new_counter"
+        app:showAsAction="always"/>
+
+    <!-- Help, should always appear as action button -->
+    <item
+        android:id="@+id/action_help"
+        android:icon="@drawable/ic_help_outline_black_48dp"
+        android:title="@string/action_help"
+        app:showAsAction="always"/>
+
+    <!-- Help, should always appear as action button -->
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/ic_delete_black_48dp"
+        android:title="@string/action_delete"
+        app:showAsAction="always"/>
+
+    <!-- Current counter, should always be in the overflow -->
+    <item android:id="@+id/action_current_counter"
+        android:title="@string/action_current_counter"
+        app:showAsAction="never"/>
+
+    <!-- Library, should always be in the overflow -->
+    <item android:id="@+id/action_library"
+        android:title="@string/action_library"
+        app:showAsAction="never"/>
+
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
+
+</menu>

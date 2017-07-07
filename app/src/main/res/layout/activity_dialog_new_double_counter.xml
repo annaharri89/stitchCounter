@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/text_project_name_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/counter_project_name_hint"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/space"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/space"
+        app:layout_constraintTop_toTopOf="@+id/space"
+        android:layout_marginTop="32dp" />
+
+    <EditText
+        android:id="@+id/text_total_rows_input_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/counter_total_rows"
+        android:inputType="number"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/space"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/space"
+        app:layout_constraintBottom_toBottomOf="@+id/space"
+        android:layout_marginBottom="88dp" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="316dp"
+        android:layout_height="225dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="51dp"
+        android:layout_marginTop="8dp"
+        android:onClick="dismissDialog"
+        android:text="@string/button_cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/space"
+        app:layout_constraintRight_toRightOf="@+id/space"
+        app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input_2" />
+
+    <Button
+        android:id="@+id/button_double_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/button_ok"
+        app:layout_constraintBottom_toBottomOf="@+id/space"
+        app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input_2"
+        android:layout_marginLeft="51dp"
+        app:layout_constraintLeft_toLeftOf="@+id/space" />
+</android.support.constraint.ConstraintLayout>

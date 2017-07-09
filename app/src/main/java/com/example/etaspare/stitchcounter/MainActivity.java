@@ -2,6 +2,7 @@ package com.example.etaspare.stitchcounter;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.support.annotation.StringRes;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +15,16 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SubMenu;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    ConstraintLayout topLayout;
+    ConstraintLayout layout;
+    View connector1;
+    View connector2;
+    View help1;
+    View help2;
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) { //TODO Why can't this be implemented in StitchCounterMenu.java ?
@@ -31,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_help) {
-            openHelpMode();
+            toggleHelpMode(View.VISIBLE);
             return true;
         } else {
             return toolBarMenu.handleMenu(item);
@@ -45,12 +51,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
+        /* Instantiating help views */
+        connector1 = findViewById(R.id.help_main_activity_1_connector);
+        connector2 = findViewById(R.id.help_main_activity_2_connector);
+        help1 = findViewById(R.id.help_main_activity_1);
+        help2 = findViewById(R.id.help_main_activity_2);
+
         /* Closes help mode, hides the annotation bubbles */
-        topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
-        topLayout.setOnTouchListener(new View.OnTouchListener() {
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                topLayout.setVisibility(View.INVISIBLE);
+                toggleHelpMode(View.INVISIBLE);
                 return false;
             }
         });
@@ -74,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
     Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
     visible, showing the annotation bubbles.
     */
-    public void openHelpMode() {
-        topLayout.setVisibility(View.VISIBLE);
+    public void toggleHelpMode(int visibility) {
+        connector1.setVisibility(visibility);
+        connector2.setVisibility(visibility);
+        help1.setVisibility(visibility);
+        help2.setVisibility(visibility);
     }
 }

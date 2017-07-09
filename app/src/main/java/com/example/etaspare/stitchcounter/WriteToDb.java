@@ -32,7 +32,7 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
                 String strFilter = StitchCounterContract.CounterEntry._ID + "=" + values.get(StitchCounterContract.CounterEntry._ID);
                 db.update(StitchCounterContract.CounterEntry.TABLE_NAME, values, strFilter, null);
             } else {
-                counter[0].ID = db.insert(StitchCounterContract.CounterEntry.TABLE_NAME, null, values);
+                counter[0].ID = (int) db.insert(StitchCounterContract.CounterEntry.TABLE_NAME, null, values);
             }
         } finally {
             db.close();

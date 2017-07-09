@@ -209,7 +209,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         Resources res = this.getResources();
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            long _id = extras.getLong("_id");
+            int _id = extras.getInt("_id");
             String name = extras.getString("name");
             int stitch_counter_number = extras.getInt("stitch_counter_number");
             int stitch_adjustment = extras.getInt("stitch_adjustment");

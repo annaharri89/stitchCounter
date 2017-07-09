@@ -21,7 +21,7 @@ import static java.lang.Math.round;
 
 public class Counter extends AppCompatActivity {
 
-    protected long ID;
+    protected int ID;
     protected int counterNumber = 0;
     protected int adjustment = 1;
     protected int totalRows;

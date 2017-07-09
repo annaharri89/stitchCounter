@@ -2,9 +2,9 @@ package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
@@ -15,6 +15,7 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,7 +30,6 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class LibraryActivity extends AppCompatActivity
@@ -55,7 +55,7 @@ public class LibraryActivity extends AppCompatActivity
     private Button cancelMany;
     private Context context = this;
     private CounterAdapter mAdapter;
-    private ListView mListView;
+    private ListView mListView; //TODO look into converting to local variable
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
     protected Boolean deleteManyMode = false;
@@ -87,7 +87,6 @@ public class LibraryActivity extends AppCompatActivity
     */
     String[] fromColumns = {StitchCounterContract.CounterEntry.COLUMN_TITLE};
     int[] toViews = {R.id.text1};
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -127,11 +126,17 @@ public class LibraryActivity extends AppCompatActivity
             }
         });
 
+        DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
+        float screenWidth = dm.widthPixels / dm.density;
+        float screenHeight = dm.heightPixels / dm.density;
+        Log.d("width", Float.toString(screenWidth));
+        Log.d("height", Float.toString(screenHeight));
+        //TODO: nexus 5x: width 411, height 683 NORMAL SIZE
+        //TODO: galaxy s5 width 360, height 640 NORMAL SIZE
+        //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE
+
         deleteMany = (Button) findViewById(R.id.delete_many);
         cancelMany = (Button) findViewById(R.id.cancel_many);
-
-        //ReadFromDb readFromDb = new ReadFromDb(this, findViewById(R.id.list));
-        //readFromDb.execute();  //TODO REMOVE
 
         /*
         Create an empty adapter that will be used to display the loaded data.
@@ -161,9 +166,8 @@ public class LibraryActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
                 if (!deleteManyMode) {
-                    getTableInfo();
-                    DatabaseUtils.dumpCursor(tempCursor);
-                    long _id = tempCursor.getLong(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
+                    DatabaseUtils.dumpCursor(tempCursor); //TODO Use to figure out why counters don't save and clicking into a counter, hitting the back button, results in first item being displayed as both the first item and the last item in the listview
+                    int _id = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
                     String type = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TYPE));
                     String name = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TITLE));
                     int stitch_counter_number = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_STITCH_COUNTER_NUM));
@@ -174,19 +178,9 @@ public class LibraryActivity extends AppCompatActivity
                     double progress_percent = tempCursor.getDouble(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT));
 
                     Bundle extras = new Bundle();
-
-                    for (String l: tempCursor.getColumnNames()) {
-                        Log.d("Column name", l);
-                    }
-                    Log.d("Column names", Long.toString(tempCursor.getLong(tempCursor.getColumnIndex("_id"))));
-
-
-                    Log.d("kjdnvsncslcnd", Integer.toString(tempCursor.getColumnCount())); //TODO REMOVE
-
                     switch(type) {
                         case "Double":
-                            Log.d("type", type); //TODO REMOVE
-                            extras.putLong("_id", _id);
+                            extras.putInt("_id", _id);
                             extras.putString("name", name);
                             extras.putInt("stitch_counter_number", stitch_counter_number);
                             extras.putInt("stitch_adjustment", stitch_adjustment);
@@ -200,8 +194,7 @@ public class LibraryActivity extends AppCompatActivity
                             startActivity(intentDouble);
                             break;
                         case "Single":
-                            Log.d("type", type); //TODO REMOVE
-                            extras.putLong("_id", _id);
+                            extras.putInt("_id", _id);
                             extras.putString("name", name);
                             extras.putInt("stitch_counter_number", stitch_counter_number);
                             extras.putInt("stitch_adjustment", stitch_adjustment);
@@ -236,7 +229,6 @@ public class LibraryActivity extends AppCompatActivity
                     return false;
                 }
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
-                Log.d("hi", tempCursor.toString());
                 if (deleteSingle != null) {
                     deleteSingle.setVisibility(View.INVISIBLE);
                 }
@@ -261,7 +253,6 @@ public class LibraryActivity extends AppCompatActivity
             v.setVisibility(View.INVISIBLE);
             DeleteFromDb deleteFromDb = new DeleteFromDb(context);
             deleteFromDb.execute(ids); //TODO look into warning
-            //Log.d("hi", tempCursor.getString(0));
         }
     };
 
@@ -347,33 +338,6 @@ public class LibraryActivity extends AppCompatActivity
         /* Allows list to function properly when accessed through back button */
         getSupportLoaderManager().restartLoader(0, null, this); //TODO ASK tony if this should be restartLoader or initLoader
         super.onResume();
-    }
-
-    public String getTableInfo() {
-        StringBuilder b = new StringBuilder("");
-        Cursor c = null;
-        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(getBaseContext());
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        try {
-            String query = "pragma table_info(" + StitchCounterContract.CounterEntry.TABLE_NAME + ")";
-            c = db.rawQuery(query, null);
-            if (c.moveToFirst()) {
-                do {
-                    b.append("Col:" + c.getString(c.getColumnIndex("name")) + " ");
-                    b.append(c.getString(c.getColumnIndex("type")));
-                    b.append("\n");
-                } while (c.moveToNext());
-            }
-            return b.toString();
-        }
-        finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
-        }
     }
 
     /*

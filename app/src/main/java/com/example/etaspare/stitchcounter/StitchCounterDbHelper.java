@@ -18,7 +18,7 @@ public class StitchCounterDbHelper extends SQLiteOpenHelper {
     //Statement to create a table
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE IF NOT EXISTS " + StitchCounterContract.CounterEntry.TABLE_NAME + " (" +
-                    StitchCounterContract.CounterEntry._ID + " LONG PRIMARY KEY," + //TODO: long primary key might cause problems Add NOT NULL to declaration
+                    StitchCounterContract.CounterEntry._ID + " INTEGER PRIMARY KEY," +
                     StitchCounterContract.CounterEntry.COLUMN_TYPE + " TEXT," +
                     StitchCounterContract.CounterEntry.COLUMN_TITLE + " TEXT," +
                     StitchCounterContract.CounterEntry.COLUMN_STITCH_COUNTER_NUM + " TEXT," +

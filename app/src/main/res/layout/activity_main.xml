@@ -108,7 +108,7 @@
 </FrameLayout>
 
 
-    <!-- VERSION 2
+    <!-- VERSION 2 TODO REMOVE
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

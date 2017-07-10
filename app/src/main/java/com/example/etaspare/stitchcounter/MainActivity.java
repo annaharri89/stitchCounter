@@ -21,10 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout topLayout;
-    View connector1;
-    View connector2;
-    View help1;
-    View help2;
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) { //TODO Why can't this be implemented in StitchCounterMenu.java ?
@@ -50,12 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
-
-        /* Instantiating help views */
-        connector1 = findViewById(R.id.help_main_activity_1_connector);
-        connector2 = findViewById(R.id.help_main_activity_2_connector);
-        help1 = findViewById(R.id.help_main_activity_1);
-        help2 = findViewById(R.id.help_main_activity_2);
 
         /* Closes help mode, hides the annotation bubbles */
         topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
@@ -87,12 +77,6 @@ public class MainActivity extends AppCompatActivity {
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        /*
-        connector1.setVisibility(visibility);
-        connector2.setVisibility(visibility);
-        help1.setVisibility(visibility);
-        help2.setVisibility(visibility);
-        */
         topLayout.setVisibility(View.VISIBLE);
 
     }

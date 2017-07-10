@@ -1,503 +1,448 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.etaspare.stitchcounter.DoubleCounterActivity">
+    android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/toolbar_main"
-        layout="@layout/toolbar"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.etaspare.stitchcounter.DoubleCounterActivity">
 
-    <!--wrap_content-->
-    <EditText
-        android:id="@+id/text_project_name_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/counter_project_name_hint"
-        android:inputType="textCapWords"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar_main"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintVertical_bias="0.0" />
+        <include
+            android:id="@+id/toolbar_main"
+            layout="@layout/toolbar" />
 
-    <!-- android:layout_width="78dp"
-        android:layout_height="38dp" -->
-    <TextView
-        android:id="@+id/text_total_rows"
-        android:layout_width="78dp"
-        android:layout_height="38dp"
-        android:gravity="center"
-        android:text="@string/counter_total_rows"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/text_total_rows_input"
-        app:layout_constraintBottom_toTopOf="@+id/text_counter_stitch"
-        android:layout_marginBottom="32dp" />
+        <EditText
+            android:id="@+id/text_project_name_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/counter_project_name_hint"
+            android:inputType="textCapWords"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintBottom_toTopOf="@+id/toolbar_main"
+            app:layout_constraintVertical_bias="0.0" />
 
-    <!--android:layout_width="51dp"
-        android:layout_height="38dp"-->
-    <EditText
-        android:id="@+id/text_total_rows_input"
-        android:layout_width="51dp"
-        android:layout_height="38dp"
-        android:gravity="center"
-        android:ems="10"
-        android:hint="0"
-        android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
-        app:layout_constraintLeft_toRightOf="@+id/text_total_rows"
-        app:layout_constraintRight_toLeftOf="@+id/progress_bar"
-        app:layout_constraintBottom_toTopOf="@+id/text_stitch_header"
-        android:layout_marginTop="8dp" />
+        <TextView
+            android:id="@+id/text_total_rows"
+            android:layout_width="78dp"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:text="@string/counter_total_rows"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/text_total_rows_input" />
 
-    <!-- wrap content-->
-    <TextView
-        android:id="@+id/text_counter_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/counter_progress"
-        app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
-        app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintHorizontal_bias="0.494"
-        android:layout_marginTop="8dp" />
+        <EditText
+            android:id="@+id/text_total_rows_input"
+            android:layout_width="51dp"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="0"
+            android:inputType="number"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
+            app:layout_constraintLeft_toRightOf="@+id/text_total_rows"
+            app:layout_constraintRight_toLeftOf="@+id/progress_bar"
+            app:layout_constraintBottom_toTopOf="@+id/text_stitch_header" />
 
-    <!--android:layout_width="140dp"
-        android:layout_height="wrap_content"-->
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/text_counter_progress"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
-        app:layout_constraintBottom_toTopOf="@+id/text_stitch_header" />
+        <TextView
+            android:id="@+id/text_counter_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/counter_progress"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar" />
 
-    <!--wrap_content-->
-    <TextView
-        android:id="@+id/text_stitch_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="25dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input"
-        app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_stitch"
-        app:layout_constraintHorizontal_bias="0.496" />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/text_counter_progress"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
+            app:layout_constraintBottom_toTopOf="@+id/text_stitch_header" />
 
-    <!--android:layout_width="105dp"
-        android:layout_height="150dp"-->
-    <TextView
-        android:id="@+id/text_counter_stitch"
-        android:layout_width="105dp"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="@string/counter_number_stitch"
-        android:textSize="45dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_rows"
-        app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/text_counter_row"
-        android:layout_marginTop="32dp" />
+        <TextView
+            android:id="@+id/text_stitch_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="25dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input"
+            app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_stitch" />
 
-    <!--android:layout_width="55dp"
-        android:layout_height="33dp"-->
-    <TextView
-        android:id="@+id/text_adjust_by_stitch"
-        android:layout_width="55dp"
-        android:layout_height="33dp"
-        android:gravity="center"
-        android:text="@string/counter_adjust_by"
-        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_stitch" />
+        <TextView
+            android:id="@+id/text_counter_stitch"
+            android:layout_width="105dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:text="@string/counter_number_stitch"
+            android:textSize="45dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/text_counter_row"
+            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header" />
 
-    <!--android:layout_width="25dp"
-        android:layout_height="30dp"-->
-    <Button
-        android:id="@+id/button_capsule_top_stitch"
-        android:layout_width="25dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_capsule_top"
-        android:text="@string/counter_adjust_by_1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_stitch"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle_stitch" />
+        <TextView
+            android:id="@+id/text_adjust_by_stitch"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+            android:gravity="center"
+            android:text="@string/counter_adjust_by"
+            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_stitch" />
 
-    <!--android:layout_width="25dp"
-        android:layout_height="30dp"-->
-    <Button
-        android:id="@+id/button_capsule_middle_stitch"
-        android:layout_width="25dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_capsule_middle"
-        android:text="@string/counter_adjust_by_5"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_stitch"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_stitch" />
+        <Button
+            android:id="@+id/button_capsule_top_stitch"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_capsule_top"
+            android:text="@string/counter_adjust_by_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
+            app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle_stitch" />
 
-    <!--android:layout_width="25dp"
-        android:layout_height="30dp"-->
-    <Button
-        android:id="@+id/button_capsule_bottom_stitch"
-        android:layout_width="25dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_capsule_bottom"
-        android:text="@string/counter_adjust_by_10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_stitch"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/text_row_header" />
+        <Button
+            android:id="@+id/button_capsule_middle_stitch"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_capsule_middle"
+            android:text="@string/counter_adjust_by_5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_stitch" />
 
-    <!--android:layout_width="88dp"
-        android:layout_height="75dp"-->
-    <Button
-        android:id="@+id/button_counter_plus_stitch"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
-        android:text="@string/counter_plus_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintLeft_toRightOf="@+id/button_capsule_middle_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_stitch" />
+        <Button
+            android:id="@+id/button_capsule_bottom_stitch"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_capsule_bottom"
+            android:text="@string/counter_adjust_by_10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_stitch"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/text_row_header" />
 
-    <!--android:layout_width="88dp"
-        android:layout_height="75dp"-->
-    <Button
-        android:id="@+id/button_counter_minus_stitch"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
-        android:text="@string/counter_minus_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintLeft_toRightOf="@+id/button_capsule_bottom_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_stitch"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/text_row_header" />
+        <Button
+            android:id="@+id/button_counter_plus_stitch"
+            android:layout_width="88dp"
+            android:layout_height="75dp"
+            android:text="@string/counter_plus_btn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:stateListAnimator="@null"
+            app:layout_constraintLeft_toRightOf="@+id/button_capsule_middle_stitch"
+            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_stitch" />
 
-    <!--android:layout_width="60dp"
-        android:layout_height="88dp"-->
-    <Button
-        android:id="@+id/button_counter_reset_stitch"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:text="@string/counter_reset_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_stitch"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_reset_row"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="32dp" />
+        <Button
+            android:id="@+id/button_counter_minus_stitch"
+            android:layout_width="88dp"
+            android:layout_height="75dp"
+            android:text="@string/counter_minus_btn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintLeft_toRightOf="@+id/button_capsule_bottom_stitch"
+            app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
+            app:layout_constraintBottom_toTopOf="@+id/text_row_header" />
 
-    <!--android:layout_width="wrap_content"
-        android:layout_height="wrap_content"-->
-    <TextView
-        android:id="@+id/text_row_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/counter_row_header"
-        android:textSize="25dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintTop_toBottomOf="@+id/button_capsule_bottom_stitch"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_row"
-        app:layout_constraintHorizontal_bias="0.496" />
+        <Button
+            android:id="@+id/button_counter_reset_stitch"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:text="@string/counter_reset_btn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_stitch"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+            app:layout_constraintBottom_toTopOf="@+id/button_counter_reset_row" />
 
-    <!--android:layout_width="105dp"
-        android:layout_height="150dp"-->
-    <TextView
-        android:id="@+id/text_counter_row"
-        android:layout_width="105dp"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="@string/counter_number_row"
-        android:textSize="45dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_counter_stitch"
-        app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_row"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginTop="40dp" />
+        <TextView
+            android:id="@+id/text_row_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/counter_row_header"
+            android:textSize="25dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_bottom_stitch"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_row" />
 
-    <!--android:layout_width="55dp"
-        android:layout_height="33dp"-->
-    <TextView
-        android:id="@+id/text_adjust_by_row"
-        android:layout_width="55dp"
-        android:layout_height="33dp"
-        android:gravity="center"
-        android:text="@string/counter_adjust_by"
-        app:layout_constraintTop_toBottomOf="@+id/text_row_header"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_row" />
+        <TextView
+            android:id="@+id/text_counter_row"
+            android:layout_width="105dp"
+            android:layout_height="150dp"
+            android:gravity="center"
+            android:text="@string/counter_number_row"
+            android:textSize="45dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_counter_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_row"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!--android:layout_width="25dp"
-        android:layout_height="30dp"-->
-    <Button
-        android:id="@+id/button_capsule_top_row"
-        android:layout_width="25dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_capsule_top"
-        android:text="@string/counter_adjust_by_1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-        app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_row"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle_row" />
+        <TextView
+            android:id="@+id/text_adjust_by_row"
+            android:layout_width="55dp"
+            android:layout_height="33dp"
+            android:gravity="center"
+            android:text="@string/counter_adjust_by"
+            app:layout_constraintTop_toBottomOf="@+id/text_row_header"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
+            app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_row" />
 
-    <!--android:layout_width="25dp"
-        android:layout_height="30dp"-->
-    <Button
-        android:id="@+id/button_capsule_middle_row"
-        android:layout_width="25dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_capsule_middle"
-        android:text="@string/counter_adjust_by_5"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-        app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_row"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_row" />
+        <Button
+            android:id="@+id/button_capsule_top_row"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_capsule_top"
+            android:text="@string/counter_adjust_by_1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
+            app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
+            app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle_row" />
 
-    <!--android:layout_width="25dp"
-        android:layout_height="30dp"-->
-    <Button
-        android:id="@+id/button_capsule_bottom_row"
-        android:layout_width="25dp"
-        android:layout_height="30dp"
-        android:background="@drawable/button_capsule_bottom"
-        android:text="@string/counter_adjust_by_10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-        app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_row"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_row"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <Button
+            android:id="@+id/button_capsule_middle_row"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_capsule_middle"
+            android:text="@string/counter_adjust_by_5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
+            app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_row" />
 
-    <!--android:layout_width="88dp"
-        android:layout_height="75dp"-->
-    <Button
-        android:id="@+id/button_counter_plus_row"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
-        android:text="@string/counter_plus_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintTop_toBottomOf="@+id/text_row_header"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
-        app:layout_constraintLeft_toRightOf="@+id/button_capsule_top_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_row" />
+        <Button
+            android:id="@+id/button_capsule_bottom_row"
+            android:layout_width="25dp"
+            android:layout_height="30dp"
+            android:background="@drawable/button_capsule_bottom"
+            android:text="@string/counter_adjust_by_10"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_row"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
+        <Button
+            android:id="@+id/button_counter_plus_row"
+            android:layout_width="88dp"
+            android:layout_height="75dp"
+            android:text="@string/counter_plus_btn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintTop_toBottomOf="@+id/text_row_header"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
+            app:layout_constraintLeft_toRightOf="@+id/button_capsule_top_row"
+            app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_row" />
 
-    <Button
-        android:id="@+id/button_counter_minus_row"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
-        android:text="@string/counter_minus_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_row"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
-        app:layout_constraintLeft_toRightOf="@+id/button_capsule_middle_row"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <Button
+            android:id="@+id/button_counter_minus_row"
+            android:layout_width="88dp"
+            android:layout_height="75dp"
+            android:text="@string/counter_minus_btn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
+            app:layout_constraintLeft_toRightOf="@+id/button_capsule_middle_row"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <Button
-        android:id="@+id/button_counter_reset_row"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
-        android:text="@string/counter_reset_btn"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_row"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="64dp" />
+        <Button
+            android:id="@+id/button_counter_reset_row"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:text="@string/counter_reset_btn"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_row"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
-    <!-- Help Mode
+    <!-- Help Mode-->
 
-    <TextView
-        android:id="@+id/help_double_counter_activity_1"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/annotation_bubble"
-        android:padding="5dp"
-        android:text="@string/help_counter_project_name"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.etaspare.stitchcounter.MainActivity"
         android:visibility="invisible"
-        android:layout_marginTop="64dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:id="@+id/top_layout">
 
-    <TextView
-        android:id="@+id/help_double_counter_activity_2"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="232dp"
-        android:background="@drawable/annotation_bubble"
-        android:padding="5dp"
-        android:text="@string/help_double_counter_adjustment"
-        android:visibility="invisible"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.027" />
+        <TextView
+            android:id="@+id/help_double_counter_activity_1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_counter_project_name"
+            android:layout_marginTop="64dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/help_double_counter_activity_3"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/annotation_bubble"
-        android:padding="5dp"
-        android:text="@string/help_double_counter_plus_minus"
-        android:visibility="invisible"
-        android:layout_marginBottom="80dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/help_double_counter_activity_2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="232dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_adjustment"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.027" />
 
-    <TextView
-        android:id="@+id/help_double_counter_activity_4"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/annotation_bubble"
-        android:padding="5dp"
-        android:text="@string/help_double_counter_reset"
-        android:visibility="invisible"
-        android:layout_marginBottom="160dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <TextView
+            android:id="@+id/help_double_counter_activity_3"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_plus_minus"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_2"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
-    <TextView
-        android:id="@+id/help_double_counter_activity_5"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/annotation_bubble"
-        android:padding="5dp"
-        android:text="@string/help_double_counter_total_rows"
-        android:visibility="invisible"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="112dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/help_double_counter_activity_4"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_reset"
+            android:layout_marginBottom="120dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/help_double_counter_activity_6"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/annotation_bubble"
-        android:padding="5dp"
-        android:text="@string/help_double_counter_progress"
-        android:visibility="invisible"
-        android:layout_marginTop="176dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/help_double_counter_activity_5"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="112dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_total_rows"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_1_connector"
-        android:layout_width="50dp"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="88dp"
-        app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/help_double_counter_activity_6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_progress"
+            android:layout_marginTop="176dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_2_connector"
-        android:layout_width="35dp"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="312dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/help_double_counter_activity_1_connector"
+            android:layout_width="50dp"
+            android:layout_height="2dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="88dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_1"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_3_connector_2"
-        android:layout_width="2dp"
-        android:layout_height="37dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginRight="205dp"
-        android:layout_marginBottom="116dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <View
+            android:id="@+id/help_double_counter_activity_2_connector"
+            android:layout_width="20dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="0dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="312dp"
+            android:layout_marginRight="8dp" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_3_connector_1"
-        android:layout_width="72dp"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="524dp"
-        app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/help_double_counter_activity_3_connector"
+            android:layout_width="72dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="524dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_4_connector"
-        android:layout_width="2dp"
-        android:layout_height="35dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginBottom="0dp"
-        android:layout_marginRight="64dp"
-        app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4"
-        app:layout_constraintRight_toLeftOf="parent" />
+        <View
+            android:id="@+id/help_double_counter_activity_4_connector"
+            android:layout_width="2dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="64dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4"
+            app:layout_constraintRight_toLeftOf="parent" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_5_connector"
-        android:layout_width="25dp"
-        android:layout_height="2dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="144dp"
-        app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_5"
-        app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:id="@+id/help_double_counter_activity_5_connector"
+            android:layout_width="25dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="144dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_5"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:id="@+id/help_double_counter_activity_6_connector"
-        android:layout_width="2dp"
-        android:layout_height="20dp"
-        android:background="@color/colorAccent"
-        android:visibility="invisible"
-        android:layout_marginBottom="0dp"
-        android:layout_marginRight="104dp"
-        app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6"
-        app:layout_constraintRight_toLeftOf="parent" />
-        -->
+        <View
+            android:id="@+id/help_double_counter_activity_6_connector"
+            android:layout_width="2dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="104dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6"
+            app:layout_constraintRight_toLeftOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
 
 
     <!--

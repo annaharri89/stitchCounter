@@ -24,7 +24,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     private Counter stitchCounter;
     private Counter rowCounter;
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    //ConstraintLayout topLayout;
+    ConstraintLayout topLayout;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,8 +52,8 @@ public class DoubleCounterActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
+
         /* Closes help mode, hides the annotation bubbles */
-        /*
         topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
         topLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -62,7 +62,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 return false;
             }
         });
-        */
+
 
         /* Project Name Listener*/
         final EditText textProjectName = (EditText) findViewById(R.id.text_project_name_2);
@@ -240,7 +240,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 rowCounter.changeAdjustment(1);
             }
             if (progress_percent > 0) {
-                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), progress_percent);
+                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), progress_percent); //TODO look into
                 textProgress.setText(formattedProgressNumber);
             } else {
                 /* Sets default progress percent */
@@ -273,7 +273,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        //topLayout.setVisibility(View.VISIBLE);
+        topLayout.setVisibility(View.VISIBLE);
     }
 
     @Override

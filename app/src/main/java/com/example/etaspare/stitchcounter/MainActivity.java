@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    ConstraintLayout layout;
+    ConstraintLayout topLayout;
     View connector1;
     View connector2;
     View help1;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_help) {
-            toggleHelpMode(View.VISIBLE);
+            openHelpMode();
             return true;
         } else {
             return toolBarMenu.handleMenu(item);
@@ -58,11 +58,11 @@ public class MainActivity extends AppCompatActivity {
         help2 = findViewById(R.id.help_main_activity_2);
 
         /* Closes help mode, hides the annotation bubbles */
-        layout = (ConstraintLayout) findViewById(R.id.layout);
-        layout.setOnTouchListener(new View.OnTouchListener() {
+        topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
+        topLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                toggleHelpMode(View.INVISIBLE);
+                topLayout.setVisibility(View.INVISIBLE);
                 return false;
             }
         });
@@ -86,10 +86,14 @@ public class MainActivity extends AppCompatActivity {
     Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
     visible, showing the annotation bubbles.
     */
-    public void toggleHelpMode(int visibility) {
+    public void openHelpMode() {
+        /*
         connector1.setVisibility(visibility);
         connector2.setVisibility(visibility);
         help1.setVisibility(visibility);
         help2.setVisibility(visibility);
+        */
+        topLayout.setVisibility(View.VISIBLE);
+
     }
 }

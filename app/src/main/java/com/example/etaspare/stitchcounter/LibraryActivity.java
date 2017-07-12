@@ -133,7 +133,7 @@ public class LibraryActivity extends AppCompatActivity
         Log.d("height", Float.toString(screenHeight));
         //TODO: nexus 5x: width 411, height 683 NORMAL SIZE layout-w321dp-port and layout-h321dp-land
         //TODO: galaxy s5 width 360, height 640 NORMAL SIZE layout-w321dp-port and layout-h321dp-land
-        //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE layout-h300dp-port and layout-h320dp-land
+        //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE layout-w320dp-h470dp-port and layout-h320dp-land
         //TODO: 3.4 WQVGA width 320, height 576 Normal Size layout-h500dp and layout-h320dp-land
 
         deleteMany = (Button) findViewById(R.id.delete_many);

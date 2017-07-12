@@ -301,7 +301,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.etaspare.stitchcounter.MainActivity"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:id="@+id/top_layout">
 
         <TextView
@@ -311,63 +311,67 @@
             android:background="@drawable/annotation_bubble"
             android:padding="5dp"
             android:text="@string/help_counter_project_name"
-            android:layout_marginTop="64dp"
             android:layout_marginRight="8dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6_connector"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginTop="32dp" />
 
         <TextView
             android:id="@+id/help_double_counter_activity_2"
-            android:layout_width="100dp"
+            android:layout_width="91dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="232dp"
             android:background="@drawable/annotation_bubble"
             android:padding="5dp"
             android:text="@string/help_double_counter_adjustment"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.027" />
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="16dp" />
 
         <TextView
             android:id="@+id/help_double_counter_activity_3"
-            android:layout_width="125dp"
+            android:layout_width="191dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="80dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="8dp"
             android:background="@drawable/annotation_bubble"
             android:padding="5dp"
             android:text="@string/help_double_counter_plus_minus"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/help_double_counter_activity_4"
-            android:layout_width="100dp"
+            android:layout_width="151dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:background="@drawable/annotation_bubble"
             android:padding="5dp"
             android:text="@string/help_double_counter_reset"
-            android:layout_marginBottom="160dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_3"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4_connector" />
 
+        -->
         <TextView
             android:id="@+id/help_double_counter_activity_5"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="112dp"
+            android:layout_marginLeft="8dp"
             android:background="@drawable/annotation_bubble"
             android:padding="5dp"
             android:text="@string/help_double_counter_total_rows"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_2"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="88dp" />
 
         <TextView
             android:id="@+id/help_double_counter_activity_6"
@@ -376,82 +380,392 @@
             android:background="@drawable/annotation_bubble"
             android:padding="5dp"
             android:text="@string/help_double_counter_progress"
-            android:layout_marginTop="176dp"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4_connector"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_6_connector" />
+
 
         <View
             android:id="@+id/help_double_counter_activity_1_connector"
-            android:layout_width="50dp"
-            android:layout_height="2dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="88dp"
-            android:background="@color/colorAccent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:rotation="270"
             app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_1"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_1"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="0dp"
+            app:layout_constraintVertical_bias="0.504"
+            app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_1"
+            android:layout_marginBottom="8dp" />
 
         <View
             android:id="@+id/help_double_counter_activity_2_connector"
-            android:layout_width="35dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="0dp"
-            android:background="@color/colorAccent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:rotation="90"
             app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="312dp"
-            android:layout_marginRight="8dp" />
-
-        <View
-            android:id="@+id/help_double_counter_activity_3_connector_2"
-            android:layout_width="2dp"
-            android:layout_height="37dp"
-            android:layout_marginRight="205dp"
-            android:background="@color/colorAccent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="116dp" />
-
-        <View
-            android:id="@+id/help_double_counter_activity_3_connector_1"
-            android:layout_width="72dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="17dp"
-            android:layout_marginTop="524dp"
-            android:background="@color/colorAccent"
-            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_5"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="120dp" />
 
         <View
             android:id="@+id/help_double_counter_activity_4_connector"
-            android:layout_width="2dp"
-            android:layout_height="35dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginRight="64dp"
-            android:background="@color/colorAccent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
             app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4"
-            app:layout_constraintRight_toLeftOf="parent" />
+            app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_4"
+            android:layout_marginLeft="72dp"
+            app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_4"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_6"
+            app:layout_constraintHorizontal_bias="0.512"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="16dp" />
 
         <View
             android:id="@+id/help_double_counter_activity_5_connector"
-            android:layout_width="25dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="144dp"
-            android:background="@color/colorAccent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:rotation="90"
             app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_5"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_5"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_5"
+            android:layout_marginBottom="8dp" />
 
         <View
             android:id="@+id/help_double_counter_activity_6_connector"
-            android:layout_width="2dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginRight="104dp"
-            android:background="@color/colorAccent"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:layout_marginRight="8dp"
             app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6"
-            app:layout_constraintRight_toLeftOf="parent" />
+            android:layout_marginLeft="56dp"
+            app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_6"
+            app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_6"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_1"
+            android:layout_marginStart="56dp"
+            android:layout_marginEnd="8dp" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>
+
+    <!-- Help Mode
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.etaspare.stitchcounter.MainActivity"
+        android:visibility="visible"
+        android:id="@+id/top_layout">
+
+        <TextView
+            android:id="@+id/help_double_counter_activity_1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_counter_project_name"
+            android:layout_marginTop="56dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="96dp"
+            app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_5_connector" />
+
+        <TextView
+            android:id="@+id/help_double_counter_activity_2"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_adjustment"
+            app:layout_constraintHorizontal_bias="0.022"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_5"
+            app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_4" />
+
+        <TextView
+            android:id="@+id/help_double_counter_activity_3"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_plus_minus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4"
+            android:layout_marginRight="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:id="@+id/help_double_counter_activity_4"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_reset"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_6" />
+
+        <TextView
+            android:id="@+id/help_double_counter_activity_5"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_total_rows"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_1" />
+
+        <TextView
+            android:id="@+id/help_double_counter_activity_6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/annotation_bubble"
+            android:padding="5dp"
+            android:text="@string/help_double_counter_progress"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_1"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
+            android:layout_marginLeft="16dp" />
+
+        <View
+            android:id="@+id/help_double_counter_activity_1_connector"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:rotation="270"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_1"
+            app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_1"
+            app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_1"
+            android:layout_marginBottom="8dp" />
+
+        <View
+            android:id="@+id/help_double_counter_activity_2_connector"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:rotation="90"
+            app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_2"
+            android:layout_marginTop="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_2"
+            android:layout_marginBottom="72dp" />
+
+        <View
+            android:id="@+id/help_double_counter_activity_4_connector"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4"
+            app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_4"
+            android:layout_marginLeft="72dp"
+            app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_4" />
+
+        <View
+            android:id="@+id/help_double_counter_activity_5_connector"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:rotation="90"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_5"
+            app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_5"
+            app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_5"
+            android:layout_marginBottom="8dp" />
+
+        <View
+            android:id="@+id/help_double_counter_activity_6_connector"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/annotation_arrow"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6"
+            android:layout_marginLeft="56dp"
+            app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_6"
+            app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_6" />
+
+    </android.support.constraint.ConstraintLayout>
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.example.etaspare.stitchcounter.MainActivity"
+android:visibility="visible"
+android:id="@+id/top_layout">
+
+<TextView
+    android:id="@+id/help_double_counter_activity_1"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/annotation_bubble"
+    android:padding="5dp"
+    android:text="@string/help_counter_project_name"
+    android:layout_marginTop="56dp"
+    android:layout_marginRight="8dp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintRight_toRightOf="parent" />
+
+<TextView
+    android:id="@+id/help_double_counter_activity_2"
+    android:layout_width="90dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/annotation_bubble"
+    android:padding="5dp"
+    android:text="@string/help_double_counter_adjustment"
+    app:layout_constraintHorizontal_bias="0.024"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_5" />
+
+<TextView
+    android:id="@+id/help_double_counter_activity_3"
+    android:layout_width="190dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="0dp"
+    android:background="@drawable/annotation_bubble"
+    android:padding="5dp"
+    android:text="@string/help_double_counter_plus_minus"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4"
+    app:layout_constraintVertical_bias="0.492"
+    android:layout_marginRight="8dp"
+    app:layout_constraintRight_toRightOf="parent" />
+
+<TextView
+    android:id="@+id/help_double_counter_activity_4"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginTop="48dp"
+    android:background="@drawable/annotation_bubble"
+    android:padding="5dp"
+    android:text="@string/help_double_counter_reset"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_6" />
+
+<TextView
+    android:id="@+id/help_double_counter_activity_5"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="56dp"
+    android:background="@drawable/annotation_bubble"
+    android:padding="5dp"
+    android:text="@string/help_double_counter_total_rows"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_1" />
+
+<TextView
+    android:id="@+id/help_double_counter_activity_6"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/annotation_bubble"
+    android:padding="5dp"
+    android:text="@string/help_double_counter_progress"
+    android:layout_marginTop="40dp"
+    android:layout_marginRight="8dp"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_1" />
+
+<View
+    android:id="@+id/help_double_counter_activity_1_connector"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/annotation_arrow"
+    android:rotation="270"
+    android:layout_marginRight="0dp"
+    android:layout_marginTop="8dp"
+    app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_1"
+    app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_1"
+    app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_1"
+    android:layout_marginBottom="8dp" />
+
+<View
+    android:id="@+id/help_double_counter_activity_2_connector"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/annotation_arrow"
+    android:rotation="90"
+    app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_2"
+    android:layout_marginTop="0dp"
+    app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
+    android:layout_marginLeft="0dp"
+    app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_2"
+    android:layout_marginBottom="72dp" />
+
+<View
+    android:id="@+id/help_double_counter_activity_4_connector"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/annotation_arrow"
+    android:layout_marginBottom="0dp"
+    android:layout_marginRight="0dp"
+    app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4"
+    app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_4"
+    android:layout_marginLeft="72dp"
+    app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_4" />
+
+<View
+    android:id="@+id/help_double_counter_activity_5_connector"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/annotation_arrow"
+    android:rotation="90"
+    android:layout_marginLeft="0dp"
+    android:layout_marginTop="8dp"
+    app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_5"
+    app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_5"
+    app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_5"
+    android:layout_marginBottom="8dp" />
+
+<View
+    android:id="@+id/help_double_counter_activity_6_connector"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:background="@drawable/annotation_arrow"
+    android:layout_marginBottom="0dp"
+    android:layout_marginRight="8dp"
+    app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6"
+    android:layout_marginLeft="56dp"
+    app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_6"
+    app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_6" />
+
+</android.support.constraint.ConstraintLayout>
+-->

@@ -4,63 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.etaspare.stitchcounter.DoubleCounterActivity">
+
         <include
             android:id="@+id/toolbar_main"
-            layout="@layout/toolbar"/>
+            layout="@layout/toolbar" />
+
         <EditText
             android:id="@+id/text_project_name_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="@string/counter_project_name_hint"
             android:inputType="textCapWords"
+            android:textSize="15dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-            android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintRight_toRightOf="parent" />
+
         <TextView
             android:id="@+id/text_total_rows"
-            android:layout_width="78dp"
-            android:layout_height="38dp"
+            android:layout_width="75dp"
+            android:layout_height="35dp"
             android:gravity="center"
             android:text="@string/counter_total_rows"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="40dp"
+            android:textSize="10dp"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintRight_toLeftOf="@+id/text_total_rows_input" />
+
         <EditText
             android:id="@+id/text_total_rows_input"
-            android:layout_width="51dp"
-            android:layout_height="38dp"
-            android:gravity="center"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:ems="10"
+            android:gravity="center"
             android:hint="0"
             android:inputType="number"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="8dp"
+            android:textSize="10dp"
+            app:layout_constraintLeft_toRightOf="@+id/text_total_rows"
             app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
-            app:layout_constraintLeft_toRightOf="@+id/text_total_rows" />
+            app:layout_constraintRight_toLeftOf="@+id/progress_bar" />
+
         <TextView
             android:id="@+id/text_counter_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/counter_progress"
-            android:layout_marginTop="16dp"
+            android:textSize="10dp"
             app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
-            app:layout_constraintHorizontal_bias="0.503" />
+            app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input" />
+
         <ProgressBar
             android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyleHorizontal"
@@ -68,222 +69,225 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/text_counter_progress"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input" />
+
         <TextView
             android:id="@+id/text_stitch_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/app_name"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input" />
+
         <TextView
             android:id="@+id/text_counter_stitch"
-            android:layout_width="105dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="75dp"
+            android:layout_height="100dp"
             android:layout_marginTop="17dp"
             android:gravity="center"
             android:text="@string/counter_number_stitch"
-            android:textSize="45dp"
+            android:textSize="25dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header" />
+            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
+            app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_stitch" />
+
         <TextView
             android:id="@+id/text_adjust_by_stitch"
-            android:layout_width="55dp"
-            android:layout_height="33dp"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/counter_adjust_by"
+            android:textSize="10dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
             app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
-            app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch" />
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch" />
+
         <Button
             android:id="@+id/button_capsule_top_stitch"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_capsule_top"
             android:text="@string/counter_adjust_by_1"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-            app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_stitch" />
+            app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch" />
+
         <Button
             android:id="@+id/button_capsule_middle_stitch"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_capsule_middle"
             android:text="@string/counter_adjust_by_5"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_stitch" />
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
+            android:layout_marginRight="0dp" />
+
         <Button
             android:id="@+id/button_capsule_bottom_stitch"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_capsule_bottom"
             android:text="@string/counter_adjust_by_10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
-            app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_stitch" />
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_stitch"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
+            android:layout_marginRight="0dp" />
+
         <Button
             android:id="@+id/button_counter_plus_stitch"
             android:layout_width="88dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
             android:text="@string/counter_plus_btn"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_stitch"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header" />
+            app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch" />
+
         <Button
             android:id="@+id/button_counter_minus_stitch"
             android:layout_width="88dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="50dp"
             android:text="@string/counter_minus_btn"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_stitch"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_stitch" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_stitch"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/button_counter_plus_stitch" />
+
         <Button
             android:id="@+id/button_counter_reset_stitch"
-            android:layout_width="60dp"
-            android:layout_height="88dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="65dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
             android:text="@string/counter_reset_btn"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
-            app:layout_constraintHorizontal_bias="0.476"
             app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_stitch"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_stitch_header" />
+
         <TextView
             android:id="@+id/text_row_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/counter_row_header"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
             app:layout_constraintTop_toBottomOf="@+id/button_counter_minus_stitch"
             app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginLeft="0dp"
             app:layout_constraintLeft_toLeftOf="parent" />
+
         <TextView
             android:id="@+id/text_counter_row"
-            android:layout_width="105dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="8dp"
+            android:layout_width="75dp"
+            android:layout_height="100dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@string/counter_number_row"
-            android:textSize="45dp"
+            android:textSize="25dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_row_header" />
+            app:layout_constraintTop_toBottomOf="@+id/text_row_header"
+            app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_row" />
+
         <TextView
             android:id="@+id/text_adjust_by_row"
-            android:layout_width="55dp"
-            android:layout_height="33dp"
+            android:layout_width="35dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/counter_adjust_by"
+            android:textSize="10dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="8dp"
             app:layout_constraintTop_toBottomOf="@+id/text_row_header"
-            app:layout_constraintLeft_toRightOf="@+id/text_counter_row" />
+            app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row" />
+
         <Button
             android:id="@+id/button_capsule_top_row"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_capsule_top"
             android:text="@string/counter_adjust_by_1"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-            app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_row" />
+            app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row" />
+
         <Button
             android:id="@+id/button_capsule_middle_row"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_capsule_middle"
             android:text="@string/counter_adjust_by_5"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_row" />
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_row" />
+
         <Button
             android:id="@+id/button_capsule_bottom_row"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="24dp"
+            android:layout_width="20dp"
+            android:layout_height="16dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_capsule_bottom"
             android:text="@string/counter_adjust_by_10"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
-            app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_row" />
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_row"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_row" />
+
         <Button
             android:id="@+id/button_counter_plus_row"
             android:layout_width="88dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
+            android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:text="@string/counter_plus_btn"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_row"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_row_header" />
+            app:layout_constraintTop_toBottomOf="@+id/text_row_header"
+            app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row" />
+
         <Button
             android:id="@+id/button_counter_minus_row"
             android:layout_width="88dp"
-            android:layout_height="75dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="50dp"
             android:text="@string/counter_minus_btn"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_row"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_row" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_row"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toLeftOf="@+id/button_counter_plus_row" />
+
         <Button
             android:id="@+id/button_counter_reset_row"
-            android:layout_width="60dp"
-            android:layout_height="88dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="65dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="40dp"
             android:text="@string/counter_reset_btn"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_row"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_row_header" />
+
     </android.support.constraint.ConstraintLayout>
+
+    <!-- Help Mode-->
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -292,6 +296,7 @@
         tools:context="com.example.etaspare.stitchcounter.MainActivity"
         android:visibility="invisible"
         android:id="@+id/top_layout">
+
         <TextView
             android:id="@+id/help_double_counter_activity_1"
             android:layout_width="100dp"
@@ -303,6 +308,7 @@
             android:layout_marginRight="8dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+
         <TextView
             android:id="@+id/help_double_counter_activity_2"
             android:layout_width="100dp"
@@ -317,6 +323,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.027" />
+
         <TextView
             android:id="@+id/help_double_counter_activity_3"
             android:layout_width="125dp"
@@ -329,6 +336,7 @@
             android:text="@string/help_double_counter_plus_minus"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent" />
+
         <TextView
             android:id="@+id/help_double_counter_activity_4"
             android:layout_width="100dp"
@@ -341,6 +349,7 @@
             android:layout_marginRight="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
+
         <TextView
             android:id="@+id/help_double_counter_activity_5"
             android:layout_width="100dp"
@@ -352,6 +361,7 @@
             android:text="@string/help_double_counter_total_rows"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/help_double_counter_activity_6"
             android:layout_width="200dp"
@@ -363,6 +373,7 @@
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/help_double_counter_activity_1_connector"
             android:layout_width="50dp"
@@ -372,6 +383,7 @@
             android:background="@color/colorAccent"
             app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_1"
             app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/help_double_counter_activity_2_connector"
             android:layout_width="35dp"
@@ -382,6 +394,7 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="312dp"
             android:layout_marginRight="8dp" />
+
         <View
             android:id="@+id/help_double_counter_activity_3_connector_2"
             android:layout_width="2dp"
@@ -391,6 +404,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="116dp" />
+
         <View
             android:id="@+id/help_double_counter_activity_3_connector_1"
             android:layout_width="72dp"
@@ -400,6 +414,7 @@
             android:background="@color/colorAccent"
             app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_2"
             app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/help_double_counter_activity_4_connector"
             android:layout_width="2dp"
@@ -409,6 +424,7 @@
             android:background="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4"
             app:layout_constraintRight_toLeftOf="parent" />
+
         <View
             android:id="@+id/help_double_counter_activity_5_connector"
             android:layout_width="25dp"
@@ -419,6 +435,7 @@
             android:background="@color/colorAccent"
             app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_5"
             app:layout_constraintTop_toTopOf="parent" />
+
         <View
             android:id="@+id/help_double_counter_activity_6_connector"
             android:layout_width="2dp"
@@ -428,5 +445,6 @@
             android:background="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6"
             app:layout_constraintRight_toLeftOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

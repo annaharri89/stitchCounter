@@ -1,3 +1,7 @@
+/*TODO: Update README */
+/* TODO Create a Settings Activity */
+/* TODO: Create an About Activity in the Settings Activity*/
+/* TODO add annotation bubble library to About*/
 /* TODO: Implement help button */
     /* TODO: implement layouts for different sized devices */
     /* TODO: Remove unneeded import statements throughout the app */

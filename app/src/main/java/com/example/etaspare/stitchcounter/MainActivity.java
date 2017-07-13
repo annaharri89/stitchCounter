@@ -11,6 +11,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import com.fenchtose.tooltip.Tooltip;
@@ -18,8 +20,6 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-
-    //TODO: set width params for help1 and help2
     
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     Button singleCounter;
@@ -121,8 +121,12 @@ public class MainActivity extends AppCompatActivity {
         int i = 1;
         for (TextView v: bubbleList) {
             String id = "help_main_activity_" + Integer.toString(i);
-            int idResource = getResources().getIdentifier(id, "string", getPackageName());
-            v.setText(idResource);
+            int strResource = getResources().getIdentifier(id, "string", getPackageName());
+            int dimenResouce = getResources().getIdentifier(id, "dimen", getPackageName());
+            int width = (int) (getResources().getDimension(dimenResouce) / getResources().getDisplayMetrics().density);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
+            v.setLayoutParams(params);
+            v.setText(strResource);
             v.setPadding(5, 5, 5, 5);
             v.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
             v.setTextColor(Color.parseColor("#FFFFFF"));

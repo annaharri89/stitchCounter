@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="help_main_activity_1">125dp</dimen>
+    <dimen name="help_main_activity_2">200dp</dimen>
+</resources>

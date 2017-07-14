@@ -36,34 +36,37 @@
         your stitches and rows/rounds. The double counter will track your progress if you enter
         your total rows/rounds.
     </string>
-    <string name="help_counter_project_name">
+    <string name="help_single_counter_1">
         Tap here to update your project name.
     </string>
     <string name="help_single_counter_adjustment">
         Tap these buttons to change the number your counter increases/decreases by.
     </string>
-    <string name="help_double_counter_adjustment">
-        Tap these buttons to change the number your stitch counter increases/decreases by. The row
-        counter has equivalent buttons.
-    </string>
     <string name="help_single_counter_plus_minus">
         Tap the + and - buttons to increase or decrease the counter.
-    </string>
-    <string name="help_double_counter_plus_minus">
-        Tap the + and - buttons to increase or decrease the row counter. The stitch counter has
-        equivalent buttons.
     </string>
     <string name="help_single_counter_reset">
         Tap the "Reset" button to reset your counter to 0.
     </string>
-    <string name="help_double_counter_reset">
+    <string name="help_double_counter_activity_1">
+        Tap here to update your project name.
+    </string>
+    <string name="help_double_counter_activity_2">
+        Tap these buttons to change the number your stitch counter increases/decreases by. The row
+        counter has equivalent buttons.
+    </string>
+    <string name="help_double_counter_activity_3">
+        Tap the + and - buttons to increase or decrease the row counter. The stitch counter has
+        equivalent buttons.
+    </string>
+    <string name="help_double_counter_activity_4">
         Tap the "Reset" button to reset the stitch counter to 0. The row counter has an equivalent
         button.
     </string>
-    <string name="help_double_counter_total_rows">
+    <string name="help_double_counter_activity_5">
         Tap here to update total rows/rounds.
     </string>
-    <string name="help_double_counter_progress">
+    <string name="help_double_counter_activity_6">
         Here you can see the progress of your project if you\'ve enter total rows/rounds.
     </string>
     <string name="help_library_delete_many_mode">

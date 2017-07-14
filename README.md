@@ -16,3 +16,8 @@
     /* TODO Figure out why clicking into a counter, hitting the back button, results in first item being displayed as both the first item and the last item in the listview */
     /* TODO fix issue: app crashes when you try to start a double counter without putting total rows */
     /* TODO: for version 2, look into annotation bubble library so the help bubbles can be put directly in the main layer and connect them to appropriate elements*/
+
+## Acknowledgements ##
+Francesco Azzola
+Android Listview with multiple row layout
+https://www.survivingwithandroid.com/2014/08/android-listview-with-multiple-row.html

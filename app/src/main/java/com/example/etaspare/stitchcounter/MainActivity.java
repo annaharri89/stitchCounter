@@ -1,6 +1,7 @@
 package com.example.etaspare.stitchcounter;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
@@ -12,7 +13,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import com.fenchtose.tooltip.Tooltip;
@@ -20,16 +20,16 @@ import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
-    
+
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
+    Boolean helpMode = false;
+    ConstraintLayout layout;
     Button singleCounter;
     Button doubleCounter;
     TextView help1;
     TextView help2;
-    ConstraintLayout layout;
     Tooltip tooltip1;
     Tooltip tooltip2;
-    Boolean helpMode = false;
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) { //TODO Why can't this be implemented in StitchCounterMenu.java ?
@@ -56,15 +56,15 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
+        /* Help Mode Setup*/
         layout = (ConstraintLayout) findViewById(R.id.layout);
         singleCounter = (Button) findViewById(R.id.button_basic_counter);
         doubleCounter = (Button) findViewById(R.id.button_advanced_counter);
+        ArrayList<TextView> bubbleArray = new ArrayList<>();
         help1 = new TextView(this);
         help2 = new TextView(this);
-        ArrayList<TextView> bubbleArray = new ArrayList<TextView>();
         bubbleArray.add(help1);
         bubbleArray.add(help2);
-
         setUpHelpBubbles(bubbleArray);
     }
 
@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
         for (TextView v: bubbleList) {
             String id = "help_main_activity_" + Integer.toString(i);
             int strResource = getResources().getIdentifier(id, "string", getPackageName());
-            int dimenResouce = getResources().getIdentifier(id, "dimen", getPackageName());
-            int width = (int) (getResources().getDimension(dimenResouce) / getResources().getDisplayMetrics().density);
+            int dimenResource = getResources().getIdentifier(id, "dimen", getPackageName());
+            int width = (int) (getResources().getDimension(dimenResource) / getResources().getDisplayMetrics().density);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
             v.setLayoutParams(params);
             v.setText(strResource);

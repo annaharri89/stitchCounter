@@ -211,7 +211,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <View
-        android:id="@+id/help_single_counter_activity_1_connector"
+        android:id="@+id/help_single_counter_activity_1_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/annotation_arrow"
@@ -225,7 +225,7 @@
         android:layout_marginBottom="8dp" />
 
     <View
-        android:id="@+id/help_single_counter_activity_2_connector"
+        android:id="@+id/help_single_counter_activity_2_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/annotation_arrow"
@@ -239,7 +239,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/help_single_counter_activity_2" />
 
     <View
-        android:id="@+id/help_single_counter_activity_4_connector"
+        android:id="@+id/help_single_counter_activity_4_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/annotation_arrow"

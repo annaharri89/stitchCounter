@@ -67,9 +67,9 @@ public class SingleCounterActivity extends AppCompatActivity {
         help2 = (TextView) findViewById(R.id.help_single_counter_activity_2);
         help3 = (TextView) findViewById(R.id.help_single_counter_activity_3);
         help4 = (TextView) findViewById(R.id.help_single_counter_activity_4);
-        tip1 = findViewById(R.id.help_single_counter_activity_1_connector);
-        tip2 = findViewById(R.id.help_single_counter_activity_2_connector);
-        tip4 = findViewById(R.id.help_single_counter_activity_4_connector);
+        tip1 = findViewById(R.id.help_single_counter_activity_1_tip);
+        tip2 = findViewById(R.id.help_single_counter_activity_2_tip);
+        tip4 = findViewById(R.id.help_single_counter_activity_4_tip);
         helpModeArray = new ArrayList<>();
         helpModeArray.add(help1);
         helpModeArray.add(help2);

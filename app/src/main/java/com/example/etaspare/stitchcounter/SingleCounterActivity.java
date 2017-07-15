@@ -118,9 +118,9 @@ public class SingleCounterActivity extends AppCompatActivity {
         final Button buttonPlus = (Button) findViewById(R.id.button_counter_plus);
         final Button buttonMinus = (Button) findViewById(R.id.button_counter_minus);
         final Button buttonReset = (Button) findViewById(R.id.button_counter_reset);
-        final Button buttonCapsuleLeft = (Button) findViewById(R.id.button_capsule_left);
+        final Button buttonCapsuleLeft = (Button) findViewById(R.id.button_capsule_top);
         final Button buttonCapsuleMiddle = (Button) findViewById(R.id.button_capsule_middle);
-        final Button buttonCapsuleRight = (Button) findViewById(R.id.button_capsule_right);
+        final Button buttonCapsuleRight = (Button) findViewById(R.id.button_capsule_bottom);
 
         counter = new Counter(this, textCounter, R.string.counter_number_basic, buttonCapsuleLeft, buttonCapsuleMiddle, buttonCapsuleRight);
 

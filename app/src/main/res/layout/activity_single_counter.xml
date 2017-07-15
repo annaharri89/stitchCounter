@@ -60,7 +60,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle" />
 
         <Button
-            android:id="@+id/button_capsule_left"
+            android:id="@+id/button_capsule_top"
             android:layout_width="88dp"
             android:layout_height="48dp"
             android:layout_marginEnd="8dp"
@@ -90,7 +90,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button_counter_plus" />
 
         <Button
-            android:id="@+id/button_capsule_right"
+            android:id="@+id/button_capsule_bottom"
             android:layout_width="88dp"
             android:layout_height="48dp"
             android:layout_marginLeft="8dp"
@@ -110,7 +110,7 @@
             android:layout_marginLeft="32dp"
             android:text="@string/counter_plus_btn"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintTop_toBottomOf="@+id/button_capsule_left"
+            app:layout_constraintTop_toBottomOf="@+id/button_capsule_top"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginStart="32dp"
             app:layout_constraintBottom_toTopOf="@+id/button_counter_reset" />

@@ -36,6 +36,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     TextView help6;
     View tip1;
     View tip2;
+    View tip3;
     View tip4;
     View tip5;
     View tip6;
@@ -76,6 +77,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         help6 = (TextView) findViewById(R.id.help_double_counter_activity_6);
         tip1 = findViewById(R.id.help_double_counter_activity_1_tip);
         tip2 = findViewById(R.id.help_double_counter_activity_2_tip);
+        tip3 = findViewById(R.id.help_double_counter_activity_3_tip);
         tip4 = findViewById(R.id.help_double_counter_activity_4_tip);
         tip5 = findViewById(R.id.help_double_counter_activity_5_tip);
         tip6 = findViewById(R.id.help_double_counter_activity_6_tip);
@@ -88,6 +90,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         helpModeArray.add(help6);
         helpModeArray.add(tip1);
         helpModeArray.add(tip2);
+        helpModeArray.add(tip3);
         helpModeArray.add(tip4);
         helpModeArray.add(tip5);
         helpModeArray.add(tip6);
@@ -99,7 +102,9 @@ public class DoubleCounterActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (helpMode) {
                     for (View view: helpModeArray) {
-                        view.setVisibility(View.INVISIBLE);
+                        if (view != null) {
+                            view.setVisibility(View.INVISIBLE);
+                        }
                     }
                     helpMode = false;
                 }
@@ -318,7 +323,9 @@ public class DoubleCounterActivity extends AppCompatActivity {
     public void openHelpMode() {
         if (!helpMode) {
             for (View view: helpModeArray) {
-                view.setVisibility(View.VISIBLE);
+                if (view != null) {
+                    view.setVisibility(View.VISIBLE);
+                }
             }
             helpMode = true;
         }

@@ -1,10 +1,7 @@
 package com.example.etaspare.stitchcounter;
 
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,17 +11,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.fenchtose.tooltip.Tooltip;
-
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DoubleCounterActivity extends AppCompatActivity {
 
@@ -35,24 +27,19 @@ public class DoubleCounterActivity extends AppCompatActivity {
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     Boolean helpMode = false;
     ConstraintLayout layout;
-    EditText textProjectName;
-    EditText totalRows;
-    ProgressBar progress;
-    Button buttonCapsuleMiddleStitch;
-    Button buttonPlusRow;
-    Button buttonResetStitch;
+    ArrayList<View> helpModeArray;
     TextView help1;
     TextView help2;
     TextView help3;
     TextView help4;
     TextView help5;
     TextView help6;
-    Tooltip tooltip1;
-    Tooltip tooltip2;
-    Tooltip tooltip3;
-    Tooltip tooltip4;
-    Tooltip tooltip5;
-    Tooltip tooltip6;
+    View tip1;
+    View tip2;
+    View tip3;
+    View tip4;
+    View tip5;
+    View tip6;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,29 +69,49 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
         /* Help Mode Setup*/
         layout = (ConstraintLayout) findViewById(R.id.layout);
-        textProjectName = (EditText) findViewById(R.id.text_project_name_2);
-        totalRows = (EditText) findViewById(R.id.text_total_rows_input);
-        progress = (ProgressBar) findViewById(R.id.progress_bar);
-        buttonCapsuleMiddleStitch = (Button) findViewById(R.id.button_capsule_middle_stitch);
-        buttonPlusRow = (Button) findViewById(R.id.button_counter_plus_row);
-        buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch);
-        help1 = new TextView(this);
-        help2 = new TextView(this);
-        help3 = new TextView(this);
-        help4 = new TextView(this);
-        help5 = new TextView(this);
-        help6 = new TextView(this);
-        ArrayList<TextView> bubbleArray = new ArrayList<>();
-        bubbleArray.add(help1);
-        bubbleArray.add(help2);
-        bubbleArray.add(help3);
-        bubbleArray.add(help4);
-        bubbleArray.add(help5);
-        bubbleArray.add(help6);
-        setUpHelpBubbles(bubbleArray);
+        help1 = (TextView) findViewById(R.id.help_double_counter_activity_1);
+        help2 = (TextView) findViewById(R.id.help_double_counter_activity_2);
+        help3 = (TextView) findViewById(R.id.help_double_counter_activity_3);
+        help4 = (TextView) findViewById(R.id.help_double_counter_activity_4);
+        help5 = (TextView) findViewById(R.id.help_double_counter_activity_5);
+        help6 = (TextView) findViewById(R.id.help_double_counter_activity_6);
+        tip1 = findViewById(R.id.help_double_counter_activity_1_tip);
+        tip2 = findViewById(R.id.help_double_counter_activity_2_tip);
+        tip3 = findViewById(R.id.help_double_counter_activity_3_tip);
+        tip4 = findViewById(R.id.help_double_counter_activity_4_tip);
+        tip5 = findViewById(R.id.help_double_counter_activity_5_tip);
+        tip6 = findViewById(R.id.help_double_counter_activity_6_tip);
+        helpModeArray = new ArrayList<>();
+        helpModeArray.add(help1);
+        helpModeArray.add(help2);
+        helpModeArray.add(help3);
+        helpModeArray.add(help4);
+        helpModeArray.add(help5);
+        helpModeArray.add(help6);
+        helpModeArray.add(tip1);
+        helpModeArray.add(tip2);
+        helpModeArray.add(tip3);
+        helpModeArray.add(tip4);
+        helpModeArray.add(tip5);
+        helpModeArray.add(tip6);
+
+        /* Closes Help Mode, hides the annotation bubbles */
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (helpMode) {
+                    for (View view: helpModeArray) {
+                        view.setVisibility(View.INVISIBLE);
+                    }
+                    helpMode = false;
+                }
+                return false;
+            }
+        });
 
         /* Project Name Listener*/
-        //final EditText textProjectName = (EditText) findViewById(R.id.text_project_name_2); TODO remove
+        final EditText textProjectName = (EditText) findViewById(R.id.text_project_name_2);
         textProjectName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             /*
             When the done button is pressed, if a project name has been entered, setProjectName is called
@@ -127,9 +134,9 @@ public class DoubleCounterActivity extends AppCompatActivity {
         final Button buttonPlusStitch = (Button) findViewById(R.id.button_counter_plus_stitch);
         final Button buttonMinusStitch = (Button) findViewById(R.id.button_counter_minus_stitch);
         final Button buttonCapsuleTopStitch = (Button) findViewById(R.id.button_capsule_top_stitch);
-        //final Button buttonCapsuleMiddleStitch = (Button) findViewById(R.id.button_capsule_middle_stitch); TODO remove
+        final Button buttonCapsuleMiddleStitch = (Button) findViewById(R.id.button_capsule_middle_stitch);
         final Button buttonCapsuleBottomStitch = (Button) findViewById(R.id.button_capsule_bottom_stitch);
-        //final Button buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch); TODO remove
+        final Button buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch);
 
         stitchCounter = new Counter(this, textCounterStitch, null, R.string.counter_number_stitch, R.string.counter_progress, buttonCapsuleTopStitch, buttonCapsuleMiddleStitch, buttonCapsuleBottomStitch, null);
 
@@ -174,7 +181,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         /* Row Counter */
         final TextView textCounterRow = (TextView) findViewById(R.id.text_counter_row);
         final TextView textProgress = (TextView) findViewById(R.id.text_counter_progress);
-        //final Button buttonPlusRow = (Button) findViewById(R.id.button_counter_plus_row); TODO REMOVE
+        final Button buttonPlusRow = (Button) findViewById(R.id.button_counter_plus_row);
         final Button buttonMinusRow = (Button) findViewById(R.id.button_counter_minus_row);
         final Button buttonResetRow = (Button) findViewById(R.id.button_counter_reset_row);
         final Button buttonCapsuleTopRow = (Button) findViewById(R.id.button_capsule_top_row);
@@ -308,100 +315,15 @@ public class DoubleCounterActivity extends AppCompatActivity {
     }
 
     /*
-    Opens "help mode" Called when help button is clicked in the action bar. Shows appropriate tooltips.
-    Sets onclicklistener to dismiss the help bubbles.
+    Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
+    visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
         if (!helpMode) {
-            helpMode = true;
-            tooltip1 = new Tooltip.Builder(this)
-                    .anchor(textProjectName, Tooltip.RIGHT)
-                    .content(help1)
-                    .into(layout)
-                    .withTip(new Tooltip.Tip(10, 5, ContextCompat.getColor(this, R.color.colorAccent)))
-                    .show();
-
-            tooltip2 = new Tooltip.Builder(this)
-                    .anchor(buttonCapsuleMiddleStitch, Tooltip.LEFT)
-                    .content(help2)
-                    .into(layout)
-                    .withTip(new Tooltip.Tip(10, 5, ContextCompat.getColor(this, R.color.colorAccent)))
-                    .show();
-
-            tooltip3 = new Tooltip.Builder(this)
-                    .anchor(buttonPlusRow, Tooltip.BOTTOM)
-                    .content(help3)
-                    .into(layout)
-                    .withTip(new Tooltip.Tip(10, 5, ContextCompat.getColor(this, R.color.colorAccent)))
-                    .show();
-
-            tooltip4 = new Tooltip.Builder(this)
-                    .anchor(buttonResetStitch, Tooltip.BOTTOM)
-                    .content(help4)
-                    .into(layout)
-                    .withTip(new Tooltip.Tip(10, 5, ContextCompat.getColor(this, R.color.colorAccent)))
-                    .show();
-
-            tooltip5 = new Tooltip.Builder(this)
-                    .anchor(totalRows, Tooltip.LEFT)
-                    .content(help5)
-                    .into(layout)
-                    .withTip(new Tooltip.Tip(10, 5, ContextCompat.getColor(this, R.color.colorAccent)))
-                    .show();
-
-            tooltip6 = new Tooltip.Builder(this)
-                    .anchor(progress, Tooltip.BOTTOM)
-                    .content(help6)
-                    .into(layout)
-                    .withTip(new Tooltip.Tip(10, 5, ContextCompat.getColor(this, R.color.colorAccent)))
-                    .show();
-
-        /* Closes help mode, hides the annotation bubbles */
-            tooltip6.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    helpMode = false;
-                    tooltip1.dismiss();
-                    tooltip2.dismiss();
-                    tooltip3.dismiss();
-                    tooltip4.dismiss();
-                    tooltip5.dismiss();
-                    tooltip6.dismiss();
-                    return false;
-                }
-            });
-        }
-    }
-
-    /* Sets up the TextViews embedded in the help bubbles */
-    public void setUpHelpBubbles(ArrayList<TextView> bubbleList) {
-        int i = 1;
-        for (TextView v: bubbleList) {
-            String dimenID;
-            if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
-                if(getResources().getConfiguration().screenWidthDp <= 320){
-                    dimenID = "help_double_counter_activity_port_small_" + Integer.toString(i);
-                } else {
-                    dimenID = "help_double_counter_activity_port_" + Integer.toString(i);
-                }
-            } else {
-                if(getResources().getConfiguration().screenHeightDp <= 320){
-                    dimenID = "help_double_counter_activity_land_small_" + Integer.toString(i);
-                } else {
-                    dimenID = "help_double_counter_activity_land_" + Integer.toString(i);
-                }
+            for (View view: helpModeArray) {
+                view.setVisibility(View.VISIBLE);
             }
-            String strID = "help_double_counter_activity_" + Integer.toString(i);
-            int strResource = getResources().getIdentifier(strID, "string", getPackageName());
-            int dimenResource = getResources().getIdentifier(dimenID, "dimen", getPackageName());
-            int width = (int) (getResources().getDimension(dimenResource) / getResources().getDisplayMetrics().density);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(width, ViewGroup.LayoutParams.WRAP_CONTENT);
-            v.setLayoutParams(params);
-            v.setText(strResource);
-            v.setPadding(1, 1, 1, 1);
-            v.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccent));
-            v.setTextColor(Color.parseColor("#FFFFFF"));
-            i += 1;
+            helpMode = true;
         }
     }
 

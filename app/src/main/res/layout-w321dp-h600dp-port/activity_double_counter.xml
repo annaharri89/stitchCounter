@@ -374,7 +374,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/help_double_counter_activity_1_connector"
+            android:id="@+id/help_double_counter_activity_1_tip"
             android:layout_width="50dp"
             android:layout_height="2dp"
             android:layout_marginRight="0dp"
@@ -384,7 +384,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/help_double_counter_activity_2_connector"
+            android:id="@+id/help_double_counter_activity_2_tip"
             android:layout_width="20dp"
             android:layout_height="2dp"
             android:layout_marginLeft="0dp"
@@ -395,7 +395,7 @@
             android:layout_marginRight="8dp" />
 
         <View
-            android:id="@+id/help_double_counter_activity_3_connector"
+            android:id="@+id/help_double_counter_activity_3_tip"
             android:layout_width="72dp"
             android:layout_height="2dp"
             android:layout_marginLeft="17dp"
@@ -405,7 +405,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/help_double_counter_activity_4_connector"
+            android:id="@+id/help_double_counter_activity_4_tip"
             android:layout_width="2dp"
             android:layout_height="35dp"
             android:layout_marginBottom="0dp"
@@ -415,7 +415,7 @@
             app:layout_constraintRight_toLeftOf="parent" />
 
         <View
-            android:id="@+id/help_double_counter_activity_5_connector"
+            android:id="@+id/help_double_counter_activity_5_tip"
             android:layout_width="25dp"
             android:layout_height="2dp"
             android:layout_marginLeft="0dp"
@@ -426,7 +426,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            android:id="@+id/help_double_counter_activity_6_connector"
+            android:id="@+id/help_double_counter_activity_6_tip"
             android:layout_width="2dp"
             android:layout_height="20dp"
             android:layout_marginBottom="0dp"

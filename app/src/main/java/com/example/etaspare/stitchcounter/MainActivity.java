@@ -48,6 +48,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
+
+        /* Help Mode Setup*/
+        helpModeArray = new ArrayList<>();
+        int id = R.id.help_main_activity_1;
+        help1 = (TextView) findViewById(R.id.help_main_activity_1);
+        help2 = (TextView) findViewById(R.id.help_main_activity_2);
+        tip1 = findViewById(R.id.help_main_activity_1_tip);
+        tip2 = findViewById(R.id.help_main_activity_2_tip);
+        helpModeArray.add(help1);
+        helpModeArray.add(help2);
+        helpModeArray.add(tip1);
+        helpModeArray.add(tip2);
+
+        /* Closes Help Mode, hides the annotation bubbles */
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (helpMode) {
+                    for (View view: helpModeArray) {
+                        view.setVisibility(View.INVISIBLE);
+                    }
+                    helpMode = false;
+                }
+                return false;
+            }
+        });
     }
 
     /* Called when the user taps the "New Basic Counter" button in the main activity */
@@ -75,37 +102,5 @@ public class MainActivity extends AppCompatActivity {
             }
             helpMode = true;
         }
-    }
-
-    @Override
-    protected void onResume() {
-        /* Help Mode Setup*/
-        helpModeArray = new ArrayList<>();
-        int id = R.id.help_main_activity_1;
-        help1 = (TextView) findViewById(R.id.help_main_activity_1);
-        help2 = (TextView) findViewById(R.id.help_main_activity_2);
-        tip1 = findViewById(R.id.help_main_activity_1_tip);
-        tip2 = findViewById(R.id.help_main_activity_2_tip);
-        helpModeArray.add(help1);
-        helpModeArray.add(help2);
-        helpModeArray.add(tip1);
-        helpModeArray.add(tip2);
-
-        /* Closes Help Mode, hides the annotation bubbles */
-        layout = (ConstraintLayout) findViewById(R.id.layout);
-        layout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (helpMode) {
-                    for (View view: helpModeArray) {
-                        view.setVisibility(View.INVISIBLE);
-                    }
-                    helpMode = false;
-                }
-                return false;
-            }
-        });
-
-        super.onResume();
     }
 }

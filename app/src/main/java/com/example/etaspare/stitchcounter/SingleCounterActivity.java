@@ -26,14 +26,15 @@ public class SingleCounterActivity extends AppCompatActivity {
     private Counter counter;
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout layout;
+    Boolean helpMode = false;
     ArrayList<View> helpModeArray;
     TextView help1;
     TextView help2;
     TextView help3;
     TextView help4;
-    View connector1;
-    View connector2;
-    View connector4;
+    View tip1;
+    View tip2;
+    View tip4;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,29 +62,33 @@ public class SingleCounterActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
+        /* Help Mode Setup*/
         help1 = (TextView) findViewById(R.id.help_single_counter_activity_1);
         help2 = (TextView) findViewById(R.id.help_single_counter_activity_2);
         help3 = (TextView) findViewById(R.id.help_single_counter_activity_3);
         help4 = (TextView) findViewById(R.id.help_single_counter_activity_4);
-        connector1 = findViewById(R.id.help_single_counter_activity_1_connector);
-        connector2 = findViewById(R.id.help_single_counter_activity_2_connector);
-        connector4 = findViewById(R.id.help_single_counter_activity_4_connector);
+        tip1 = findViewById(R.id.help_single_counter_activity_1_connector);
+        tip2 = findViewById(R.id.help_single_counter_activity_2_connector);
+        tip4 = findViewById(R.id.help_single_counter_activity_4_connector);
         helpModeArray = new ArrayList<>();
         helpModeArray.add(help1);
         helpModeArray.add(help2);
         helpModeArray.add(help3);
         helpModeArray.add(help4);
-        helpModeArray.add(connector1);
-        helpModeArray.add(connector2);
-        helpModeArray.add(connector4);
+        helpModeArray.add(tip1);
+        helpModeArray.add(tip2);
+        helpModeArray.add(tip4);
 
-        /* Closes help mode, hides the annotation bubbles */
+        /* Closes Help Mode, hides the annotation bubbles */
         layout = (ConstraintLayout) findViewById(R.id.layout);
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                for (View view: helpModeArray) {
-                    view.setVisibility(View.INVISIBLE);
+                if (helpMode) {
+                    for (View view: helpModeArray) {
+                        view.setVisibility(View.INVISIBLE);
+                    }
+                    helpMode = false;
                 }
                 return false;
             }
@@ -195,8 +200,11 @@ public class SingleCounterActivity extends AppCompatActivity {
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        for (View view: helpModeArray) {
-            view.setVisibility(View.VISIBLE);
+        if (!helpMode) {
+            for (View view: helpModeArray) {
+                view.setVisibility(View.VISIBLE);
+            }
+            helpMode = true;
         }
     }
 

@@ -306,12 +306,13 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_1"
-        android:layout_width="100dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_1"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintTop_toTopOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name_2"
@@ -327,6 +328,7 @@
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_2"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintRight_toLeftOf="@+id/button_capsule_middle_stitch"
         app:layout_constraintTop_toTopOf="@+id/button_capsule_middle_stitch"
@@ -340,12 +342,13 @@
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_3"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintTop_toTopOf="@+id/button_counter_plus_row"
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_minus_row"
-        android:layout_marginRight="16dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginEnd="16dp"
+        app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_row"
+        android:layout_marginLeft="0dp" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_4"
@@ -355,6 +358,7 @@
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_4"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintRight_toRightOf="@+id/button_counter_reset_stitch"
         app:layout_constraintLeft_toLeftOf="@+id/button_counter_reset_stitch"
@@ -362,16 +366,17 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_5"
-        android:layout_width="100dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_5"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/text_total_rows_input"
         app:layout_constraintRight_toLeftOf="@+id/text_total_rows_input"
-        app:layout_constraintTop_toTopOf="@+id/text_total_rows_input"
-        app:layout_constraintBottom_toBottomOf="@+id/text_total_rows_input" />
+        app:layout_constraintTop_toTopOf="@+id/text_total_rows_input" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_6"
@@ -381,6 +386,7 @@
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_6"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintRight_toRightOf="@+id/progress_bar"
         app:layout_constraintLeft_toLeftOf="@+id/progress_bar"

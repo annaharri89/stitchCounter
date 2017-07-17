@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/button_capsule_left"
-        android:layout_width="25dp"
+        android:layout_width="35dp"
         android:layout_height="30dp"
         android:background="@drawable/button_capsule_top"
         android:text="@string/counter_adjust_by_1"
@@ -64,7 +64,7 @@
 
     <Button
         android:id="@+id/button_capsule_middle"
-        android:layout_width="25dp"
+        android:layout_width="35dp"
         android:layout_height="30dp"
         android:stateListAnimator="@null"
         android:background="@drawable/button_capsule_middle"
@@ -79,7 +79,7 @@
 
     <Button
         android:id="@+id/button_capsule_right"
-        android:layout_width="25dp"
+        android:layout_width="35dp"
         android:layout_height="30dp"
         android:background="@drawable/button_capsule_bottom"
         android:stateListAnimator="@null"

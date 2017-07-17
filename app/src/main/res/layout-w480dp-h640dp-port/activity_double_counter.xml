@@ -33,7 +33,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/text_total_rows_input"
         android:layout_marginTop="0dp"
-        app:layout_constraintTop_toTopOf="@+id/text_total_rows_input"
+        app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_5_tip"
         app:layout_constraintBottom_toBottomOf="@+id/text_total_rows_input"
         android:layout_marginBottom="0dp" />
 
@@ -75,46 +75,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
-        android:textSize="25dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_stitch"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input"
-        app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_stitch" />
+        app:layout_constraintTop_toBottomOf="@+id/text_total_rows_input" />
 
     <TextView
         android:id="@+id/text_counter_stitch"
-        android:layout_width="105dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
         android:gravity="center"
         android:text="@string/counter_number_stitch"
-        android:textSize="45dp"
+        android:textSize="65dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_stitch"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="@+id/text_adjust_by_stitch"
         app:layout_constraintBottom_toBottomOf="@+id/button_capsule_bottom_stitch"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toTopOf="@+id/text_adjust_by_stitch" />
 
     <TextView
         android:id="@+id/text_adjust_by_stitch"
-        android:layout_width="55dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/counter_adjust_by"
-        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_stitch"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_stitch" />
+        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header" />
 
     <Button
         android:id="@+id/button_capsule_top_stitch"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
         android:background="@drawable/button_capsule_top"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle_stitch"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
@@ -122,12 +122,12 @@
 
     <Button
         android:id="@+id/button_capsule_middle_stitch"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
         android:background="@drawable/button_capsule_middle"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_5"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_stitch"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
@@ -135,12 +135,12 @@
 
     <Button
         android:id="@+id/button_capsule_bottom_stitch"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
         android:background="@drawable/button_capsule_bottom"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/text_row_header"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_stitch"
@@ -148,32 +148,32 @@
 
     <Button
         android:id="@+id/button_counter_plus_stitch"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+        android:stateListAnimator="@null"
         android:text="@string/counter_plus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_stitch"
         app:layout_constraintLeft_toRightOf="@+id/button_capsule_middle_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_stitch" />
+        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header" />
 
     <Button
         android:id="@+id/button_counter_minus_stitch"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+        android:stateListAnimator="@null"
         android:text="@string/counter_minus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toTopOf="@+id/text_row_header"
         app:layout_constraintLeft_toRightOf="@+id/button_capsule_bottom_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
-        app:layout_constraintBottom_toTopOf="@+id/text_row_header" />
+        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_stitch" />
 
     <Button
         android:id="@+id/button_counter_reset_stitch"
-        android:layout_width="88dp"
-        android:layout_height="68dp"
+        android:layout_width="100dp"
+        android:layout_height="88dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:stateListAnimator="@null"
@@ -189,47 +189,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/counter_row_header"
-        android:textSize="25dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintTop_toBottomOf="@+id/button_capsule_bottom_stitch"
-        app:layout_constraintRight_toRightOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_row"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/text_adjust_by_row" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_capsule_bottom_stitch" />
 
     <TextView
         android:id="@+id/text_counter_row"
-        android:layout_width="105dp"
+        android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/counter_number_row"
-        android:textSize="45dp"
+        android:textSize="65dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_capsule_bottom_row"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_row"
-        app:layout_constraintBottom_toBottomOf="@+id/button_capsule_bottom_row"
-        android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="@+id/text_adjust_by_row"
-        app:layout_constraintVertical_bias="0.479"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintVertical_bias="0.501" />
 
     <TextView
         android:id="@+id/text_adjust_by_row"
-        android:layout_width="55dp"
-        android:layout_height="33dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/counter_adjust_by"
-        app:layout_constraintTop_toBottomOf="@+id/text_row_header"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_row"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_row" />
+        app:layout_constraintTop_toBottomOf="@+id/text_row_header" />
 
     <Button
         android:id="@+id/button_capsule_top_row"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
         android:background="@drawable/button_capsule_top"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/button_capsule_middle_row"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
@@ -237,12 +237,12 @@
 
     <Button
         android:id="@+id/button_capsule_middle_row"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
         android:background="@drawable/button_capsule_middle"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_5"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_row"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
@@ -250,12 +250,12 @@
 
     <Button
         android:id="@+id/button_capsule_bottom_row"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
         android:background="@drawable/button_capsule_bottom"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_row"
@@ -263,32 +263,32 @@
 
     <Button
         android:id="@+id/button_counter_plus_row"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+        android:stateListAnimator="@null"
         android:text="@string/counter_plus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_row"
         app:layout_constraintLeft_toRightOf="@+id/button_capsule_middle_row"
-        app:layout_constraintTop_toBottomOf="@+id/text_row_header"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_row" />
+        app:layout_constraintTop_toBottomOf="@+id/text_row_header" />
 
     <Button
         android:id="@+id/button_counter_minus_row"
-        android:layout_width="88dp"
-        android:layout_height="75dp"
+        android:layout_width="160dp"
+        android:layout_height="110dp"
+        android:stateListAnimator="@null"
         android:text="@string/counter_minus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/button_capsule_bottom_row"
-        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus_row" />
 
     <Button
         android:id="@+id/button_counter_reset_row"
-        android:layout_width="88dp"
-        android:layout_height="68dp"
+        android:layout_width="100dp"
+        android:layout_height="88dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:stateListAnimator="@null"
@@ -318,7 +318,7 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_2"
-        android:layout_width="100dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -338,12 +338,11 @@
         android:text="@string/help_double_counter_activity_3"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
-        android:layout_marginTop="40dp"
         app:layout_constraintTop_toTopOf="@+id/button_counter_plus_row"
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_minus_row"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="16dp" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_4"

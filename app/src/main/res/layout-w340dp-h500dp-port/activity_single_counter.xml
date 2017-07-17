@@ -112,7 +112,8 @@
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_left"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_reset" />
+        app:layout_constraintBottom_toTopOf="@+id/button_counter_reset"
+        app:layout_constraintRight_toLeftOf="@+id/button_counter_minus" />
 
     <Button
         android:id="@+id/button_counter_minus"
@@ -125,23 +126,25 @@
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_counter_reset" />
+        app:layout_constraintBottom_toTopOf="@+id/button_counter_reset"
+        app:layout_constraintLeft_toRightOf="@+id/button_counter_plus" />
 
     <Button
         android:id="@+id/button_counter_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:text="@string/counter_reset_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:stateListAnimator="@null"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus" />
+        app:layout_constraintLeft_toLeftOf="@+id/help_single_counter_activity_3"
+        app:layout_constraintRight_toRightOf="@+id/button_counter_minus"
+        app:layout_constraintTop_toBottomOf="@+id/button_counter_plus"
+        app:layout_constraintHorizontal_bias="0.501" />
 
     <!-- Help Mode -->
 

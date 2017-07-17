@@ -2,6 +2,7 @@
 /* TODO Create a Settings Activity */
 /* TODO: Create an About Activity in the Settings Activity*/
 /* TODO: vertically align doubleCounterActivity landscape template for small screens */
+/* TODO: keyboard pops open after new project is created on large devices. look into removing focus from project name edittext*/
 /* TODO: look into issue where on orientation change causes the counter to reset to the last saved state. google app manifest 
 /* TODO: Implement help button */
     /* TODO: implement layouts for different sized devices */

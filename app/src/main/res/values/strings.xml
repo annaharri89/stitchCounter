@@ -63,6 +63,10 @@
         Tap the "Reset" button to reset the stitch counter to 0. The row counter has an equivalent
         button.
     </string>
+    <string name="help_double_counter_activity_4_2">
+        Tap the "Reset" button to reset the row counter to 0. The stitch counter has an equivalent
+        button.
+    </string>
     <string name="help_double_counter_activity_5">
         Tap here to update total rows/rounds.
     </string>

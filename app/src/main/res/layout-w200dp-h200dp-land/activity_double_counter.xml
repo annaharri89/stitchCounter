@@ -316,7 +316,7 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_1"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -331,7 +331,7 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_2"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -344,7 +344,7 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_4"
-        android:layout_width="130dp"
+        android:layout_width="190dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -370,7 +370,7 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_6"
-        android:layout_width="260dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"

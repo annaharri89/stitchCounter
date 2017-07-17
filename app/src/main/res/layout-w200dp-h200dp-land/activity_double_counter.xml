@@ -155,19 +155,19 @@
         android:id="@+id/button_counter_plus_stitch"
         android:layout_width="80dp"
         android:layout_height="51dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:stateListAnimator="@null"
         android:text="@string/counter_plus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
+        app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch" />
 
     <Button
         android:id="@+id/button_counter_minus_stitch"
         android:layout_width="80dp"
         android:layout_height="51dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="0dp"
         android:stateListAnimator="@null"
         android:text="@string/counter_minus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -175,7 +175,8 @@
         android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/button_counter_plus_stitch"
         android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/button_counter_plus_stitch" />
+        app:layout_constraintLeft_toLeftOf="@+id/button_counter_plus_stitch"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <Button
         android:id="@+id/button_counter_reset_stitch"
@@ -274,19 +275,19 @@
         android:id="@+id/button_counter_plus_row"
         android:layout_width="80dp"
         android:layout_height="51dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="0dp"
         android:stateListAnimator="@null"
         android:text="@string/counter_plus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_row"
-        app:layout_constraintTop_toBottomOf="@+id/text_row_header"
+        app:layout_constraintTop_toBottomOf="@+id/text_adjust_by_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row" />
 
     <Button
         android:id="@+id/button_counter_minus_row"
         android:layout_width="80dp"
         android:layout_height="51dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="0dp"
         android:stateListAnimator="@null"
         android:text="@string/counter_minus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -294,7 +295,8 @@
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/button_counter_plus_row"
         android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="@+id/button_counter_plus_row" />
+        app:layout_constraintRight_toRightOf="@+id/button_counter_plus_row"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <Button
         android:id="@+id/button_counter_reset_row"

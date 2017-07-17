@@ -190,12 +190,14 @@
         android:text="@string/help_single_counter_plus_minus"
         android:textColor="#FFFFFF"
         android:visibility="invisible"
-        app:layout_constraintRight_toLeftOf="@+id/button_counter_minus"
         android:layout_marginRight="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_minus"
         android:layout_marginBottom="0dp"
         app:layout_constraintTop_toTopOf="@+id/button_counter_minus"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/button_counter_plus"
+        app:layout_constraintRight_toRightOf="@+id/button_counter_minus" />
 
     <TextView
         android:id="@+id/help_single_counter_activity_4"

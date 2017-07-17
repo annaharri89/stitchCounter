@@ -61,7 +61,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
         app:layout_constraintBottom_toTopOf="@+id/progress_bar"
-        app:layout_constraintHorizontal_bias="0.515"
         android:layout_marginTop="8dp" />
 
     <ProgressBar
@@ -115,7 +114,7 @@
         android:id="@+id/button_capsule_top_stitch"
         android:layout_width="35dp"
         android:layout_height="30dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_capsule_top"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_1"
@@ -242,7 +241,7 @@
         android:id="@+id/button_capsule_top_row"
         android:layout_width="35dp"
         android:layout_height="30dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/button_capsule_top"
         android:stateListAnimator="@null"
         android:text="@string/counter_adjust_by_1"
@@ -267,8 +266,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/button_capsule_top_row"
         app:layout_constraintRight_toRightOf="@+id/button_capsule_top_row"
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_top_row"
-        app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_row"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/button_capsule_bottom_row" />
 
     <Button
         android:id="@+id/button_capsule_bottom_row"
@@ -285,7 +283,6 @@
         app:layout_constraintRight_toRightOf="@+id/button_capsule_middle_row"
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle_row"
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_minus_row"
-        app:layout_constraintHorizontal_bias="0.0"
         android:layout_marginBottom="8dp" />
 
     <Button
@@ -331,11 +328,11 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button_counter_plus_row" />
 
-    <!-- Help Mode
+    <!-- Help Mode-->
 
     <TextView
         android:id="@+id/help_double_counter_activity_1"
-        android:layout_width="100dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -350,7 +347,7 @@
 
     <TextView
         android:id="@+id/help_double_counter_activity_2"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -359,11 +356,12 @@
         android:visibility="invisible"
         app:layout_constraintRight_toLeftOf="@+id/button_capsule_middle_stitch"
         app:layout_constraintTop_toTopOf="@+id/button_capsule_middle_stitch"
-        app:layout_constraintBottom_toBottomOf="@+id/button_capsule_middle_stitch" />
+        app:layout_constraintBottom_toBottomOf="@+id/button_capsule_middle_stitch"
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_3"
-        android:layout_width="125dp"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -374,12 +372,12 @@
         app:layout_constraintTop_toTopOf="@+id/button_counter_plus_row"
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_minus_row"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/button_counter_minus_row"
         android:layout_marginEnd="8dp" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_4"
-        android:layout_width="130dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
@@ -388,7 +386,7 @@
         android:visibility="invisible"
         app:layout_constraintRight_toRightOf="@+id/button_counter_reset_stitch"
         app:layout_constraintLeft_toLeftOf="@+id/button_counter_reset_stitch"
-        app:layout_constraintTop_toBottomOf="@+id/button_counter_reset_stitch" />
+        app:layout_constraintBottom_toTopOf="@+id/button_counter_reset_stitch" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_5"
@@ -445,9 +443,9 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/annotation_arrow"
-        android:rotation="270"
+        android:rotation="90"
         android:visibility="invisible"
-        app:layout_constraintRight_toLeftOf="@+id/help_double_counter_activity_3"
+        app:layout_constraintLeft_toRightOf="@+id/help_double_counter_activity_3"
         app:layout_constraintBottom_toBottomOf="@+id/help_double_counter_activity_3"
         app:layout_constraintTop_toTopOf="@+id/help_double_counter_activity_3" />
 
@@ -457,9 +455,10 @@
         android:layout_height="40dp"
         android:background="@drawable/annotation_arrow"
         android:visibility="invisible"
+        android:rotation="180"
         app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_4"
         app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_4"
-        app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_4" />
+        app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4" />
 
     <View
         android:id="@+id/help_double_counter_activity_5_tip"
@@ -481,6 +480,5 @@
         app:layout_constraintLeft_toLeftOf="@+id/help_double_counter_activity_6"
         app:layout_constraintRight_toRightOf="@+id/help_double_counter_activity_6"
         app:layout_constraintBottom_toTopOf="@+id/help_double_counter_activity_6" />
-        -->
 
 </android.support.constraint.ConstraintLayout>

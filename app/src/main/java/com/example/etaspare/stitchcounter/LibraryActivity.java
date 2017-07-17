@@ -118,8 +118,8 @@ public class LibraryActivity extends AppCompatActivity
         float screenHeight = dm.heightPixels / dm.density;
         Log.d("width", Float.toString(screenWidth));
         Log.d("height", Float.toString(screenHeight));
-        //TODO: nexus 5x: width 411, height 683 NORMAL SIZE layout-w321dp-h600dp-port and layout-h321dp-land
-        //TODO: galaxy s5 width 360, height 640 NORMAL SIZE layout-w321dp-h600dp-port and layout-h321dp-land
+        //TODO: nexus 5x: width 411, height 683 NORMAL SIZE layout-w340dp-h500dp-port and layout-h321dp-land
+        //TODO: galaxy s5 width 360, height 640 NORMAL SIZE layout-w340dp-h500dp-port and layout-h321dp-land
         //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE layout-w320dp-h300dp-port and layout-h320dp-land
         //TODO: 3.4 WQVGA width 320, height 576 Normal Size layout-h500dp and layout-h320dp-land
 

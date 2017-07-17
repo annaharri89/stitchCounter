@@ -201,8 +201,7 @@ public class Counter extends AppCompatActivity {
     }
 
     /*
-        Sets the Inactive adjustment buttons' background and font colors. Has compatibility 'if' logic
-        to handle setTextAppearance(context, style) deprecation in Android Support Library 23.
+        Sets the Inactive adjustment buttons' background and font colors.
     */
     private void setInActiveAdjustmentButtonColor (Button inactiveButton1, Button inactiveButton2) {
         /* Sets Button Color */
@@ -210,15 +209,8 @@ public class Counter extends AppCompatActivity {
         ((GradientDrawable)inactiveButton2.getBackground()).setColor(Color.parseColor("#CFCFCF"));
 
         /* Sets Font Color */
-        if (Build.VERSION.SDK_INT < 23) {
-            /* Android Support Library 22 and earlier compatible */
-            inactiveButton1.setTextAppearance(this.context, R.style.TextAppearance_AppCompat_Small);
-            inactiveButton2.setTextAppearance(this.context, R.style.TextAppearance_AppCompat_Small);
-        } else {
-            /* Android Support Library 23 compatible */
-            inactiveButton1.setTextAppearance(R.style.TextAppearance_AppCompat_Small);
-            inactiveButton2.setTextAppearance(R.style.TextAppearance_AppCompat_Small);
-        }
+        inactiveButton1.setTextColor(Color.parseColor("#696969"));
+        inactiveButton2.setTextColor(Color.parseColor("#696969"));
     }
 
     /* Save Counter */

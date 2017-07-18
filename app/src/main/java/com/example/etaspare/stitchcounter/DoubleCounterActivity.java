@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import java.util.ArrayList;
 
 public class DoubleCounterActivity extends AppCompatActivity {
 
@@ -24,7 +25,21 @@ public class DoubleCounterActivity extends AppCompatActivity {
     private Counter stitchCounter;
     private Counter rowCounter;
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    ConstraintLayout topLayout;
+    Boolean helpMode = false;
+    ConstraintLayout layout;
+    ArrayList<View> helpModeArray;
+    TextView help1;
+    TextView help2;
+    TextView help3;
+    TextView help4;
+    TextView help5;
+    TextView help6;
+    View tip1;
+    View tip2;
+    View tip3;
+    View tip4;
+    View tip5;
+    View tip6;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,12 +67,47 @@ public class DoubleCounterActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
-        /* Closes help mode, hides the annotation bubbles */
-        topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
-        topLayout.setOnTouchListener(new View.OnTouchListener() {
+        /* Help Mode Setup*/
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        help1 = (TextView) findViewById(R.id.help_double_counter_activity_1);
+        help2 = (TextView) findViewById(R.id.help_double_counter_activity_2);
+        help3 = (TextView) findViewById(R.id.help_double_counter_activity_3);
+        help4 = (TextView) findViewById(R.id.help_double_counter_activity_4);
+        help5 = (TextView) findViewById(R.id.help_double_counter_activity_5);
+        help6 = (TextView) findViewById(R.id.help_double_counter_activity_6);
+        tip1 = findViewById(R.id.help_double_counter_activity_1_tip);
+        tip2 = findViewById(R.id.help_double_counter_activity_2_tip);
+        tip3 = findViewById(R.id.help_double_counter_activity_3_tip);
+        tip4 = findViewById(R.id.help_double_counter_activity_4_tip);
+        tip5 = findViewById(R.id.help_double_counter_activity_5_tip);
+        tip6 = findViewById(R.id.help_double_counter_activity_6_tip);
+        helpModeArray = new ArrayList<>();
+        helpModeArray.add(help1);
+        helpModeArray.add(help2);
+        helpModeArray.add(help3);
+        helpModeArray.add(help4);
+        helpModeArray.add(help5);
+        helpModeArray.add(help6);
+        helpModeArray.add(tip1);
+        helpModeArray.add(tip2);
+        helpModeArray.add(tip3);
+        helpModeArray.add(tip4);
+        helpModeArray.add(tip5);
+        helpModeArray.add(tip6);
+
+        /* Closes Help Mode, hides the annotation bubbles */
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                topLayout.setVisibility(View.INVISIBLE);
+                if (helpMode) {
+                    for (View view: helpModeArray) {
+                        if (view != null) {
+                            view.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                    helpMode = false;
+                }
                 return false;
             }
         });
@@ -85,10 +135,10 @@ public class DoubleCounterActivity extends AppCompatActivity {
         final TextView textCounterStitch = (TextView) findViewById(R.id.text_counter_stitch);
         final Button buttonPlusStitch = (Button) findViewById(R.id.button_counter_plus_stitch);
         final Button buttonMinusStitch = (Button) findViewById(R.id.button_counter_minus_stitch);
-        final Button buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch);
         final Button buttonCapsuleTopStitch = (Button) findViewById(R.id.button_capsule_top_stitch);
         final Button buttonCapsuleMiddleStitch = (Button) findViewById(R.id.button_capsule_middle_stitch);
         final Button buttonCapsuleBottomStitch = (Button) findViewById(R.id.button_capsule_bottom_stitch);
+        final Button buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch);
 
         stitchCounter = new Counter(this, textCounterStitch, null, R.string.counter_number_stitch, R.string.counter_progress, buttonCapsuleTopStitch, buttonCapsuleMiddleStitch, buttonCapsuleBottomStitch, null);
 
@@ -238,7 +288,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 rowCounter.changeAdjustment(1);
             }
             if (progress_percent > 0) {
-                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), progress_percent);
+                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), progress_percent); //TODO look into
                 textProgress.setText(formattedProgressNumber);
             } else {
                 /* Sets default progress percent */
@@ -271,7 +321,14 @@ public class DoubleCounterActivity extends AppCompatActivity {
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        topLayout.setVisibility(View.VISIBLE);
+        if (!helpMode) {
+            for (View view: helpModeArray) {
+                if (view != null) {
+                    view.setVisibility(View.VISIBLE);
+                }
+            }
+            helpMode = true;
+        }
     }
 
     @Override

@@ -34,19 +34,6 @@ import java.util.ArrayList;
 
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
-    /* TODO: Implement help button */
-    /* TODO: implement layouts for different sized devices */
-    /* TODO: Remove unneeded import statements throughout the app */
-    /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
-    /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS */
-    /* TODO: LOOK INTO LOAD BALANCERS */
-    /* TODO: implement add image(s) to counter project */
-    /* TODO: Implement share project to facebook, twitter, etc. */
-    /*TODO Provide thorough documentation throughout app*/
-    /* TODO FIgure out why changing a counter, then going to library, then loading the same counter, results in the counter not being updated, look into adapter.notifyDataSetChanged(); */
-    /* TODO Figure out why changing a double counter's progress, hitting the back button, results in list item's progress not updating */
-    /* TODO Figure out why clicking into a counter, hitting the back button, results in first item being displayed as both the first item and the last item in the listview */
-    /* TODO fix issue: app crashes when you try to start a double counter without putting total rows */
 
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout topLayout;
@@ -131,9 +118,10 @@ public class LibraryActivity extends AppCompatActivity
         float screenHeight = dm.heightPixels / dm.density;
         Log.d("width", Float.toString(screenWidth));
         Log.d("height", Float.toString(screenHeight));
-        //TODO: nexus 5x: width 411, height 683 NORMAL SIZE
-        //TODO: galaxy s5 width 360, height 640 NORMAL SIZE
-        //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE
+        //TODO: nexus 5x: width 411, height 683 NORMAL SIZE layout-w340dp-h500dp-port and layout-h321dp-land
+        //TODO: galaxy s5 width 360, height 640 NORMAL SIZE layout-w340dp-h500dp-port and layout-h321dp-land
+        //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE layout-w320dp-h300dp-port and layout-h320dp-land
+        //TODO: 3.4 WQVGA width 320, height 576 Normal Size layout-h500dp and layout-h320dp-land
 
         deleteMany = (Button) findViewById(R.id.delete_many);
         cancelMany = (Button) findViewById(R.id.cancel_many);

@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class SingleCounterActivity extends AppCompatActivity {
 
     /* TODO remove cursor from edittext after input */
@@ -23,13 +25,16 @@ public class SingleCounterActivity extends AppCompatActivity {
 
     private Counter counter;
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    ConstraintLayout topLayout;
-
-    /* TODO WHAT"S THE DIFFERENCE BETWEEN
-    TODO StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);           and
-    TODO TextView textCounter = (TextView) findViewById(R.id.text_counter);
-    TODO Why declare one as new and (i believe casting is occurring) cast the other one
-     */
+    ConstraintLayout layout;
+    Boolean helpMode = false;
+    ArrayList<View> helpModeArray;
+    TextView help1;
+    TextView help2;
+    TextView help3;
+    TextView help4;
+    View tip1;
+    View tip2;
+    View tip4;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,12 +62,34 @@ public class SingleCounterActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
-        /* Closes help mode, hides the annotation bubbles */
-        topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
-        topLayout.setOnTouchListener(new View.OnTouchListener() {
+        /* Help Mode Setup*/
+        help1 = (TextView) findViewById(R.id.help_single_counter_activity_1);
+        help2 = (TextView) findViewById(R.id.help_single_counter_activity_2);
+        help3 = (TextView) findViewById(R.id.help_single_counter_activity_3);
+        help4 = (TextView) findViewById(R.id.help_single_counter_activity_4);
+        tip1 = findViewById(R.id.help_single_counter_activity_1_tip);
+        tip2 = findViewById(R.id.help_single_counter_activity_2_tip);
+        tip4 = findViewById(R.id.help_single_counter_activity_4_tip);
+        helpModeArray = new ArrayList<>();
+        helpModeArray.add(help1);
+        helpModeArray.add(help2);
+        helpModeArray.add(help3);
+        helpModeArray.add(help4);
+        helpModeArray.add(tip1);
+        helpModeArray.add(tip2);
+        helpModeArray.add(tip4);
+
+        /* Closes Help Mode, hides the annotation bubbles */
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                topLayout.setVisibility(View.INVISIBLE);
+                if (helpMode) {
+                    for (View view: helpModeArray) {
+                        view.setVisibility(View.INVISIBLE);
+                    }
+                    helpMode = false;
+                }
                 return false;
             }
         });
@@ -173,7 +200,12 @@ public class SingleCounterActivity extends AppCompatActivity {
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        topLayout.setVisibility(View.VISIBLE);
+        if (!helpMode) {
+            for (View view: helpModeArray) {
+                view.setVisibility(View.VISIBLE);
+            }
+            helpMode = true;
+        }
     }
 
     @Override

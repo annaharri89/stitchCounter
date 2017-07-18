@@ -24,6 +24,7 @@
             android:name="CounterProject"
             android:authorities="com.example.etaspare.stitchcounter.counterProject"
             android:exported="false" />
+        <!--TODO put minimum targetable api sdk: 21.0-->
     </application>
 
 </manifest>

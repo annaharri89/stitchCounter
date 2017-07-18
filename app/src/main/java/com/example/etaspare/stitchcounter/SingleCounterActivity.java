@@ -103,7 +103,7 @@ public class SingleCounterActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 String projectName;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) { //TODO: what if they dismiss the keyboard without hitting the done button. Look into other IME_ACTIONs
                     projectName = textProjectName.getText().toString();
                     if (projectName.length() > 0) {
                         counter.setProjectName(projectName);
@@ -164,7 +164,28 @@ public class SingleCounterActivity extends AppCompatActivity {
         /* TODO Document*/
         Resources res = this.getResources();
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
+        if (savedInstanceState != null) {
+            int _id = savedInstanceState.getInt("_id");
+            String name = savedInstanceState.getString("name");
+            int stitch_counter_number = savedInstanceState.getInt("stitch_counter_number");
+            int stitch_adjustment = savedInstanceState.getInt("stitch_adjustment");
+
+            if (_id > 0) {
+                counter.ID = _id;
+            }
+            if (name != null && name.length() > 0) {
+                counter.setProjectName(name);
+                textProjectName.setText(name);
+            }
+            if (stitch_adjustment > 0) {
+                counter.changeAdjustment(stitch_adjustment);
+            }
+            if (stitch_counter_number > 0) {
+                counter.counterNumber = stitch_counter_number;
+                textCounter.setText(String.format(res.getString(R.string.counter_number_stitch), stitch_counter_number));
+                //TODO: remove above line and call counter.setCounter();
+            }
+        } else if (extras != null) {
             int _id = extras.getInt("_id");
             String name = extras.getString("name");
             int stitch_counter_number = extras.getInt("stitch_counter_number");
@@ -186,6 +207,7 @@ public class SingleCounterActivity extends AppCompatActivity {
             if (stitch_counter_number > 0) {
                 counter.counterNumber = stitch_counter_number;
                 textCounter.setText(String.format(res.getString(R.string.counter_number_stitch), stitch_counter_number));
+                //TODO: remove above line and call counter.setCounter();
             }
         }
 
@@ -206,6 +228,15 @@ public class SingleCounterActivity extends AppCompatActivity {
             }
             helpMode = true;
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("_id", counter.ID);
+        savedInstanceState.putString("name", counter.projectName);
+        savedInstanceState.putInt("stitch_counter_number", counter.counterNumber);
+        savedInstanceState.putInt("stitch_adjustment", counter.adjustment);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override

@@ -59,8 +59,7 @@ public class LibraryActivity extends AppCompatActivity
             StitchCounterContract.CounterEntry.COLUMN_STITCH_ADJUSTMENT,
             StitchCounterContract.CounterEntry.COLUMN_ROW_COUNTER_NUM,
             StitchCounterContract.CounterEntry.COLUMN_ROW_ADJUSTMENT,
-            StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS,
-            StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT
+            StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS
     };
 
     /* Sort the results in the Cursor in ascending order */
@@ -163,7 +162,6 @@ public class LibraryActivity extends AppCompatActivity
                     int row_counter_number = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_ROW_COUNTER_NUM));
                     int row_adjustment = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_ROW_ADJUSTMENT));
                     int total_rows = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS));
-                    double progress_percent = tempCursor.getDouble(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT));
 
                     Bundle extras = new Bundle();
                     switch(type) {
@@ -175,7 +173,6 @@ public class LibraryActivity extends AppCompatActivity
                             extras.putInt("row_counter_number", row_counter_number);
                             extras.putInt("row_adjustment", row_adjustment);
                             extras.putInt("total_rows", total_rows);
-                            extras.putDouble("progress_percent", progress_percent);
 
                             Intent intentDouble = new Intent(getBaseContext(), DoubleCounterActivity.class);
                             intentDouble.putExtras(extras);

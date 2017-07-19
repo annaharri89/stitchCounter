@@ -76,7 +76,7 @@ public class Counter extends AppCompatActivity {
        Formats the counter string with counter number. Sets the
        counter TextView with formattedCounterNumber.
      */
-    private void setCounter() {
+    protected void setCounter() {
         String formattedCounterNumber = String.format(this.strResCounter, this.counterNumber);
         this.textCounter.setText(formattedCounterNumber);
     }

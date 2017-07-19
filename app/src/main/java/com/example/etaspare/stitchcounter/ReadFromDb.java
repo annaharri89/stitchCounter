@@ -45,8 +45,7 @@ public class ReadFromDb extends AsyncTask<Void, Void, SimpleCursorAdapter> {
                 StitchCounterContract.CounterEntry.COLUMN_STITCH_ADJUSTMENT,
                 StitchCounterContract.CounterEntry.COLUMN_ROW_COUNTER_NUM,
                 StitchCounterContract.CounterEntry.COLUMN_ROW_ADJUSTMENT,
-                StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS,
-                StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT
+                StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS
         };
 
         /* How the results are sorted in the resulting Cursor */

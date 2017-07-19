@@ -54,7 +54,6 @@ public final class StitchCounterContract {
         public static final String COLUMN_ROW_COUNTER_NUM = "row_counter_number";
         public static final String COLUMN_ROW_ADJUSTMENT = "row_adjustment";
         public static final String COLUMN_TOTAL_ROWS = "total_rows";
-        public static final String COLUMN_PROGRESS_PERCENT = "progress_percent";
     }
 }
 

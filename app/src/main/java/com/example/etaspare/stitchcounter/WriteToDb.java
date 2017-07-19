@@ -54,7 +54,6 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
         values.put(StitchCounterContract.CounterEntry.COLUMN_ROW_COUNTER_NUM, "");
         values.put(StitchCounterContract.CounterEntry.COLUMN_ROW_ADJUSTMENT, "");
         values.put(StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS, "");
-        values.put(StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT, "");
         return values;
     }
 
@@ -72,7 +71,6 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
         values.put(StitchCounterContract.CounterEntry.COLUMN_ROW_COUNTER_NUM, counter[1].counterNumber);
         values.put(StitchCounterContract.CounterEntry.COLUMN_ROW_ADJUSTMENT, counter[1].adjustment);
         values.put(StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS, counter[1].totalRows);
-        values.put(StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT, counter[1].progressPercent);
         return values;
     }
 }

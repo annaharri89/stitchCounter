@@ -3,9 +3,6 @@
 /* TODO: Create an About Activity in the Settings Activity*/
 /* TODO: vertically align doubleCounterActivity landscape template for small screens */
 /* TODO: keyboard pops open after new project is created on large devices. look into removing focus from project name edittext*/
-/* TODO: look into issue where on orientation change causes the counter to reset to the last saved state. google app manifest 
-/* TODO: Implement help button */
-    /* TODO: implement layouts for different sized devices */
     /* TODO: Remove unneeded import statements throughout the app */
     /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
     /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS */
@@ -17,7 +14,6 @@
     /* TODO Figure out why changing a double counter's progress, hitting the back button, results in list item's progress not updating */
     /* TODO Figure out why clicking into a counter, hitting the back button, results in first item being displayed as both the first item and the last item in the listview */
     /* TODO fix issue: app crashes when you try to start a double counter without putting total rows */
-    /* TODO: for version 2, look into annotation bubble library so the help bubbles can be put directly in the main layer and connect them to appropriate elements*/
 
 ## Acknowledgements ##
 Francesco Azzola

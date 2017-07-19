@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +6,7 @@
         android:layout_height="match_parent"
         tools:context="com.example.etaspare.stitchcounter.LibraryActivity"
         android:descendantFocusability="blocksDescendants"
-        android:id="@+id/library_layout">
+        android:id="@+id/layout">
 
         <include
             android:id="@+id/toolbar_main"
@@ -20,7 +14,7 @@
 
         <ListView
             android:id="@+id/list"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -45,13 +39,14 @@
             android:layout_marginLeft="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/cancel_many"/>
+            app:layout_constraintEnd_toStartOf="@+id/cancel_many"
+            android:layout_marginStart="80dp" />
 
         <Button
             android:id="@+id/cancel_many"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="3dp"
             android:layout_marginRight="80dp"
             android:onClick="turnOffDeleteManyMode"
             android:text="@string/button_cancel"
@@ -59,56 +54,56 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toRightOf="@+id/delete_many"
-            app:layout_constraintRight_toRightOf="parent" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.etaspare.stitchcounter.MainActivity"
-        android:visibility="invisible"
-        android:id="@+id/top_layout">
-
-        <TextView
-            android:id="@+id/help_library_activity_1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/annotation_bubble"
-            android:padding="5dp"
-            android:text="@string/help_library_delete_many_mode"
-            android:layout_marginTop="64dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <TextView
-            android:id="@+id/help_library_activity_2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="232dp"
-            android:background="@drawable/annotation_bubble"
-            android:padding="5dp"
-            android:text="@string/help_library_delete_single"
-            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.027" />
+            android:layout_marginEnd="80dp" />
 
-        <View
-            android:id="@+id/help_library_activity_1_connector"
-            android:layout_width="2dp"
-            android:layout_height="35dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginRight="64dp"
-            android:background="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@+id/help_library_activity_1"
-            app:layout_constraintRight_toLeftOf="parent" />
+    <!-- Help Mode -->
+
+    <TextView
+        android:id="@+id/help_library_activity_1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/annotation_bubble"
+        android:padding="5dp"
+        android:text="@string/help_library_delete_many_mode"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        android:layout_marginTop="64dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/help_library_activity_2"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="232dp"
+        android:background="@drawable/annotation_bubble"
+        android:padding="5dp"
+        android:text="@string/help_library_delete_single"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.027"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <View
+        android:id="@+id/help_library_activity_1_tip"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/annotation_arrow"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/help_library_activity_1"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/help_library_activity_1"
+        app:layout_constraintRight_toRightOf="@+id/help_library_activity_1" />
 
     </android.support.constraint.ConstraintLayout>
-
-</FrameLayout>

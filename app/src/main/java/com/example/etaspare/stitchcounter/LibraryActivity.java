@@ -37,8 +37,6 @@ public class LibraryActivity extends AppCompatActivity
     /* TODO: implement current help mode methodology in LibraryActivity */
 /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
 
-    
-    ConstraintLayout topLayout;
     private Button deleteSingle;
     private Button deleteMany;
     private Button cancelMany;
@@ -48,6 +46,12 @@ public class LibraryActivity extends AppCompatActivity
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
     protected Boolean deleteManyMode = false;
+    ConstraintLayout layout;
+    Boolean helpMode = false;
+    ArrayList<View> helpModeArray;
+    TextView help1;
+    TextView help2;
+    View tip1;
 
     /*
     Defines a projection that specifies which columns from the database will actually
@@ -112,15 +116,15 @@ public class LibraryActivity extends AppCompatActivity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
-        /* Closes help mode, hides the annotation bubbles */
-        topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
-        topLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                topLayout.setVisibility(View.INVISIBLE);
-                return false;
-            }
-        });
+        /* Help Mode Setup*/
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        help1 = (TextView) findViewById(R.id.help_library_activity_1);
+        help2 = (TextView) findViewById(R.id.help_library_activity_2);
+        tip1 = findViewById(R.id.help_library_activity_1_tip);
+        helpModeArray = new ArrayList<>();
+        helpModeArray.add(help1);
+        helpModeArray.add(help2);
+        helpModeArray.add(tip1);
 
         DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
         float screenWidth = dm.widthPixels / dm.density;
@@ -149,11 +153,13 @@ public class LibraryActivity extends AppCompatActivity
           appropriate activity (SingleCounterActivity or DoubleCounterActivity)/ starts the activity.
         + When deleteManyMode is on, checks and adds id to deleteManyArray or unchecks the check box
           and removes id from deleteManyArray
+        + Calls closeHelpMode
         */
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
+                closeHelpMode();
                 if (!deleteManyMode) {
                     int _id = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
                     String type = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TYPE));
@@ -206,11 +212,12 @@ public class LibraryActivity extends AppCompatActivity
         /*
         Called when a list item is long clicked. If not in deleteManyMode, sets the tempCursor,
         sets the delete button visible, sets the onclicklistener for the delete button,
-        sets previously visible delete buttons invisible.
+        sets previously visible delete buttons invisible. Calls closeHelpMode
         */
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                closeHelpMode();
                 if (deleteManyMode) {
                     return false;
                 }
@@ -260,7 +267,6 @@ public class LibraryActivity extends AppCompatActivity
     */
     protected void setListConstraints(int elementID, int constrainingEdge) {
         ConstraintSet set = new ConstraintSet();
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.library_layout);
         set.clone(layout);
         set.connect(R.id.list, ConstraintSet.BOTTOM, elementID, constrainingEdge, 0);
         set.applyTo(layout);
@@ -271,8 +277,10 @@ public class LibraryActivity extends AppCompatActivity
       blocking long clicks so that single delete buttons cannot appear.
     + Calls setListConstraints to connect the bottom of list to the top of the delete_many button
     + Sets the delete and cancel buttons to visible
+    + Calls closeHelpMode
     */
     public void turnOnDeleteManyMode() {
+        closeHelpMode();
         deleteManyMode = true;
         setListConstraints(R.id.delete_many, ConstraintSet.TOP);
         deleteMany.setVisibility(View.VISIBLE);
@@ -287,9 +295,21 @@ public class LibraryActivity extends AppCompatActivity
     */
     protected void turnOffDeleteManyMode(View view) { //TODO look into removing view
         deleteManyMode = false;
-        setListConstraints(R.id.library_layout, ConstraintSet.BOTTOM);
+        setListConstraints(R.id.layout, ConstraintSet.BOTTOM);
         deleteMany.setVisibility(View.INVISIBLE);
         cancelMany.setVisibility(View.INVISIBLE);
+    }
+
+    /* Closes help mode, hides the annotation bubbles */
+    protected void closeHelpMode() {
+        if (helpMode) {
+            for (View view: helpModeArray) {
+                if (view != null) {
+                    view.setVisibility(View.INVISIBLE);
+                }
+            }
+            helpMode = false;
+        }
     }
 
     /*
@@ -297,7 +317,14 @@ public class LibraryActivity extends AppCompatActivity
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        topLayout.setVisibility(View.VISIBLE);
+        if (!helpMode) {
+            for (View view: helpModeArray) {
+                if (view != null) {
+                    view.setVisibility(View.VISIBLE);
+                }
+            }
+            helpMode = true;
+        }
     }
 
     /* Called when the user taps the "+" button (new counter) in the toolbar */

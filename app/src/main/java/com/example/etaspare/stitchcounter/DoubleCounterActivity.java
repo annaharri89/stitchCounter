@@ -79,7 +79,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         /* Help Mode Setup*/
-        layout = (ConstraintLayout) findViewById(R.id.layout);
         help1 = (TextView) findViewById(R.id.help_double_counter_activity_1);
         help2 = (TextView) findViewById(R.id.help_double_counter_activity_2);
         help3 = (TextView) findViewById(R.id.help_double_counter_activity_3);

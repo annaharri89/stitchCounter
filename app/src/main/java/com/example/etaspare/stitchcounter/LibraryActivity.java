@@ -34,6 +34,7 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    /* TODO implement helpmode for different sized devices */
 /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
 
     private Button deleteSingle;
@@ -159,18 +160,25 @@ public class LibraryActivity extends AppCompatActivity
             saveCounter(extractedData);
         }
 
+        /* Closes Help Mode, hides the annotation bubbles */
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                closeHelpMode();
+                return false;
+            }
+        });
+
         /*
         + When deleteManyMode is off, parses db data for appropriate item and sends the data to
           appropriate activity (SingleCounterActivity or DoubleCounterActivity)/ starts the activity.
         + When deleteManyMode is on, checks and adds id to deleteManyArray or unchecks the check box
           and removes id from deleteManyArray
-        + Calls closeHelpMode
         */
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
-                closeHelpMode();
                 if (!deleteManyMode) {
                     int _id = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
                     String type = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TYPE));

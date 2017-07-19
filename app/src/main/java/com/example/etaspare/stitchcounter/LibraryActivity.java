@@ -37,8 +37,7 @@ public class LibraryActivity extends AppCompatActivity
     /* TODO: implement current help mode methodology in LibraryActivity */
 /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
 
-
-    final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
+    
     ConstraintLayout topLayout;
     private Button deleteSingle;
     private Button deleteMany;
@@ -87,15 +86,23 @@ public class LibraryActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_delete) {
-            turnOnDeleteManyMode();
-            return true;
-        } else if (item.getItemId() == R.id.action_help) {
-            openHelpMode();
-            return true;
-        } else {
-            return toolBarMenu.handleMenu(item);
+        switch(item.getItemId()) {
+            case R.id.action_new_counter:
+                openMainActivity();
+                break;
+            case R.id.action_library:
+                openLibrary();
+                break;
+            case R.id.action_delete:
+                turnOnDeleteManyMode();
+                break;
+            case R.id.action_help:
+                openHelpMode();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
@@ -291,6 +298,18 @@ public class LibraryActivity extends AppCompatActivity
     */
     public void openHelpMode() {
         topLayout.setVisibility(View.VISIBLE);
+    }
+
+    /* Called when the user taps the "+" button (new counter) in the toolbar */
+    public void openMainActivity () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /* Called when the user taps the "Library" button in the overflow menu */
+    public void openLibrary () {
+        Intent intent = new Intent(this, LibraryActivity.class);
+        startActivity(intent);
     }
 
     /*

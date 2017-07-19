@@ -182,8 +182,7 @@ public class SingleCounterActivity extends AppCompatActivity {
             }
             if (stitch_counter_number > 0) {
                 counter.counterNumber = stitch_counter_number;
-                textCounter.setText(String.format(res.getString(R.string.counter_number_stitch), stitch_counter_number));
-                //TODO: remove above line and call counter.setCounter();
+                counter.setCounter();
             }
         } else if (extras != null) {
             int _id = extras.getInt("_id");
@@ -206,8 +205,7 @@ public class SingleCounterActivity extends AppCompatActivity {
             }
             if (stitch_counter_number > 0) {
                 counter.counterNumber = stitch_counter_number;
-                textCounter.setText(String.format(res.getString(R.string.counter_number_stitch), stitch_counter_number));
-                //TODO: remove above line and call counter.setCounter();
+                counter.setCounter();
             }
         }
 

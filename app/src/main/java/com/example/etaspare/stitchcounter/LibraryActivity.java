@@ -2,7 +2,6 @@ package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
@@ -35,14 +34,9 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    /* TODO   FIgure out why changing a counter, then going to library, then loading the same counter,
-       TODO   results in the counter not being updated, look into adapter.notifyDataSetChanged(); */
+    /* TODO: implement current help mode methodology in LibraryActivity */
+/* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
 
-    /* TODO    Figure out why changing a double counter's progress, hitting the back button, results
-       TODO    in list item's progress not updating */
-
-    /* TODO    Figure out why clicking into a counter, hitting the back button, results in first item
-       TODO    being displayed as both the first item and the last item in the listview */
 
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout topLayout;

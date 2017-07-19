@@ -1,14 +1,22 @@
 /*TODO: Update README */
+
+
 /* TODO Create a Settings Activity */
 /* TODO: Create an About Activity in the Settings Activity*/
+
+
 /* TODO set up alert that asks user if they're sure they want to reset the counter */
-/* TODO: implement current help mode methodology in LibraryActivity */
+
+
 /* TODO remove cursor from edittext after input */
-    /* TODO think about implementing a favorites list*/
-/* TODO: vertically align doubleCounterActivity landscape template for small screens */
 /* TODO: keyboard pops open after new project is created on large devices. look into removing focus from project name edittext*/
+    
+    
+/* TODO think about implementing a favorites list*/
+/*TODO: remove references of stitchCounterMenu from MainActivity.*/
+/* TODO: implement flag for if a counter has been saved (to prevent saving more than needed)*/
+/* TODO: vertically align doubleCounterActivity landscape template for small screens */
     /* TODO: Remove unneeded import statements throughout the app */
-    /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
     /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS */
     /* TODO: LOOK INTO LOAD BALANCERS */
     /* TODO: implement add image(s) to counter project */

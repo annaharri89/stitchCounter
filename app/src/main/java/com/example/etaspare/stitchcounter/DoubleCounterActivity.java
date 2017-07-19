@@ -307,7 +307,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
             int row_counter_number = extras.getInt("row_counter_number");
             int row_adjustment = extras.getInt("row_adjustment");
             int total_rows = extras.getInt("total_rows");
-            double progress_percent = extras.getDouble("progress_percent");
 
             if (_id > 0) {
                 stitchCounter.ID = _id;
@@ -327,14 +326,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
             } else {
                 /* Sets default colors for adjustment buttons */
                 rowCounter.changeAdjustment(1);
-            }
-            if (progress_percent > 0) {
-                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), progress_percent); //TODO look into
-                textProgress.setText(formattedProgressNumber);
-            } else {
-                /* Sets default progress percent */
-                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
-                textProgress.setText(formattedProgressNumber);
             }
             if (stitch_counter_number > 0) {
                 stitchCounter.counterNumber = stitch_counter_number;

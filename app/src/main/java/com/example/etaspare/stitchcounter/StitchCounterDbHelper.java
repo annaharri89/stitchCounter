@@ -25,8 +25,7 @@ public class StitchCounterDbHelper extends SQLiteOpenHelper {
                     StitchCounterContract.CounterEntry.COLUMN_STITCH_ADJUSTMENT + " TEXT," +
                     StitchCounterContract.CounterEntry.COLUMN_ROW_COUNTER_NUM + " TEXT," +
                     StitchCounterContract.CounterEntry.COLUMN_ROW_ADJUSTMENT + " TEXT," +
-                    StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS + " TEXT," +
-                    StitchCounterContract.CounterEntry.COLUMN_PROGRESS_PERCENT + " TEXT)";
+                    StitchCounterContract.CounterEntry.COLUMN_TOTAL_ROWS + " TEXT)";
 
     //Statement to delete a table
     private static final String SQL_DELETE_ENTRIES =

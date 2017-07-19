@@ -400,14 +400,38 @@ public class DoubleCounterActivity extends AppCompatActivity {
     and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
     */
     public void openLibrary () {
-        Intent intent = new Intent(this, LibraryActivity.class);
+        sendResults();
+    }
+
+    /*
+    Creates a new intent which gets extras put in it in setUpExtras. Sends the intent and extras
+    to the new activity.
+    */
+    protected void sendResults() {
+        Intent intent = new Intent();
+        setUpExtras(intent);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    /* Adds stitchCounter and rowCounter as extras in a parcelable array to the passed intent. */
+    protected void setUpExtras(Intent i) {
         ArrayList<Counter> counterList= new ArrayList<>();
         counterList.add(stitchCounter);
         counterList.add(rowCounter);
-        intent.putParcelableArrayListExtra("counters", counterList);
-        startActivity(intent);
+        i.putParcelableArrayListExtra("counters", counterList);
     }
 
+    /* Starts a new activity/sends results/extras to new activity when back button is pressed. */
+    @Override
+    public void onBackPressed() {
+        sendResults();
+    }
+
+    /*
+    Saves all of the pertinent counter data to savedInstanceState bundle so it can be used to
+    populate the activity if orientation change occurs.
+    */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("_id", stitchCounter.ID);
@@ -423,14 +447,14 @@ public class DoubleCounterActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         /* Save Counters to DB */
-        //stitchCounter.saveCounter(stitchCounter, rowCounter);
+        stitchCounter.saveCounter(stitchCounter, rowCounter);
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         /* Save Counters to DB */
-        //stitchCounter.saveCounter(stitchCounter, rowCounter);
+        stitchCounter.saveCounter(stitchCounter, rowCounter);
         super.onDestroy();
     }
 }

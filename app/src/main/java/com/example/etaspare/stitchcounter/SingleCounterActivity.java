@@ -1,6 +1,5 @@
 package com.example.etaspare.stitchcounter;
 
-import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -162,7 +161,6 @@ public class SingleCounterActivity extends AppCompatActivity {
         });
 
         /* TODO Document*/
-        Resources res = this.getResources();
         Bundle extras = getIntent().getExtras();
         if (savedInstanceState != null) {
             int _id = savedInstanceState.getInt("_id");

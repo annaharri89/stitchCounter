@@ -258,7 +258,48 @@ public class DoubleCounterActivity extends AppCompatActivity {
         /* TODO Document*/
         Resources res = this.getResources();
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
+        if (savedInstanceState != null) {
+            int _id = savedInstanceState.getInt("_id");
+            String name = savedInstanceState.getString("name");
+            int stitch_counter_number = savedInstanceState.getInt("stitch_counter_number");
+            int stitch_adjustment = savedInstanceState.getInt("stitch_adjustment");
+            int row_counter_number = savedInstanceState.getInt("row_counter_number");
+            int row_adjustment = savedInstanceState.getInt("row_adjustment");
+            int total_rows = savedInstanceState.getInt("total_rows");
+
+            if (_id > 0) {
+                stitchCounter.ID = _id;
+            }
+            if (name != null && name.length() > 0) {
+                rowCounter.setProjectName(name);
+                textProjectName.setText(name);
+            }
+            if (stitch_adjustment > 0) { //TODO Will this work if bundle is not sent
+                stitchCounter.changeAdjustment(stitch_adjustment);
+            } else {
+                /* Sets default colors for adjustment buttons */
+                stitchCounter.changeAdjustment(1);
+            }
+            if (row_adjustment > 0) {
+                rowCounter.changeAdjustment(row_adjustment);
+            } else {
+                /* Sets default colors for adjustment buttons */
+                rowCounter.changeAdjustment(1);
+            }
+            if (stitch_counter_number > 0) {
+                stitchCounter.counterNumber = stitch_counter_number;
+                stitchCounter.setCounter();
+            }
+            if (row_counter_number > 0) {
+                rowCounter.counterNumber = row_counter_number;
+                rowCounter.setCounter();
+            }
+            if (total_rows > 0) {
+                rowCounter.setProgressBarMax(total_rows);
+                rowCounter.totalRows = total_rows;
+                totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
+            }
+        } else if (extras != null) {
             int _id = extras.getInt("_id");
             String name = extras.getString("name");
             int stitch_counter_number = extras.getInt("stitch_counter_number");
@@ -275,13 +316,13 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 rowCounter.setProjectName(name);
                 textProjectName.setText(name);
             }
-            if (stitch_adjustment > 0) { //TODO Will this work if bundle is not sent
+            if (stitch_adjustment > 0) {
                 stitchCounter.changeAdjustment(stitch_adjustment);
             } else {
                 /* Sets default colors for adjustment buttons */
                 stitchCounter.changeAdjustment(1);
             }
-            if (row_adjustment > 0) { //TODO Will this work if bundle is not sent
+            if (row_adjustment > 0) {
                 rowCounter.changeAdjustment(row_adjustment);
             } else {
                 /* Sets default colors for adjustment buttons */
@@ -297,16 +338,16 @@ public class DoubleCounterActivity extends AppCompatActivity {
             }
             if (stitch_counter_number > 0) {
                 stitchCounter.counterNumber = stitch_counter_number;
-                textCounterStitch.setText(String.format(res.getString(R.string.counter_number_stitch), stitch_counter_number));
+                stitchCounter.setCounter();
             }
             if (row_counter_number > 0) {
                 rowCounter.counterNumber = row_counter_number;
-                textCounterRow.setText(String.format(res.getString(R.string.counter_number_row), row_counter_number));
+                rowCounter.setCounter();
             }
             if (total_rows > 0) {
                 rowCounter.setProgressBarMax(total_rows);
                 rowCounter.totalRows = total_rows;
-                totalRows.setText(Integer.toString(total_rows));
+                totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
             }
         }
 
@@ -329,6 +370,18 @@ public class DoubleCounterActivity extends AppCompatActivity {
             }
             helpMode = true;
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putInt("_id", stitchCounter.ID);
+        savedInstanceState.putString("name", rowCounter.projectName);
+        savedInstanceState.putInt("stitch_counter_number", stitchCounter.counterNumber);
+        savedInstanceState.putInt("stitch_adjustment", stitchCounter.adjustment);
+        savedInstanceState.putInt("row_counter_number", rowCounter.counterNumber);
+        savedInstanceState.putInt("row_adjustment", rowCounter.adjustment);
+        savedInstanceState.putInt("total_rows", rowCounter.totalRows);
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override

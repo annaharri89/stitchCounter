@@ -34,7 +34,6 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    /* TODO: implement current help mode methodology in LibraryActivity */
 /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
 
     private Button deleteSingle;
@@ -147,6 +146,13 @@ public class LibraryActivity extends AppCompatActivity
         /* Creating a loader for populating listview from sqlite database */
         /* This statement invokes the method onCreatedLoader() */
         getSupportLoaderManager().initLoader(0, null, this);
+
+        /* TODO: Document */
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            ArrayList<Counter> extractedData = extras.getParcelableArrayList("counters");
+            saveCounter(extractedData);
+        }
 
         /*
         + When deleteManyMode is off, parses db data for appropriate item and sends the data to
@@ -363,6 +369,23 @@ public class LibraryActivity extends AppCompatActivity
         mListView.setAdapter(mAdapter);
     }
 
+    /* TODO: Document */
+    protected void saveCounter(ArrayList<Counter> extractedData) {
+        Counter stitchCounter = extractedData.get(0);
+        Counter rowCounter = null;
+        if (extractedData.size() > 1) {
+            rowCounter = extractedData.get(1);
+        }
+        WriteToDb writeToDb = new WriteToDb(this.context);
+        if (stitchCounter != null && rowCounter != null) {
+            writeToDb.execute(stitchCounter, rowCounter);
+        } else if (stitchCounter != null) {
+            writeToDb.execute(stitchCounter);
+        }
+        setUpAdapter();
+        getSupportLoaderManager().restartLoader(0, null, this);
+    }
+
     /*
     Takes the returned data (counters) and saves them to the database. Resets the adapter and
     restarts the loader so that the list has access to the most recent data. Works for both single
@@ -375,19 +398,7 @@ public class LibraryActivity extends AppCompatActivity
             if(resultCode == RESULT_OK) {
                 if(data != null) {
                     ArrayList<Counter> extractedData = data.getParcelableArrayListExtra("counters");
-                    Counter stitchCounter = extractedData.get(0);
-                    Counter rowCounter = null;
-                    if (extractedData.size() > 1) {
-                        rowCounter = extractedData.get(1);
-                    }
-                    WriteToDb writeToDb = new WriteToDb(this.context);
-                    if (stitchCounter != null && rowCounter != null) {
-                        writeToDb.execute(stitchCounter, rowCounter);
-                    } else if (stitchCounter != null) {
-                        writeToDb.execute(stitchCounter);
-                    }
-                    setUpAdapter();
-                    getSupportLoaderManager().restartLoader(0, null, this);
+                    saveCounter(extractedData);
                 }
 
             }

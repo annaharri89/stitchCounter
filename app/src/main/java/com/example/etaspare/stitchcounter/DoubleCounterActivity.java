@@ -390,18 +390,27 @@ public class DoubleCounterActivity extends AppCompatActivity {
     and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
     */
     public void openLibrary () {
-        sendResults();
+        sendResults(false);
     }
 
     /*
     Creates a new intent which gets extras put in it in setUpExtras. Sends the intent and extras
     to the new activity.
     */
-    protected void sendResults() {
-        Intent intent = new Intent();
+    protected void sendResults(Boolean backPressed) {
+        Intent intent;
+        if (backPressed) {
+            intent = new Intent();
+        } else {
+            intent = new Intent(this, LibraryActivity.class);
+        }
         setUpExtras(intent);
-        setResult(RESULT_OK, intent);
-        finish();
+        if (backPressed) {
+            setResult(RESULT_OK, intent);
+            finish();
+        } else {
+            startActivity(intent);
+        }
     }
 
     /* Adds stitchCounter and rowCounter as extras in a parcelable array to the passed intent. */
@@ -415,7 +424,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     /* Starts a new activity/sends results/extras to new activity when back button is pressed. */
     @Override
     public void onBackPressed() {
-        sendResults();
+        sendResults(true);
     }
 
     /*

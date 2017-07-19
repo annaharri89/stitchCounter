@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,13 +15,15 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 import static java.lang.Math.round;
 
 /**
  * Created by ETASpare on 6/8/2017.
  */
 
-public class Counter extends AppCompatActivity {
+public class Counter extends AppCompatActivity implements Parcelable {
 
     protected int ID;
     protected int counterNumber = 0;
@@ -40,6 +44,51 @@ public class Counter extends AppCompatActivity {
     private Resources res;
     private Context context;
 
+    /* Defines the kind of object that will be parcelled */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /*
+     Actual object serialization happens here, Write object content
+     to parcel, reading should be done according to this write order
+    */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(ID);
+        dest.writeInt(counterNumber);
+        dest.writeInt(adjustment);
+        dest.writeInt(totalRows);
+        dest.writeString(projectName);
+    }
+
+    /*
+    This field is needed for Android to be able to
+    create new objects, individually or as arrays
+     */
+    public static final Parcelable.Creator<Counter> CREATOR = new Parcelable.Creator<Counter>() {
+
+        public Counter createFromParcel(Parcel in) {
+            return new Counter(in);
+        }
+
+        public Counter[] newArray(int size) {
+            return new Counter[size];
+        }
+    };
+
+    /*
+    Parcelable Counter's constructor. Used to instantiate counters that need saved when navigation
+    to the library occurs.
+    */
+    public Counter (Parcel in) {
+        this.ID = in.readInt();
+        this.counterNumber = in.readInt();
+        this.adjustment = in.readInt();
+        this.totalRows = in.readInt();
+        this.projectName = in.readString();
+    }
     /*
         Double Counter's constructor, instantiates new instance of counter class, setting all instance variables and context.
         Handles progress related instance variables.

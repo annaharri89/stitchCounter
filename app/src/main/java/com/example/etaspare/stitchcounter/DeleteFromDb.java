@@ -1,10 +1,8 @@
 package com.example.etaspare.stitchcounter;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -39,7 +37,6 @@ public class DeleteFromDb extends AsyncTask<ArrayList<String>, Void, Integer> {
 
     @Override
     protected void onPostExecute(Integer z) {
-        Log.d("This", this.mContext.getClass().toString());
         LibraryActivity context = (LibraryActivity) this.mContext;
         context.updateCursor();
     }

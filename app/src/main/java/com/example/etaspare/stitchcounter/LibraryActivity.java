@@ -2,7 +2,6 @@ package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
@@ -35,13 +34,17 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    /* TODO: implement current help mode methodology in LibraryActivity */
+/* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
+
+
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout topLayout;
     private Button deleteSingle;
     private Button deleteMany;
     private Button cancelMany;
     private Context context = this;
-    private CounterAdapter mAdapter;
+    protected CounterAdapter mAdapter;
     private ListView mListView; //TODO look into converting to local variable
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
@@ -122,21 +125,13 @@ public class LibraryActivity extends AppCompatActivity
         //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE layout-w320dp-h300dp-port and layout-h320dp-land
         //TODO: 3.4 WQVGA width 320, height 576 Normal Size layout-h500dp and layout-h320dp-land
 
+        /*TODO Document*/
         deleteMany = (Button) findViewById(R.id.delete_many);
         cancelMany = (Button) findViewById(R.id.cancel_many);
 
-        /*
-        Create an empty adapter that will be used to display the loaded data.
-        Pass null for the cursor, then update it in onLoadFinished()
-        */
-        mAdapter = new CounterAdapter(getBaseContext(),
-                R.layout.list_item_single_counter,
-                null,
-                fromColumns,
-                toViews,
-                0);
+        /* TODO: Document*/
         mListView = (ListView) findViewById(R.id.list);
-        mListView.setAdapter(mAdapter);
+        setUpAdapter();
 
         /* Creating a loader for populating listview from sqlite database */
         /* This statement invokes the method onCreatedLoader() */
@@ -153,7 +148,6 @@ public class LibraryActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
                 if (!deleteManyMode) {
-                    DatabaseUtils.dumpCursor(tempCursor); //TODO Use to figure out why counters don't save and clicking into a counter, hitting the back button, results in first item being displayed as both the first item and the last item in the listview
                     int _id = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
                     String type = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TYPE));
                     String name = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TITLE));
@@ -176,7 +170,7 @@ public class LibraryActivity extends AppCompatActivity
 
                             Intent intentDouble = new Intent(getBaseContext(), DoubleCounterActivity.class);
                             intentDouble.putExtras(extras);
-                            startActivity(intentDouble);
+                            startActivityForResult(intentDouble, 1);
                             break;
                         case "Single":
                             extras.putInt("_id", _id);
@@ -186,7 +180,7 @@ public class LibraryActivity extends AppCompatActivity
 
                             Intent intentSingle = new Intent(getBaseContext(), SingleCounterActivity.class);
                             intentSingle.putExtras(extras);
-                            startActivity(intentSingle);
+                            startActivityForResult(intentSingle, 1);
                             break;
                     }
                 } else {
@@ -284,11 +278,19 @@ public class LibraryActivity extends AppCompatActivity
     + Calls setListConstraints to connect the bottom of list to the bottom of the constraint layout.
     + Sets the delete and cancel buttons to invisible
     */
-    protected void turnOffDeleteManyMode(View view) {
+    protected void turnOffDeleteManyMode(View view) { //TODO look into removing view
         deleteManyMode = false;
         setListConstraints(R.id.library_layout, ConstraintSet.BOTTOM);
         deleteMany.setVisibility(View.INVISIBLE);
         cancelMany.setVisibility(View.INVISIBLE);
+    }
+
+    /*
+    Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
+    visible, showing the annotation bubbles.
+    */
+    public void openHelpMode() {
+        topLayout.setVisibility(View.VISIBLE);
     }
 
     /*
@@ -298,6 +300,52 @@ public class LibraryActivity extends AppCompatActivity
     protected void updateCursor() {
         getSupportLoaderManager().restartLoader(0, null, this);
         mAdapter.notifyDataSetChanged();
+    }
+
+    /*
+    Create an empty adapter that will be used to display the loaded data.
+    Pass null for the cursor, then update it in onLoadFinished()
+    Sets the adapter to the ListView.
+    */
+    protected void setUpAdapter() {
+        mAdapter = new CounterAdapter(getBaseContext(),
+                R.layout.list_item_single_counter,
+                null,
+                fromColumns,
+                toViews,
+                0);
+        mListView.setAdapter(mAdapter);
+    }
+
+    /*
+    Takes the returned data (counters) and saves them to the database. Resets the adapter and
+    restarts the loader so that the list has access to the most recent data. Works for both single
+    counter and double counter.
+    */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                if(data != null) {
+                    ArrayList<Counter> extractedData = data.getParcelableArrayListExtra("counters");
+                    Counter stitchCounter = extractedData.get(0);
+                    Counter rowCounter = null;
+                    if (extractedData.size() > 1) {
+                        rowCounter = extractedData.get(1);
+                    }
+                    WriteToDb writeToDb = new WriteToDb(this.context);
+                    if (stitchCounter != null && rowCounter != null) {
+                        writeToDb.execute(stitchCounter, rowCounter);
+                    } else if (stitchCounter != null) {
+                        writeToDb.execute(stitchCounter);
+                    }
+                    setUpAdapter();
+                    getSupportLoaderManager().restartLoader(0, null, this);
+                }
+
+            }
+        }
     }
 
     /* A callback method invoked by the loader when initLoader() is called */
@@ -311,6 +359,7 @@ public class LibraryActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
         mAdapter.swapCursor(arg1);
+        DatabaseUtils.dumpCursor(mAdapter.getCursor()); //TODO: remove
     }
 
     @Override
@@ -323,14 +372,6 @@ public class LibraryActivity extends AppCompatActivity
         /* Allows list to function properly when accessed through back button */
         getSupportLoaderManager().restartLoader(0, null, this); //TODO ASK tony if this should be restartLoader or initLoader
         super.onResume();
-    }
-
-    /*
-    Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
-    visible, showing the annotation bubbles.
-    */
-    public void openHelpMode() {
-        topLayout.setVisibility(View.VISIBLE);
     }
 
     @Override

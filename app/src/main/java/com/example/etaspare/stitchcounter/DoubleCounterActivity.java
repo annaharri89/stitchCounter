@@ -28,7 +28,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
     private Counter stitchCounter;
     private Counter rowCounter;
-    final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     Boolean helpMode = false;
     ConstraintLayout layout;
     ArrayList<View> helpModeArray;

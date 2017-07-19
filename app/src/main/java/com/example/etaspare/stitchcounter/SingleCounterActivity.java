@@ -20,11 +20,7 @@ import java.util.ArrayList;
 
 public class SingleCounterActivity extends AppCompatActivity {
 
-    /* TODO remove cursor from edittext after input */
-    /* TODO think about implementing a favorites list*/
-
     private Counter counter;
-    final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout layout;
     Boolean helpMode = false;
     ArrayList<View> helpModeArray;

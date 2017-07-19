@@ -160,7 +160,14 @@ public class SingleCounterActivity extends AppCompatActivity {
             }
         });
 
-        /* TODO Document*/
+        /*
+        + If savedInstanceState bundle is not null, gets all pertinent counter data from
+          savedInstanceState bundle and updates the counters and the UI where needed. Used to keep
+          counter progress up to date when orientation change occurs.
+        + If savedInstanceState is null (meaning a new counter has been created or a counter has been
+          loaded from the library) and extras is not null, gets all pertinent counter data from
+          extras bundle and updates the counters and the UI where needed.
+        */
         Bundle extras = getIntent().getExtras();
         if (savedInstanceState != null) {
             int _id = savedInstanceState.getInt("_id");

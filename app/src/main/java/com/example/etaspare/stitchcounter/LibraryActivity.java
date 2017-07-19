@@ -147,7 +147,12 @@ public class LibraryActivity extends AppCompatActivity
         /* This statement invokes the method onCreatedLoader() */
         getSupportLoaderManager().initLoader(0, null, this);
 
-        /* TODO: Document */
+        /*
+        Takes the returned data (counters) and saves them to the database. Resets the adapter and
+        restarts the loader so that the list has access to the most recent data. Works for both single
+        counter and double counter. Used when a new counter is created and then the library is
+        accessed through the drop down menu.
+        */
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             ArrayList<Counter> extractedData = extras.getParcelableArrayList("counters");
@@ -369,7 +374,10 @@ public class LibraryActivity extends AppCompatActivity
         mListView.setAdapter(mAdapter);
     }
 
-    /* TODO: Document */
+    /*
+    Saves counters to the db when the library is accessed, either through the back button from a
+    counter or through the library menu item from a counter.
+    */
     protected void saveCounter(ArrayList<Counter> extractedData) {
         Counter stitchCounter = extractedData.get(0);
         Counter rowCounter = null;
@@ -389,7 +397,8 @@ public class LibraryActivity extends AppCompatActivity
     /*
     Takes the returned data (counters) and saves them to the database. Resets the adapter and
     restarts the loader so that the list has access to the most recent data. Works for both single
-    counter and double counter.
+    counter and double counter. Called when the back button is pressed from a counter that was
+    loaded from the library.
     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

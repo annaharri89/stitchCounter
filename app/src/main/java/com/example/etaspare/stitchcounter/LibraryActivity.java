@@ -35,13 +35,22 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    /* TODO   FIgure out why changing a counter, then going to library, then loading the same counter,
+       TODO   results in the counter not being updated, look into adapter.notifyDataSetChanged(); */
+
+    /* TODO    Figure out why changing a double counter's progress, hitting the back button, results
+       TODO    in list item's progress not updating */
+
+    /* TODO    Figure out why clicking into a counter, hitting the back button, results in first item
+       TODO    being displayed as both the first item and the last item in the listview */
+
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     ConstraintLayout topLayout;
     private Button deleteSingle;
     private Button deleteMany;
     private Button cancelMany;
     private Context context = this;
-    private CounterAdapter mAdapter;
+    protected CounterAdapter mAdapter;
     private ListView mListView; //TODO look into converting to local variable
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
@@ -102,6 +111,20 @@ public class LibraryActivity extends AppCompatActivity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
+
+        /*TODO DOCUMENT*/
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            Counter stitchCounter = (Counter) extras.getParcelableArrayList("counters").get(0);
+            Counter rowCounter = (Counter) extras.getParcelableArrayList("counters").get(1);
+            WriteToDb writeToDb = new WriteToDb(this.context);
+            if (stitchCounter != null && rowCounter != null) {
+                writeToDb.execute(stitchCounter, rowCounter);
+            } else if (stitchCounter != null) {
+                writeToDb.execute(stitchCounter);
+            }
+        }
+
         /* Closes help mode, hides the annotation bubbles */
         topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
         topLayout.setOnTouchListener(new View.OnTouchListener() {
@@ -153,7 +176,6 @@ public class LibraryActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
                 if (!deleteManyMode) {
-                    DatabaseUtils.dumpCursor(tempCursor); //TODO Use to figure out why counters don't save and clicking into a counter, hitting the back button, results in first item being displayed as both the first item and the last item in the listview
                     int _id = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
                     String type = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TYPE));
                     String name = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TITLE));
@@ -311,6 +333,7 @@ public class LibraryActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
         mAdapter.swapCursor(arg1);
+        DatabaseUtils.dumpCursor(mAdapter.getCursor());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.example.etaspare.stitchcounter;
 
+import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Parcelable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DoubleCounterActivity extends AppCompatActivity {
@@ -51,12 +55,28 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.action_new_counter:
+                openMainActivity();
+                break;
+            case R.id.action_library:
+                openLibrary();
+                break;
+            case R.id.action_help:
+                openHelpMode();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
+        /*
         if (item.getItemId() == R.id.action_help) {
             openHelpMode();
             return true;
         } else {
             return toolBarMenu.handleMenu(item);
         }
+        */
     }
 
     @Override
@@ -369,6 +389,25 @@ public class DoubleCounterActivity extends AppCompatActivity {
         }
     }
 
+    /* Called when the user taps the "+" button (new counter) in the toolbar */
+    public void openMainActivity () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /*
+    Called when the user taps the "Library" button in the overflow menu. Sends the stitchCounter
+    and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
+    */
+    public void openLibrary () {
+        Intent intent = new Intent(this, LibraryActivity.class);
+        ArrayList<Counter> counterList= new ArrayList<>();
+        counterList.add(stitchCounter);
+        counterList.add(rowCounter);
+        intent.putParcelableArrayListExtra("counters", counterList);
+        startActivity(intent);
+    }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("_id", stitchCounter.ID);
@@ -384,14 +423,14 @@ public class DoubleCounterActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         /* Save Counters to DB */
-        stitchCounter.saveCounter(stitchCounter, rowCounter);
+        //stitchCounter.saveCounter(stitchCounter, rowCounter);
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         /* Save Counters to DB */
-        stitchCounter.saveCounter(stitchCounter, rowCounter);
+        //stitchCounter.saveCounter(stitchCounter, rowCounter);
         super.onDestroy();
     }
 }

@@ -69,14 +69,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
         return true;
-        /*
-        if (item.getItemId() == R.id.action_help) {
-            openHelpMode();
-            return true;
-        } else {
-            return toolBarMenu.handleMenu(item);
-        }
-        */
     }
 
     @Override

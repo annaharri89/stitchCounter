@@ -1,5 +1,6 @@
 package com.example.etaspare.stitchcounter;
 
+import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,12 +46,20 @@ public class SingleCounterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_help) {
-            openHelpMode();
-            return true;
-        } else {
-            return toolBarMenu.handleMenu(item);
+        switch(item.getItemId()) {
+            case R.id.action_new_counter:
+                openMainActivity();
+                break;
+            case R.id.action_library:
+                openLibrary();
+                break;
+            case R.id.action_help:
+                openHelpMode();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
@@ -233,6 +242,48 @@ public class SingleCounterActivity extends AppCompatActivity {
         }
     }
 
+    /* Called when the user taps the "+" button (new counter) in the toolbar */
+    public void openMainActivity () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /*
+    Called when the user taps the "Library" button in the overflow menu. Sends the stitchCounter
+    and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
+    */
+    public void openLibrary () {
+        sendResults();
+    }
+
+    /*
+    Creates a new intent which gets extras put in it in setUpExtras. Sends the intent and extras
+    to the new activity.
+    */
+    protected void sendResults() {
+        Intent intent = new Intent();
+        setUpExtras(intent);
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    /* Adds stitchCounter and rowCounter as extras in a parcelable array to the passed intent. */
+    protected void setUpExtras(Intent i) {
+        ArrayList<Counter> counterList= new ArrayList<>();
+        counterList.add(counter);
+        i.putParcelableArrayListExtra("counters", counterList);
+    }
+
+    /* Starts a new activity/sends results/extras to new activity when back button is pressed. */
+    @Override
+    public void onBackPressed() {
+        sendResults();
+    }
+
+    /*
+    Saves all of the pertinent counter data to savedInstanceState bundle so it can be used to
+    populate the activity if orientation change occurs.
+    */
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt("_id", counter.ID);

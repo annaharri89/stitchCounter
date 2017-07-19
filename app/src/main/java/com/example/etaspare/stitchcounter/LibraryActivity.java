@@ -186,7 +186,7 @@ public class LibraryActivity extends AppCompatActivity
 
                             Intent intentSingle = new Intent(getBaseContext(), SingleCounterActivity.class);
                             intentSingle.putExtras(extras);
-                            startActivity(intentSingle);
+                            startActivityForResult(intentSingle, 1);
                             break;
                     }
                 } else {
@@ -325,7 +325,8 @@ public class LibraryActivity extends AppCompatActivity
 
     /*
     Takes the returned data (counters) and saves them to the database. Resets the adapter and
-    restarts the loader so that the list has access to the most recent data.
+    restarts the loader so that the list has access to the most recent data. Works for both single
+    counter and double counter.
     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -333,8 +334,12 @@ public class LibraryActivity extends AppCompatActivity
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 if(data != null) {
-                    Counter stitchCounter = (Counter) data.getParcelableArrayListExtra("counters").get(0);
-                    Counter rowCounter = (Counter) data.getParcelableArrayListExtra("counters").get(1);
+                    ArrayList<Counter> extractedData = data.getParcelableArrayListExtra("counters");
+                    Counter stitchCounter = extractedData.get(0);
+                    Counter rowCounter = null;
+                    if (extractedData.size() > 1) {
+                        rowCounter = extractedData.get(1);
+                    }
                     WriteToDb writeToDb = new WriteToDb(this.context);
                     if (stitchCounter != null && rowCounter != null) {
                         writeToDb.execute(stitchCounter, rowCounter);

@@ -34,8 +34,6 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-/* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
-
     private Button deleteSingle;
     private Button deleteMany;
     private Button cancelMany;

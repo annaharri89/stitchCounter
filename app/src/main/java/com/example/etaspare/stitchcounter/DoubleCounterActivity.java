@@ -297,13 +297,13 @@ public class DoubleCounterActivity extends AppCompatActivity {
         if (stitch_adjustment > 0) {
             stitchCounter.changeAdjustment(stitch_adjustment);
         } else {
-                /* Sets default colors for adjustment buttons */
+            /* Sets default colors for adjustment buttons */
             stitchCounter.changeAdjustment(1);
         }
         if (row_adjustment > 0) {
             rowCounter.changeAdjustment(row_adjustment);
         } else {
-                /* Sets default colors for adjustment buttons */
+            /* Sets default colors for adjustment buttons */
             rowCounter.changeAdjustment(1);
         }
         if (stitch_counter_number > 0) {
@@ -319,7 +319,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
             rowCounter.totalRows = total_rows;
             totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
         } else {
-                /* Sets default progress percent */
+            /* Sets default progress percent */
             String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
             progress.setText(formattedProgressNumber);
         }

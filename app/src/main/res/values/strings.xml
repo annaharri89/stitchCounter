@@ -79,4 +79,5 @@
     <string name="help_library_delete_single">
         To delete a single project, press and hold a project to make a delete button appear.
     </string>
+    <string name="library_no_projects">You have no saved projects.</string>
 </resources>

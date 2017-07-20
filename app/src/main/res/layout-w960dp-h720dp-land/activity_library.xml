@@ -35,10 +35,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/library_no_projects"
         android:gravity="center"
+        android:text="@string/library_no_projects"
         android:visibility="gone"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -78,35 +78,37 @@
 
     <TextView
         android:id="@+id/help_library_activity_1"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
         android:text="@string/help_library_delete_many_mode"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
-        android:layout_marginRight="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
     <TextView
         android:id="@+id/help_library_activity_2"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="232dp"
         android:background="@drawable/annotation_bubble"
         android:padding="5dp"
         android:text="@string/help_library_delete_single"
         android:textColor="#FFFFFF"
+        android:textSize="20dp"
         android:visibility="invisible"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/help_library_activity_1_tip"

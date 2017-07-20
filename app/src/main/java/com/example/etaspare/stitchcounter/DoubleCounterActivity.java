@@ -28,21 +28,8 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
     private Counter stitchCounter;
     private Counter rowCounter;
-    Boolean helpMode = false;
-    ConstraintLayout layout;
-    ArrayList<View> helpModeArray;
-    TextView help1;
-    TextView help2;
-    TextView help3;
-    TextView help4;
-    TextView help5;
-    TextView help6;
-    View tip1;
-    View tip2;
-    View tip3;
-    View tip4;
-    View tip5;
-    View tip6;
+    private Boolean helpMode = false;
+    private ArrayList<View> helpModeArray;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -79,19 +66,18 @@ public class DoubleCounterActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         /* Help Mode Setup*/
-        layout = (ConstraintLayout) findViewById(R.id.layout);
-        help1 = (TextView) findViewById(R.id.help_double_counter_activity_1);
-        help2 = (TextView) findViewById(R.id.help_double_counter_activity_2);
-        help3 = (TextView) findViewById(R.id.help_double_counter_activity_3);
-        help4 = (TextView) findViewById(R.id.help_double_counter_activity_4);
-        help5 = (TextView) findViewById(R.id.help_double_counter_activity_5);
-        help6 = (TextView) findViewById(R.id.help_double_counter_activity_6);
-        tip1 = findViewById(R.id.help_double_counter_activity_1_tip);
-        tip2 = findViewById(R.id.help_double_counter_activity_2_tip);
-        tip3 = findViewById(R.id.help_double_counter_activity_3_tip);
-        tip4 = findViewById(R.id.help_double_counter_activity_4_tip);
-        tip5 = findViewById(R.id.help_double_counter_activity_5_tip);
-        tip6 = findViewById(R.id.help_double_counter_activity_6_tip);
+        TextView help1 = (TextView) findViewById(R.id.help_double_counter_activity_1);
+        TextView help2 = (TextView) findViewById(R.id.help_double_counter_activity_2);
+        TextView help3 = (TextView) findViewById(R.id.help_double_counter_activity_3);
+        TextView help4 = (TextView) findViewById(R.id.help_double_counter_activity_4);
+        TextView help5 = (TextView) findViewById(R.id.help_double_counter_activity_5);
+        TextView help6 = (TextView) findViewById(R.id.help_double_counter_activity_6);
+        View tip1 = findViewById(R.id.help_double_counter_activity_1_tip);
+        View tip2 = findViewById(R.id.help_double_counter_activity_2_tip);
+        View tip3 = findViewById(R.id.help_double_counter_activity_3_tip);
+        View tip4 = findViewById(R.id.help_double_counter_activity_4_tip);
+        View tip5 = findViewById(R.id.help_double_counter_activity_5_tip);
+        View tip6 = findViewById(R.id.help_double_counter_activity_6_tip);
         helpModeArray = new ArrayList<>();
         helpModeArray.add(help1);
         helpModeArray.add(help2);
@@ -107,7 +93,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         helpModeArray.add(tip6);
 
         /* Closes Help Mode, hides the annotation bubbles */
-        layout = (ConstraintLayout) findViewById(R.id.layout);
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.layout);
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -391,18 +377,27 @@ public class DoubleCounterActivity extends AppCompatActivity {
     and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
     */
     public void openLibrary () {
-        sendResults();
+        sendResults(false);
     }
 
     /*
     Creates a new intent which gets extras put in it in setUpExtras. Sends the intent and extras
     to the new activity.
     */
-    protected void sendResults() {
-        Intent intent = new Intent();
+    protected void sendResults(Boolean backPressed) {
+        Intent intent;
+        if (backPressed) {
+            intent = new Intent();
+        } else {
+            intent = new Intent(this, LibraryActivity.class);
+        }
         setUpExtras(intent);
-        setResult(RESULT_OK, intent);
-        finish();
+        if (backPressed) {
+            setResult(RESULT_OK, intent);
+            finish();
+        } else {
+            startActivity(intent);
+        }
     }
 
     /* Adds stitchCounter and rowCounter as extras in a parcelable array to the passed intent. */
@@ -416,7 +411,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     /* Starts a new activity/sends results/extras to new activity when back button is pressed. */
     @Override
     public void onBackPressed() {
-        sendResults();
+        sendResults(true);
     }
 
     /*

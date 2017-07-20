@@ -34,21 +34,18 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    /* TODO: implement current help mode methodology in LibraryActivity */
-/* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
-
-
-    final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    ConstraintLayout topLayout;
     private Button deleteSingle;
     private Button deleteMany;
     private Button cancelMany;
     private Context context = this;
     protected CounterAdapter mAdapter;
-    private ListView mListView; //TODO look into converting to local variable
+    private ListView mListView;
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
-    protected Boolean deleteManyMode = false;
+    private Boolean deleteManyMode = false;
+    private ConstraintLayout layout;
+    private Boolean helpMode = false;
+    private ArrayList<View> helpModeArray;
 
     /*
     Defines a projection that specifies which columns from the database will actually
@@ -87,15 +84,23 @@ public class LibraryActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_delete) {
-            turnOnDeleteManyMode();
-            return true;
-        } else if (item.getItemId() == R.id.action_help) {
-            openHelpMode();
-            return true;
-        } else {
-            return toolBarMenu.handleMenu(item);
+        switch(item.getItemId()) {
+            case R.id.action_new_counter:
+                openMainActivity();
+                break;
+            case R.id.action_library:
+                openLibrary();
+                break;
+            case R.id.action_delete:
+                turnOnDeleteManyMode();
+                break;
+            case R.id.action_help:
+                openHelpMode();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
@@ -105,15 +110,15 @@ public class LibraryActivity extends AppCompatActivity
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
-        /* Closes help mode, hides the annotation bubbles */
-        topLayout = (ConstraintLayout) findViewById(R.id.top_layout);
-        topLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                topLayout.setVisibility(View.INVISIBLE);
-                return false;
-            }
-        });
+        /* Help Mode Setup*/
+        layout = (ConstraintLayout) findViewById(R.id.layout);
+        TextView help1 = (TextView) findViewById(R.id.help_library_activity_1);
+        TextView help2 = (TextView) findViewById(R.id.help_library_activity_2);
+        View tip1 = findViewById(R.id.help_library_activity_1_tip);
+        helpModeArray = new ArrayList<>();
+        helpModeArray.add(help1);
+        helpModeArray.add(help2);
+        helpModeArray.add(tip1);
 
         DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
         float screenWidth = dm.widthPixels / dm.density;
@@ -130,12 +135,43 @@ public class LibraryActivity extends AppCompatActivity
         cancelMany = (Button) findViewById(R.id.cancel_many);
 
         /* TODO: Document*/
+        TextView noSavedProjects = (TextView) findViewById(R.id.empty_list_view);
         mListView = (ListView) findViewById(R.id.list);
+        mListView.setEmptyView(noSavedProjects);
         setUpAdapter();
 
         /* Creating a loader for populating listview from sqlite database */
         /* This statement invokes the method onCreatedLoader() */
         getSupportLoaderManager().initLoader(0, null, this);
+
+        /*
+        Takes the returned data (counters) and saves them to the database. Resets the adapter and
+        restarts the loader so that the list has access to the most recent data. Works for both single
+        counter and double counter. Used when a new counter is created and then the library is
+        accessed through the drop down menu.
+        */
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            ArrayList<Counter> extractedData = extras.getParcelableArrayList("counters");
+            saveCounter(extractedData);
+        }
+
+        /* Closes Help Mode when listview is empty, hides the annotation bubbles */
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                closeHelpMode();
+                return false;
+            }
+        });
+        /* Closes Help Mode when listview has list items, hides the annotation bubbles */
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                closeHelpMode();
+                return false;
+            }
+        });
 
         /*
         + When deleteManyMode is off, parses db data for appropriate item and sends the data to
@@ -199,11 +235,12 @@ public class LibraryActivity extends AppCompatActivity
         /*
         Called when a list item is long clicked. If not in deleteManyMode, sets the tempCursor,
         sets the delete button visible, sets the onclicklistener for the delete button,
-        sets previously visible delete buttons invisible.
+        sets previously visible delete buttons invisible. Calls closeHelpMode
         */
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                closeHelpMode();
                 if (deleteManyMode) {
                     return false;
                 }
@@ -253,7 +290,6 @@ public class LibraryActivity extends AppCompatActivity
     */
     protected void setListConstraints(int elementID, int constrainingEdge) {
         ConstraintSet set = new ConstraintSet();
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.library_layout);
         set.clone(layout);
         set.connect(R.id.list, ConstraintSet.BOTTOM, elementID, constrainingEdge, 0);
         set.applyTo(layout);
@@ -264,8 +300,10 @@ public class LibraryActivity extends AppCompatActivity
       blocking long clicks so that single delete buttons cannot appear.
     + Calls setListConstraints to connect the bottom of list to the top of the delete_many button
     + Sets the delete and cancel buttons to visible
+    + Calls closeHelpMode
     */
     public void turnOnDeleteManyMode() {
+        closeHelpMode();
         deleteManyMode = true;
         setListConstraints(R.id.delete_many, ConstraintSet.TOP);
         deleteMany.setVisibility(View.VISIBLE);
@@ -280,9 +318,21 @@ public class LibraryActivity extends AppCompatActivity
     */
     protected void turnOffDeleteManyMode(View view) { //TODO look into removing view
         deleteManyMode = false;
-        setListConstraints(R.id.library_layout, ConstraintSet.BOTTOM);
+        setListConstraints(R.id.layout, ConstraintSet.BOTTOM);
         deleteMany.setVisibility(View.INVISIBLE);
         cancelMany.setVisibility(View.INVISIBLE);
+    }
+
+    /* Closes help mode, hides the annotation bubbles */
+    protected void closeHelpMode() {
+        if (helpMode) {
+            for (View view: helpModeArray) {
+                if (view != null) {
+                    view.setVisibility(View.INVISIBLE);
+                }
+            }
+            helpMode = false;
+        }
     }
 
     /*
@@ -290,7 +340,26 @@ public class LibraryActivity extends AppCompatActivity
     visible, showing the annotation bubbles.
     */
     public void openHelpMode() {
-        topLayout.setVisibility(View.VISIBLE);
+        if (!helpMode) {
+            for (View view: helpModeArray) {
+                if (view != null) {
+                    view.setVisibility(View.VISIBLE);
+                }
+            }
+            helpMode = true;
+        }
+    }
+
+    /* Called when the user taps the "+" button (new counter) in the toolbar */
+    public void openMainActivity () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /* Called when the user taps the "Library" button in the overflow menu */
+    public void openLibrary () {
+        Intent intent = new Intent(this, LibraryActivity.class);
+        startActivity(intent);
     }
 
     /*
@@ -318,9 +387,30 @@ public class LibraryActivity extends AppCompatActivity
     }
 
     /*
+    Saves counters to the db when the library is accessed, either through the back button from a
+    counter or through the library menu item from a counter.
+    */
+    protected void saveCounter(ArrayList<Counter> extractedData) {
+        Counter stitchCounter = extractedData.get(0);
+        Counter rowCounter = null;
+        if (extractedData.size() > 1) {
+            rowCounter = extractedData.get(1);
+        }
+        WriteToDb writeToDb = new WriteToDb(this.context);
+        if (stitchCounter != null && rowCounter != null) {
+            writeToDb.execute(stitchCounter, rowCounter);
+        } else if (stitchCounter != null) {
+            writeToDb.execute(stitchCounter);
+        }
+        setUpAdapter();
+        getSupportLoaderManager().restartLoader(0, null, this);
+    }
+
+    /*
     Takes the returned data (counters) and saves them to the database. Resets the adapter and
     restarts the loader so that the list has access to the most recent data. Works for both single
-    counter and double counter.
+    counter and double counter. Called when the back button is pressed from a counter that was
+    loaded from the library.
     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -329,19 +419,7 @@ public class LibraryActivity extends AppCompatActivity
             if(resultCode == RESULT_OK) {
                 if(data != null) {
                     ArrayList<Counter> extractedData = data.getParcelableArrayListExtra("counters");
-                    Counter stitchCounter = extractedData.get(0);
-                    Counter rowCounter = null;
-                    if (extractedData.size() > 1) {
-                        rowCounter = extractedData.get(1);
-                    }
-                    WriteToDb writeToDb = new WriteToDb(this.context);
-                    if (stitchCounter != null && rowCounter != null) {
-                        writeToDb.execute(stitchCounter, rowCounter);
-                    } else if (stitchCounter != null) {
-                        writeToDb.execute(stitchCounter);
-                    }
-                    setUpAdapter();
-                    getSupportLoaderManager().restartLoader(0, null, this);
+                    saveCounter(extractedData);
                 }
 
             }

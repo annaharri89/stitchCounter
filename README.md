@@ -1,28 +1,43 @@
-/*TODO: Update README */
 
 
+TODO: feature/settings
 /* TODO Create a Settings Activity */
 /* TODO: Create an About Activity in the Settings Activity*/
 
 
+TODO: feature/reset-alert
 /* TODO set up alert that asks user if they're sure they want to reset the counter */
 
 
+TODO: hotfix/text-input
 /* TODO remove cursor from edittext after input */
 /* TODO: keyboard pops open after new project is created on large devices. look into removing focus from project name edittext*/
     
-    
-/* TODO think about implementing a favorites list*/
+ 
+ /* TODO fix issue: app crashes when you try to start a double counter without putting total rows */
+
+
 /*TODO: remove references of stitchCounterMenu from MainActivity.*/
+
+
 /* TODO: implement flag for if a counter has been saved (to prevent saving more than needed)*/
+
+
 /* TODO: vertically align doubleCounterActivity landscape template for small screens */
-    /* TODO: Remove unneeded import statements throughout the app */
-    /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS */
-    /* TODO: LOOK INTO LOAD BALANCERS */
-    /* TODO: implement add image(s) to counter project */
+    
+   /*TODO: Update README */
+   /*TODO Provide thorough documentation throughout app*/
+   /* TODO: Remove unneeded import statements throughout the app */
+    /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS (Lots in library, readFromDb is unneeded, stitchCounterMenu will be unneeded)*/
+    
+    
+   /* TODO: LOOK INTO LOAD BALANCERS */
+    
+    
+   /* TODO: implement add image(s) to counter project */
     /* TODO: Implement share project to facebook, twitter, etc. */
-    /*TODO Provide thorough documentation throughout app*/
-    /* TODO fix issue: app crashes when you try to start a double counter without putting total rows */
+    /* TODO think about implementing a favorites list*/
+    
 
 ## Acknowledgements ##
 Francesco Azzola

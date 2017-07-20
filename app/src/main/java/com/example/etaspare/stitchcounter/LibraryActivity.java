@@ -39,7 +39,7 @@ public class LibraryActivity extends AppCompatActivity
     private Button cancelMany;
     private Context context = this;
     protected CounterAdapter mAdapter;
-    private ListView mListView; //TODO look into converting to local variable
+    private ListView mListView;
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
     private Boolean deleteManyMode = false;

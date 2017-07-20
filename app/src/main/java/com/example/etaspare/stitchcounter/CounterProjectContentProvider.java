@@ -12,7 +12,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 /* A custom Content Provider to do the database operations */
-public class CounterProject extends ContentProvider{
+public class CounterProjectContentProvider extends ContentProvider{
 
     public static final String PROVIDER_NAME = "com.example.etaspare.stitchcounter.counterProject";
 

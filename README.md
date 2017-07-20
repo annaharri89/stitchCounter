@@ -5,10 +5,6 @@ TODO: feature/settings
 /* TODO: Create an About Activity in the Settings Activity*/
 
 
-TODO: feature/reset-alert
-/* TODO set up alert that asks user if they're sure they want to reset the counter */
-
-
 TODO: hotfix/text-input
 /* TODO remove cursor from edittext after input */
 /* TODO: keyboard pops open after new project is created on large devices. look into removing focus from project name edittext*/

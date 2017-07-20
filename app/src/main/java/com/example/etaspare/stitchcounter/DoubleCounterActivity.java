@@ -262,93 +262,68 @@ public class DoubleCounterActivity extends AppCompatActivity {
         */
         Bundle extras = getIntent().getExtras();
         if (savedInstanceState != null) {
-            int _id = savedInstanceState.getInt("_id");
-            String name = savedInstanceState.getString("name");
-            int stitch_counter_number = savedInstanceState.getInt("stitch_counter_number");
-            int stitch_adjustment = savedInstanceState.getInt("stitch_adjustment");
-            int row_counter_number = savedInstanceState.getInt("row_counter_number");
-            int row_adjustment = savedInstanceState.getInt("row_adjustment");
-            int total_rows = savedInstanceState.getInt("total_rows");
-
-            if (_id > 0) {
-                stitchCounter.ID = _id;
-            }
-            if (name != null && name.length() > 0) {
-                rowCounter.setProjectName(name);
-                textProjectName.setText(name);
-            }
-            if (stitch_adjustment > 0) { //TODO Will this work if bundle is not sent
-                stitchCounter.changeAdjustment(stitch_adjustment);
-            } else {
-                /* Sets default colors for adjustment buttons */
-                stitchCounter.changeAdjustment(1);
-            }
-            if (row_adjustment > 0) {
-                rowCounter.changeAdjustment(row_adjustment);
-            } else {
-                /* Sets default colors for adjustment buttons */
-                rowCounter.changeAdjustment(1);
-            }
-            if (stitch_counter_number > 0) {
-                stitchCounter.counterNumber = stitch_counter_number;
-                stitchCounter.setCounter();
-            }
-            if (row_counter_number > 0) {
-                rowCounter.counterNumber = row_counter_number;
-                rowCounter.setCounter();
-            }
-            if (total_rows > 0) {
-                rowCounter.setProgressBarMax(total_rows);
-                rowCounter.totalRows = total_rows;
-                totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
-            }
+            parseData(savedInstanceState, textProjectName, totalRows, textProgress);
         } else if (extras != null) {
-            int _id = extras.getInt("_id");
-            String name = extras.getString("name");
-            int stitch_counter_number = extras.getInt("stitch_counter_number");
-            int stitch_adjustment = extras.getInt("stitch_adjustment");
-            int row_counter_number = extras.getInt("row_counter_number");
-            int row_adjustment = extras.getInt("row_adjustment");
-            int total_rows = extras.getInt("total_rows");
-
-            if (_id > 0) {
-                stitchCounter.ID = _id;
-            }
-            if (name != null && name.length() > 0) {
-                rowCounter.setProjectName(name);
-                textProjectName.setText(name);
-            }
-            if (stitch_adjustment > 0) {
-                stitchCounter.changeAdjustment(stitch_adjustment);
-            } else {
-                /* Sets default colors for adjustment buttons */
-                stitchCounter.changeAdjustment(1);
-            }
-            if (row_adjustment > 0) {
-                rowCounter.changeAdjustment(row_adjustment);
-            } else {
-                /* Sets default colors for adjustment buttons */
-                rowCounter.changeAdjustment(1);
-            }
-            if (stitch_counter_number > 0) {
-                stitchCounter.counterNumber = stitch_counter_number;
-                stitchCounter.setCounter();
-            }
-            if (row_counter_number > 0) {
-                rowCounter.counterNumber = row_counter_number;
-                rowCounter.setCounter();
-            }
-            if (total_rows > 0) {
-                rowCounter.setProgressBarMax(total_rows);
-                rowCounter.totalRows = total_rows;
-                totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
-            }
+            parseData(extras, textProjectName, totalRows, textProgress);
         }
 
         /* Save Counter project to DB if counter project doesn't already exist in the db*/
         if (stitchCounter.ID == 0) {
             stitchCounter.saveCounter(stitchCounter, rowCounter);
         }
+    }
+
+    /*
+    Gets all pertinent counter data from the passed bundle and updates the counters and the UI
+    where needed.
+    */
+    protected void parseData(Bundle bundle, TextView projectName, TextView totalRows, TextView progress) {
+        Resources res = this.getResources();
+        int _id = bundle.getInt("_id");
+        String name = bundle.getString("name");
+        int stitch_counter_number = bundle.getInt("stitch_counter_number");
+        int stitch_adjustment = bundle.getInt("stitch_adjustment");
+        int row_counter_number = bundle.getInt("row_counter_number");
+        int row_adjustment = bundle.getInt("row_adjustment");
+        int total_rows = bundle.getInt("total_rows");
+
+        if (_id > 0) {
+            stitchCounter.ID = _id;
+        }
+        if (name != null && name.length() > 0) {
+            rowCounter.setProjectName(name);
+            projectName.setText(name);
+        }
+        if (stitch_adjustment > 0) {
+            stitchCounter.changeAdjustment(stitch_adjustment);
+        } else {
+            /* Sets default colors for adjustment buttons */
+            stitchCounter.changeAdjustment(1);
+        }
+        if (row_adjustment > 0) {
+            rowCounter.changeAdjustment(row_adjustment);
+        } else {
+            /* Sets default colors for adjustment buttons */
+            rowCounter.changeAdjustment(1);
+        }
+        if (stitch_counter_number > 0) {
+            stitchCounter.counterNumber = stitch_counter_number;
+            stitchCounter.setCounter();
+        }
+        if (row_counter_number > 0) {
+            rowCounter.counterNumber = row_counter_number;
+            rowCounter.setCounter();
+        }
+        if (total_rows > 0) {
+            rowCounter.setProgressBarMax(total_rows);
+            rowCounter.totalRows = total_rows;
+            totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
+        } else {
+            /* Sets default progress percent */
+            String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
+            progress.setText(formattedProgressNumber);
+        }
+
     }
 
     /*

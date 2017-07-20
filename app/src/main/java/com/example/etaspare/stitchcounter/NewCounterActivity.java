@@ -61,11 +61,14 @@ public class NewCounterActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     dismissKeyboard();
-                    String name = textProjectNameDouble.getText().toString();
-                    int total_rows = Integer.parseInt(totalRows.getText().toString());
                     Intent intent = new Intent(v.getContext(), DoubleCounterActivity.class);
+                    String name = textProjectNameDouble.getText().toString();
                     intent.putExtra("name", name);
-                    intent.putExtra("total_rows", total_rows);
+
+                    if (totalRows.getText().toString().length() > 0) {
+                        int total_rows = Integer.parseInt(totalRows.getText().toString());
+                        intent.putExtra("total_rows", total_rows);
+                    }
                     startActivity(intent);
                 }
             });

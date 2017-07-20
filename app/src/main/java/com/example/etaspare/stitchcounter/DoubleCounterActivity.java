@@ -260,6 +260,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
           loaded from the library) and extras is not null, gets all pertinent counter data from
           extras bundle and updates the counters and the UI where needed.
         */
+        Resources res = this.getResources();
         Bundle extras = getIntent().getExtras();
         if (savedInstanceState != null) {
             int _id = savedInstanceState.getInt("_id");
@@ -301,6 +302,10 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 rowCounter.setProgressBarMax(total_rows);
                 rowCounter.totalRows = total_rows;
                 totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
+            } else {
+                /* Sets default progress percent */
+                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
+                textProgress.setText(formattedProgressNumber);
             }
         } else if (extras != null) {
             int _id = extras.getInt("_id");
@@ -342,6 +347,10 @@ public class DoubleCounterActivity extends AppCompatActivity {
                 rowCounter.setProgressBarMax(total_rows);
                 rowCounter.totalRows = total_rows;
                 totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
+            } else {
+                /* Sets default progress percent */
+                String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
+                textProgress.setText(formattedProgressNumber);
             }
         }
 

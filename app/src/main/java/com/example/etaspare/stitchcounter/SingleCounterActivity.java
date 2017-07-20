@@ -167,53 +167,43 @@ public class SingleCounterActivity extends AppCompatActivity {
         */
         Bundle extras = getIntent().getExtras();
         if (savedInstanceState != null) {
-            int _id = savedInstanceState.getInt("_id");
-            String name = savedInstanceState.getString("name");
-            int stitch_counter_number = savedInstanceState.getInt("stitch_counter_number");
-            int stitch_adjustment = savedInstanceState.getInt("stitch_adjustment");
-
-            if (_id > 0) {
-                counter.ID = _id;
-            }
-            if (name != null && name.length() > 0) {
-                counter.setProjectName(name);
-                textProjectName.setText(name);
-            }
-            if (stitch_adjustment > 0) {
-                counter.changeAdjustment(stitch_adjustment);
-            }
-            if (stitch_counter_number > 0) {
-                counter.counterNumber = stitch_counter_number;
-                counter.setCounter();
-            }
+            parseData(savedInstanceState, textProjectName);
         } else if (extras != null) {
-            int _id = extras.getInt("_id");
-            String name = extras.getString("name");
-            int stitch_counter_number = extras.getInt("stitch_counter_number");
-            int stitch_adjustment = extras.getInt("stitch_adjustment");
-
-            if (_id > 0) {
-                counter.ID = _id;
-            }
-            if (name != null && name.length() > 0) {
-                counter.setProjectName(name);
-                textProjectName.setText(name);
-            }
-            if (stitch_adjustment > 0) { //TODO Will this work if bundle is not sent
-                counter.changeAdjustment(stitch_adjustment);
-            } else {
-                /* Sets default colors for adjustment buttons */
-                counter.changeAdjustment(1);
-            }
-            if (stitch_counter_number > 0) {
-                counter.counterNumber = stitch_counter_number;
-                counter.setCounter();
-            }
+            parseData(extras, textProjectName);
         }
 
         /* Save Counter project to DB if counter project doesn't already exist in the db*/
         if (counter.ID == 0) {
             counter.saveCounter(counter, null);
+        }
+    }
+
+    /*
+    Gets all pertinent counter data from the passed bundle and updates the counters and the UI
+    where needed.
+    */
+    protected void parseData(Bundle bundle, TextView projectName) {
+        int _id = bundle.getInt("_id");
+        String name = bundle.getString("name");
+        int stitch_counter_number = bundle.getInt("stitch_counter_number");
+        int stitch_adjustment = bundle.getInt("stitch_adjustment");
+
+        if (_id > 0) {
+            counter.ID = _id;
+        }
+        if (name != null && name.length() > 0) {
+            counter.setProjectName(name);
+            projectName.setText(name);
+        }
+        if (stitch_adjustment > 0) {
+            counter.changeAdjustment(stitch_adjustment);
+        } else {
+            /* Sets default colors for adjustment buttons */
+            counter.changeAdjustment(1);
+        }
+        if (stitch_counter_number > 0) {
+            counter.counterNumber = stitch_counter_number;
+            counter.setCounter();
         }
     }
 

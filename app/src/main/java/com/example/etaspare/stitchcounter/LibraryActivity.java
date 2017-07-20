@@ -34,7 +34,6 @@ import java.util.ArrayList;
 public class LibraryActivity extends AppCompatActivity
         implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    /* TODO implement helpmode for different sized devices */
 /* TODO: have a textview that says "You have no saved projects" when there are no saved projects */
 
     private Button deleteSingle;
@@ -45,13 +44,10 @@ public class LibraryActivity extends AppCompatActivity
     private ListView mListView; //TODO look into converting to local variable
     private Cursor tempCursor;
     private ArrayList<String> deleteManyArray = new ArrayList<>();
-    protected Boolean deleteManyMode = false;
-    ConstraintLayout layout;
-    Boolean helpMode = false;
-    ArrayList<View> helpModeArray;
-    TextView help1;
-    TextView help2;
-    View tip1;
+    private Boolean deleteManyMode = false;
+    private ConstraintLayout layout;
+    private Boolean helpMode = false;
+    private ArrayList<View> helpModeArray;
 
     /*
     Defines a projection that specifies which columns from the database will actually
@@ -118,9 +114,9 @@ public class LibraryActivity extends AppCompatActivity
 
         /* Help Mode Setup*/
         layout = (ConstraintLayout) findViewById(R.id.layout);
-        help1 = (TextView) findViewById(R.id.help_library_activity_1);
-        help2 = (TextView) findViewById(R.id.help_library_activity_2);
-        tip1 = findViewById(R.id.help_library_activity_1_tip);
+        TextView help1 = (TextView) findViewById(R.id.help_library_activity_1);
+        TextView help2 = (TextView) findViewById(R.id.help_library_activity_2);
+        View tip1 = findViewById(R.id.help_library_activity_1_tip);
         helpModeArray = new ArrayList<>();
         helpModeArray.add(help1);
         helpModeArray.add(help2);
@@ -141,7 +137,9 @@ public class LibraryActivity extends AppCompatActivity
         cancelMany = (Button) findViewById(R.id.cancel_many);
 
         /* TODO: Document*/
+        TextView noSavedProjects = (TextView) findViewById(R.id.empty_list_view);
         mListView = (ListView) findViewById(R.id.list);
+        mListView.setEmptyView(noSavedProjects);
         setUpAdapter();
 
         /* Creating a loader for populating listview from sqlite database */

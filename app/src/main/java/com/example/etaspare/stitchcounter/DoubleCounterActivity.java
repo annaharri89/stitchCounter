@@ -154,7 +154,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         buttonResetStitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stitchCounter.resetCounter();
+                stitchCounter.resetCounterCheck("stitch counter");
             }
         });
         buttonCapsuleTopStitch.setOnClickListener(new View.OnClickListener() {
@@ -205,7 +205,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         buttonResetRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rowCounter.resetCounter();
+                rowCounter.resetCounterCheck("row counter");
             }
         });
         buttonCapsuleTopRow.setOnClickListener(new View.OnClickListener() {

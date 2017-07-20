@@ -135,7 +135,7 @@ public class SingleCounterActivity extends AppCompatActivity {
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
-                counter.resetCounter();
+                counter.resetCounterCheck("counter");
             }
         });
         buttonCapsuleLeft.setOnClickListener(new View.OnClickListener() {

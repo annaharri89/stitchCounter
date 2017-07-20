@@ -203,7 +203,8 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-    TODO Document
+    Creates a dialog that asks the user if they're sure they want to reset the counter and either
+    resets the counter or does nothing, depending on if the user presses yes or no.
     */
     public void resetCounterCheck(String counterType) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
@@ -214,12 +215,13 @@ public class Counter extends AppCompatActivity implements Parcelable {
                         resetCounter();
                     }
                 })
-                .setNegativeButton(R.string.button_cancel, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the dialog
                     }
                 });
         AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /*

@@ -46,9 +46,6 @@ public class Counter extends AppCompatActivity implements Parcelable {
     private Resources res;
     private Context context;
 
-    //TODO: feature/reset-alert
-/* TODO set up alert that asks user if they're sure they want to reset the counter */
-
     /* Defines the kind of object that will be parcelled */
     @Override
     public int describeContents() {
@@ -220,8 +217,13 @@ public class Counter extends AppCompatActivity implements Parcelable {
                         // User cancelled the dialog
                     }
                 });
+
         AlertDialog dialog = builder.create();
         dialog.show();
+        TextView dialogTextView = (TextView) dialog.findViewById(android.R.id.message);
+        if (dialogTextView != null) {
+            dialogTextView.setTextSize(20);
+        }
     }
 
     /*

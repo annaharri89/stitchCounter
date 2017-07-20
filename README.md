@@ -30,6 +30,9 @@ TODO: hotfix/text-input
    /* TODO: LOOK INTO LOAD BALANCERS */
     
     
+   /* Look into if strResProgress is needed in Counter */
+    
+    
    /* TODO: implement add image(s) to counter project */
     /* TODO: Implement share project to facebook, twitter, etc. */
     /* TODO think about implementing a favorites list*/

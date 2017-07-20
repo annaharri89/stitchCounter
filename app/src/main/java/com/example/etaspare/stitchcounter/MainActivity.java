@@ -16,13 +16,8 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
-    Boolean helpMode = false;
-    ConstraintLayout layout;
-    ArrayList<View> helpModeArray;
-    TextView help1;
-    TextView help2;
-    View tip1;
-    View tip2;
+    private Boolean helpMode = false;
+    private ArrayList<View> helpModeArray;;
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu) { //TODO Why can't this be implemented in StitchCounterMenu.java ?
@@ -50,19 +45,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         /* Help Mode Setup*/
+        TextView help1 = (TextView) findViewById(R.id.help_main_activity_1);
+        TextView help2 = (TextView) findViewById(R.id.help_main_activity_2);
+        View tip1 = findViewById(R.id.help_main_activity_1_tip);
+        View tip2 = findViewById(R.id.help_main_activity_2_tip);
         helpModeArray = new ArrayList<>();
-        int id = R.id.help_main_activity_1;
-        help1 = (TextView) findViewById(R.id.help_main_activity_1);
-        help2 = (TextView) findViewById(R.id.help_main_activity_2);
-        tip1 = findViewById(R.id.help_main_activity_1_tip);
-        tip2 = findViewById(R.id.help_main_activity_2_tip);
         helpModeArray.add(help1);
         helpModeArray.add(help2);
         helpModeArray.add(tip1);
         helpModeArray.add(tip2);
 
         /* Closes Help Mode, hides the annotation bubbles */
-        layout = (ConstraintLayout) findViewById(R.id.layout);
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.layout);
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

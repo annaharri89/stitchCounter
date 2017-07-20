@@ -8,10 +8,11 @@
     <string name="action_settings">Settings</string>
     <string name="action_single_counter_btn">New Single Counter</string>
     <string name="action_double_counter_btn">New Double Counter</string>
-    <string name="button_ok">Ok</string>
+    <string name="button_ok">OK</string>
     <string name="button_cancel">Cancel</string>
     <string name="button_delete">Delete</string>
-    <string name="counter_save_btn">Save</string>
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
     <string name="counter_project_name_hint">Name your project</string>
     <string name="counter_number_basic">%1$d</string>
     <string name="counter_number_stitch">%1$d</string>
@@ -27,6 +28,7 @@
     <string name="counter_stitch_header">Stitch Counter</string>
     <string name="counter_row_header">Row Counter</string>
     <string name="counter_progress">Progress %1$s %%</string>
+    <string name="dialog_reset_message">Are you sure you want to reset the %1$s?</string>
     <string name="help_main_activity_1">
         Tap here to open a new single counter. Use for quick projects that you don\'t need to track
         the progress of.

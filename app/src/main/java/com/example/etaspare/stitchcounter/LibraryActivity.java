@@ -429,7 +429,7 @@ public class LibraryActivity extends AppCompatActivity
     /* A callback method invoked by the loader when initLoader() is called */
     @Override
     public Loader<Cursor> onCreateLoader(int arg0, Bundle arg1) {
-        Uri uri = CounterProject.CONTENT_URI;
+        Uri uri = CounterProjectContentProvider.CONTENT_URI;
         return new CursorLoader(this, uri, PROJECTION, null, null, SORTORDER);
     }
 

@@ -1,6 +1,7 @@
 package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -8,6 +9,7 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -195,6 +197,33 @@ public class Counter extends AppCompatActivity implements Parcelable {
         setCounter();
         setProgress();
         /* TODO set up alert that asks user if they're sure they want to reset the counter */
+    }
+
+    /*
+    Creates a dialog that asks the user if they're sure they want to reset the counter and either
+    resets the counter or does nothing, depending on if the user presses yes or no.
+    */
+    public void resetCounterCheck(String counterType) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+        String formattedDialogMessage = String.format(res.getString(R.string.dialog_reset_message), counterType);
+        builder.setMessage(formattedDialogMessage)
+                .setPositiveButton(R.string.button_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        resetCounter();
+                    }
+                })
+                .setNegativeButton(R.string.button_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User cancelled the dialog
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        TextView dialogTextView = (TextView) dialog.findViewById(android.R.id.message);
+        if (dialogTextView != null) {
+            dialogTextView.setTextSize(20);
+        }
     }
 
     /*

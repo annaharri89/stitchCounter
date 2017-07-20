@@ -21,16 +21,8 @@ import java.util.ArrayList;
 public class SingleCounterActivity extends AppCompatActivity {
 
     private Counter counter;
-    ConstraintLayout layout;
-    Boolean helpMode = false;
-    ArrayList<View> helpModeArray;
-    TextView help1;
-    TextView help2;
-    TextView help3;
-    TextView help4;
-    View tip1;
-    View tip2;
-    View tip4;
+    private Boolean helpMode = false;
+    private ArrayList<View> helpModeArray;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,13 +59,13 @@ public class SingleCounterActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         /* Help Mode Setup*/
-        help1 = (TextView) findViewById(R.id.help_single_counter_activity_1);
-        help2 = (TextView) findViewById(R.id.help_single_counter_activity_2);
-        help3 = (TextView) findViewById(R.id.help_single_counter_activity_3);
-        help4 = (TextView) findViewById(R.id.help_single_counter_activity_4);
-        tip1 = findViewById(R.id.help_single_counter_activity_1_tip);
-        tip2 = findViewById(R.id.help_single_counter_activity_2_tip);
-        tip4 = findViewById(R.id.help_single_counter_activity_4_tip);
+        TextView help1 = (TextView) findViewById(R.id.help_single_counter_activity_1);
+        TextView help2 = (TextView) findViewById(R.id.help_single_counter_activity_2);
+        TextView help3 = (TextView) findViewById(R.id.help_single_counter_activity_3);
+        TextView help4 = (TextView) findViewById(R.id.help_single_counter_activity_4);
+        View tip1 = findViewById(R.id.help_single_counter_activity_1_tip);
+        View tip2 = findViewById(R.id.help_single_counter_activity_2_tip);
+        View tip4 = findViewById(R.id.help_single_counter_activity_4_tip);
         helpModeArray = new ArrayList<>();
         helpModeArray.add(help1);
         helpModeArray.add(help2);
@@ -84,7 +76,7 @@ public class SingleCounterActivity extends AppCompatActivity {
         helpModeArray.add(tip4);
 
         /* Closes Help Mode, hides the annotation bubbles */
-        layout = (ConstraintLayout) findViewById(R.id.layout);
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.layout);
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

@@ -158,7 +158,15 @@ public class LibraryActivity extends AppCompatActivity
             saveCounter(extractedData);
         }
 
-        /* Closes Help Mode, hides the annotation bubbles */
+        /* Closes Help Mode when listview is empty, hides the annotation bubbles */
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                closeHelpMode();
+                return false;
+            }
+        });
+        /* Closes Help Mode when listview has list items, hides the annotation bubbles */
         mListView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

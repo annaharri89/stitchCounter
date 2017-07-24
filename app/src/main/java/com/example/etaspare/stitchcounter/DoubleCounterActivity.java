@@ -352,8 +352,8 @@ public class DoubleCounterActivity extends AppCompatActivity {
     }
 
     /*
-    Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
-    visible, showing the annotation bubbles.
+    Opens "help mode" Called when help button is clicked in the action bar.
+    Shows the annotation bubbles
     */
     public void openHelpMode() {
         if (!helpMode) {

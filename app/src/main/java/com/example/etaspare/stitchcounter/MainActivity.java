@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<View> helpModeArray;;
 
     @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu) { //TODO Why can't this be implemented in StitchCounterMenu.java ?
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         menu.findItem(R.id.action_delete).setVisible(false);
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-    Opens "help mode" Called when help button is clicked in the action bar. Shows appropriate tooltips.
-    Sets onclicklistener to dismiss the help bubbles.
+    Opens "help mode" Called when help button is clicked in the action bar.
+    Shows annotation bubbles.
     */
     public void openHelpMode() {
         if (!helpMode) {

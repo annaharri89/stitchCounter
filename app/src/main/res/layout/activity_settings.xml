@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.example.etaspare.stitchcounter.SettingsActivity">
 
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/toolbar" />
+
 </android.support.constraint.ConstraintLayout>

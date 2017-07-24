@@ -41,7 +41,8 @@ public class ThemesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-        /*TODO REMOVE
+
+        /* TODO REMOVE
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,16 +51,18 @@ public class ThemesActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         */
+        //Creates a back button that takes user back to settings.
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         /* Setup ListView */
         mListView = (ListView) findViewById(R.id.list);
 
         ArrayList<Theme> themesList = new ArrayList<>();
-        Theme _default = new Theme(this, "Default", R.color.colorPrimary, R.color.colorPrimaryDark, R.color.colorAccent);
-        Theme robinsEggBlue = new Theme(this, "Robins Egg Blue", Color.parseColor("#FC234D"), Color.parseColor("#23FD32"), Color.parseColor("#FFFFFF"));
-        Theme cottonCandy = new Theme (this, "Cotton Candy", Color.parseColor("#FF80AB"), Color.parseColor("#FF4081"), Color.parseColor("#42A5F5"));
+        Theme _default = new Theme("Default", Color.parseColor("#3F51B5"), Color.parseColor("#303F9F"), Color.parseColor("#FF4081"));
+        Theme robinsEggBlue = new Theme("Robins Egg Blue", Color.parseColor("#FC234D"), Color.parseColor("#23FD32"), Color.parseColor("#FFFFFF"));
+        Theme cottonCandy = new Theme ("Cotton Candy", Color.parseColor("#FF80AB"), Color.parseColor("#FF4081"), Color.parseColor("#42A5F5"));
 
         themesList.add(_default);
         themesList.add(robinsEggBlue);
@@ -77,15 +80,13 @@ public class ThemesActivity extends AppCompatActivity {
 
     /* TODO DOCUMENT */
     public class Theme {
-        private final Context context;
         private final String title;
         private final int color1;
         private final int color2;
         private final int color3;
 
         /* TODO DOCUMENT CONSTRUCTOR */
-        public Theme(Context context, String title, int color1, int color2, int color3) {
-            this.context = context;
+        public Theme(String title, int color1, int color2, int color3) {
             this.title = title;
             this.color1 = color1;
             this.color2 = color2;

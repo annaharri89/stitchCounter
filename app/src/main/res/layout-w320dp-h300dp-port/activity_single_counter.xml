@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/counter_project_name_hint"
+        android:cursorVisible="false"
         android:inputType="textCapWords"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"

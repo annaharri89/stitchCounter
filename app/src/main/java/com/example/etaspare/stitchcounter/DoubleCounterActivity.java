@@ -151,6 +151,8 @@ public class DoubleCounterActivity extends AppCompatActivity {
                     if (projectName.length() > 0) {
                         rowCounter.setProjectName(projectName);
                     }
+                    //Sets textProjectName's cursor invisible
+                    textProjectName.setCursorVisible(false);
                     //Sets totalRows' cursor visible and places the cursor at the end of totalRows' text
                     totalRows.setCursorVisible(true);
                     totalRows.setSelection(totalRows.getText().length());

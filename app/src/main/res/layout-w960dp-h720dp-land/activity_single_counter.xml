@@ -19,6 +19,7 @@
         android:hint="@string/counter_project_name_hint"
         android:inputType="textCapWords"
         android:textAppearance="@style/TextAppearance.AppCompat.Large.Inverse"
+        android:cursorVisible="false"
         app:layout_constraintBottom_toTopOf="@+id/text_adjust_by"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

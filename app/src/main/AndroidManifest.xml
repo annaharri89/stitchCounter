@@ -32,7 +32,16 @@
             android:authorities="com.example.etaspare.stitchcounter.counterProject"
             android:exported="false" />
         <!-- TODO put minimum targetable api sdk: 21.0 -->
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name=".ThemesActivity"
+            android:label="@string/title_activity_themes"
+            android:parentActivityName=".SettingsActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.etaspare.stitchcounter.SettingsActivity" />
+        </activity>
     </application>
 
 </manifest>

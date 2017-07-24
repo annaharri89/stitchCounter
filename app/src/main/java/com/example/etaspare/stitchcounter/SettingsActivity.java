@@ -7,26 +7,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.SimpleExpandableListAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
 
     //TODO implement help mode
-    private ExpandableListView mListView;
-    private ExpandableListAdapter mAdapter;
-
-    private static final String NAME = "NAME";
-    private static final String COLOR = "COLOR";
-    private String group[] = {"Themes" , "About"};
-    private String[][] child = { { "Default", "Robins Egg Blue", "Pink" }, { "Alice", "David" } };
+    private ListView mListView;
+    private ArrayAdapter<String> mAdapter;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,36 +60,33 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         /* Setup ListView */
-        mListView = (ExpandableListView) findViewById(R.id.list);
+        mListView = (ListView) findViewById(R.id.list);
 
-        List<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
-        List<List<Map<String, String>>> childData = new ArrayList<List<Map<String, String>>>();
-        for (int i = 0; i < group.length; i++) {
-            Map<String, String> curGroupMap = new HashMap<String, String>();
-            groupData.add(curGroupMap);
-            curGroupMap.put(NAME, group[i]);
+        List<String> settingsList = new ArrayList<>();
+        settingsList.add("Themes");
+        settingsList.add("About");
 
-            List<Map<String, String>> children = new ArrayList<Map<String, String>>();
-            for (int j = 0; j < child[i].length; j++) {
-                Map<String, String> curChildMap = new HashMap<String, String>();
-                children.add(curChildMap);
-                curChildMap.put(COLOR, child[i][j]);
-            }
-            childData.add(children);
-        }
-
-        // Set up our adapter
-        mAdapter = new SimpleExpandableListAdapter(
+        mAdapter = new ArrayAdapter<String>(
                 this,
-                groupData,
-                android.R.layout.simple_expandable_list_item_1,
-                new String[] { NAME },
-                new int[] { android.R.id.text1 },
-                childData,
-                android.R.layout.simple_expandable_list_item_2,
-                new String[] { COLOR },
-                new int[] { android.R.id.text1 });
+                android.R.layout.simple_list_item_1,
+                settingsList) {
+        };
+
         mListView.setAdapter(mAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    Intent intent = new Intent(getBaseContext(), ThemesActivity.class);
+                    startActivity(intent);
+                } else {
+                    //TODO CREATE ABOUTACTIVITY
+                }
+            }
+        });
+
+
     }
 
     /* Called when the user taps the "+" button (new counter) in the toolbar */

@@ -61,12 +61,12 @@ public class ThemesActivity extends AppCompatActivity {
 
         ArrayList<Theme> themesList = new ArrayList<>();
         Theme _default = new Theme("Default", Color.parseColor("#3F51B5"), Color.parseColor("#303F9F"), Color.parseColor("#FF4081"));
-        Theme robinsEggBlue = new Theme("Robins Egg Blue", Color.parseColor("#FC234D"), Color.parseColor("#23FD32"), Color.parseColor("#FFFFFF"));
-        Theme cottonCandy = new Theme ("Cotton Candy", Color.parseColor("#FF80AB"), Color.parseColor("#FF4081"), Color.parseColor("#42A5F5"));
+        Theme cottonCandy = new Theme ("Cotton Candy", Color.parseColor("#F48FB1"), Color.parseColor("#F06292"), Color.parseColor("#CE93D8"));
+        Theme robinsEggBlue = new Theme("Robins Egg Blue", Color.parseColor("#18FFFF"), Color.parseColor("#00E5FF"), Color.parseColor("#FFD740"));
 
         themesList.add(_default);
-        themesList.add(robinsEggBlue);
         themesList.add(cottonCandy);
+        themesList.add(robinsEggBlue);
 
         mAdapter = new ThemeAdapter(
                 this,
@@ -78,14 +78,14 @@ public class ThemesActivity extends AppCompatActivity {
 
     }
 
-    /* TODO DOCUMENT */
+    /* A theme is made up of a title and three colors. */
     public class Theme {
         private final String title;
         private final int color1;
         private final int color2;
         private final int color3;
 
-        /* TODO DOCUMENT CONSTRUCTOR */
+        /* Theme Constructor */
         public Theme(String title, int color1, int color2, int color3) {
             this.title = title;
             this.color1 = color1;
@@ -95,7 +95,7 @@ public class ThemesActivity extends AppCompatActivity {
 
     }
 
-    /* TODO DOCUMENT */
+    /* Theme adapter allows the theme titles and colors to be displayed. */
     public class ThemeAdapter extends ArrayAdapter<Theme> {
         private final Context context;
         private final ArrayList<Theme> data;

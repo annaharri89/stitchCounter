@@ -477,6 +477,7 @@ public class LibraryActivity extends AppCompatActivity
         super.onDestroy();
     }
 
+    /* TODO Document */
     public class CounterAdapter extends SimpleCursorAdapter {
 
         Context mContext;

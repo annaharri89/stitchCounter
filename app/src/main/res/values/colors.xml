@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default Colors -->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Cotton Candy Colors -->
+    <color name="colorPrimary2">#F48FB1</color>
+    <color name="colorPrimaryDark2">#F06292</color>
+    <color name="colorAccent2">#CE93D8</color>
+
+    <!-- Robins Egg Blue Colors -->
+    <color name="colorPrimary3">#18FFFF</color>
+    <color name="colorPrimaryDark3">#00E5FF</color>
+    <color name="colorAccent3">#FFD740</color>
+
 </resources>

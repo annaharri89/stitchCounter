@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Selection;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -93,7 +94,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         helpModeArray.add(tip6);
 
         /* Closes Help Mode, hides the annotation bubbles */
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.layout);
+        final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.layout);
         layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -109,7 +110,34 @@ public class DoubleCounterActivity extends AppCompatActivity {
             }
         });
 
-        /* Project Name Listener*/
+        /* Progress Listener, updates the counter's progress bar */
+        final EditText totalRows = (EditText) findViewById(R.id.text_total_rows_input);
+        totalRows.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            /*
+
+            */
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                String totalRowsValueString;
+                int totalRowsValueInt;
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    totalRowsValueString = totalRows.getText().toString();
+                    if (totalRowsValueString.length() > 0) {
+                        totalRowsValueInt = Integer.parseInt(totalRowsValueString);
+                    } else {
+                        totalRowsValueInt = 0;
+                    }
+                    if (totalRowsValueInt > 0) {
+                        rowCounter.setProgressBarMax(totalRowsValueInt);
+                    }
+                    //Sets totalRows' cursor invisible
+                    totalRows.setCursorVisible(false);
+                }
+                return false;
+            }
+        });
+
+        /* Project Name Listener, updates the project name in the counter */
         final EditText textProjectName = (EditText) findViewById(R.id.text_project_name_2);
         textProjectName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             /*
@@ -123,8 +151,29 @@ public class DoubleCounterActivity extends AppCompatActivity {
                     if (projectName.length() > 0) {
                         rowCounter.setProjectName(projectName);
                     }
+                    //Sets totalRows' cursor visible and places the cursor at the end of totalRows' text
+                    totalRows.setCursorVisible(true);
+                    totalRows.setSelection(totalRows.getText().length());
                 }
-                return false;/* TODO Why does the documentation return true */
+                return false;
+            }
+        });
+
+        /* Sets the projectName's cursor visible */
+        textProjectName.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                textProjectName.setCursorVisible(true);
+                return false;
+            }
+        });
+
+        /* Sets the totalRows' cursor visible */
+        totalRows.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                totalRows.setCursorVisible(true);
+                return false;
             }
         });
 
@@ -176,7 +225,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
             }
         });
 
-
         /* Row Counter */
         final TextView textCounterRow = (TextView) findViewById(R.id.text_counter_row);
         final TextView textProgress = (TextView) findViewById(R.id.text_counter_progress);
@@ -224,31 +272,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rowCounter.changeAdjustment(10);
-            }
-        });
-
-        /* Progress Listener*/
-        final EditText totalRows = (EditText) findViewById(R.id.text_total_rows_input);
-        totalRows.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            /*
-
-            */
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                String totalRowsValueString;
-                int totalRowsValueInt;
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    totalRowsValueString = totalRows.getText().toString();
-                    if (totalRowsValueString.length() > 0) {
-                        totalRowsValueInt = Integer.parseInt(totalRowsValueString);
-                    } else {
-                        totalRowsValueInt = 0;
-                    }
-                    if (totalRowsValueInt > 0) {
-                        rowCounter.setProgressBarMax(totalRowsValueInt);
-                    }
-                }
-                return false;/* TODO Why does the documentation return true */
             }
         });
 

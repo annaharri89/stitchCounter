@@ -4,19 +4,27 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class NewCounterActivity extends AppCompatActivity {
 
-    //TODO: LOOK INTO CONVERTING THIS ACTIVITY INTO AN ACTUAL DIALOG
-    //TODO: put border or maybe rounded corners on dialog box
-    //TODO: look into issue: when leaving the activity by tapping the greyed out area (going to the main activity) the keyboard remains open
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Prevents outside clicks to dismiss the dialog
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL, WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH, WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
+
+        /*
+        Sets dialog content based on whether single or double counter
+        was tapped in main activity.
+        */
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String value = extras.getString("Layout");
@@ -40,7 +48,7 @@ public class NewCounterActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     dismissKeyboard();
-                    String name = textProjectNameSingle.getText().toString(); //TODO put in logic to handle if text is not entered
+                    String name = textProjectNameSingle.getText().toString();
                     Intent intent = new Intent(v.getContext(), SingleCounterActivity.class);
                     intent.putExtra("name", name);
                     startActivity(intent);
@@ -93,7 +101,7 @@ public class NewCounterActivity extends AppCompatActivity {
     /* Dismiss Dialog */
     public void dismissDialog (View view) {
         dismissKeyboard();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
+

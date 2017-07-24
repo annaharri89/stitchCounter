@@ -16,10 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingleCounterActivity" />
-        <activity android:name=".DoubleCounterActivity" />
+        <activity android:name=".SingleCounterActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".DoubleCounterActivity" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".LibraryActivity" />
-        <activity android:name=".NewCounterActivity" android:theme="@style/Theme.MyDialog"></activity>
+        <activity android:name=".NewCounterActivity" android:theme="@style/Theme.MyDialog"/>
         <provider
             android:name=".CounterProjectContentProvider"
             android:authorities="com.example.etaspare.stitchcounter.counterProject"

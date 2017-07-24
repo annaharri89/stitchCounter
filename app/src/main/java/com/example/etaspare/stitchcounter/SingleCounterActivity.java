@@ -90,7 +90,7 @@ public class SingleCounterActivity extends AppCompatActivity {
             }
         });
 
-        /* Project Name Listener*/
+        /* Project Name Listener, updates the project name in the counter */
         final EditText textProjectName = (EditText) findViewById(R.id.text_project_name);
         textProjectName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             /*
@@ -104,8 +104,19 @@ public class SingleCounterActivity extends AppCompatActivity {
                     if (projectName.length() > 0) {
                         counter.setProjectName(projectName);
                     }
+                    //Sets textProjectName's cursor invisible
+                    textProjectName.setCursorVisible(false);
                 }
                 return false;/* TODO Why does the documentation return true */
+            }
+        });
+
+        /* Sets the projectName's cursor visible */
+        textProjectName.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                textProjectName.setCursorVisible(true);
+                return false;
             }
         });
 

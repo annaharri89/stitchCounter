@@ -32,6 +32,9 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.action_help:
                 openHelpMode();
                 break;
+            case R.id.action_settings:
+                openSettings();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -69,5 +72,11 @@ public class SettingsActivity extends AppCompatActivity {
             helpMode = true;
         }
         */
+    }
+
+    /* Called when the user taps the "Settings" button in the overflow menu */
+    public void openSettings () {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 }

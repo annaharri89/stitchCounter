@@ -44,6 +44,9 @@ public class SingleCounterActivity extends AppCompatActivity {
             case R.id.action_help:
                 openHelpMode();
                 break;
+            case R.id.action_settings:
+                openSettings();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -216,6 +219,12 @@ public class SingleCounterActivity extends AppCompatActivity {
             counter.counterNumber = stitch_counter_number;
             counter.setCounter();
         }
+    }
+
+    /* Called when the user taps the "Settings" button in the overflow menu */
+    public void openSettings () {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     /*

@@ -5,11 +5,6 @@ TODO: feature/settings
 /* TODO: Create an About Activity in the Settings Activity*/
 
 
-TODO: hotfix/text-input
-/TODO: what if they dismiss the keyboard without hitting the done button. Look into other IME_ACTIONs
- //TODO: look into issue: when leaving the activity by tapping the greyed out area (going to the main activity) the keyboard remains open
- 
-
 /*TODO: remove references of stitchCounterMenu from MainActivity.*/
 
 

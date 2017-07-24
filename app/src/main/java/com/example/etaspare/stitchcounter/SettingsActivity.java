@@ -3,6 +3,7 @@ package com.example.etaspare.stitchcounter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,6 +46,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
+        setSupportActionBar(myToolbar);
     }
 
     /* Called when the user taps the "+" button (new counter) in the toolbar */

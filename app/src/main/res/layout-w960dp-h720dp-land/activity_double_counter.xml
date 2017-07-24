@@ -169,7 +169,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_stitch"
         app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_stitch"
-        app:layout_constraintTop_toTopOf="@+id/text_adjust_by_stitch" />
+        app:layout_constraintTop_toTopOf="@+id/button_capsule_top_stitch" />
 
     <Button
         android:id="@+id/button_counter_minus_stitch"
@@ -299,7 +299,7 @@
         app:layout_constraintBottom_toTopOf="@+id/button_counter_minus_row"
         app:layout_constraintLeft_toRightOf="@+id/text_adjust_by_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_reset_row"
-        app:layout_constraintTop_toTopOf="@+id/text_adjust_by_row" />
+        app:layout_constraintTop_toTopOf="@+id/button_capsule_top_row" />
 
     <Button
         android:id="@+id/button_counter_minus_row"

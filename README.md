@@ -7,7 +7,6 @@ TODO: feature/settings
 
 TODO: hotfix/text-input
 /* TODO remove cursor from edittext after input */
-/* TODO: keyboard pops open after new project is created on large devices. look into removing focus from project name edittext*/
 /TODO: what if they dismiss the keyboard without hitting the done button. Look into other IME_ACTIONs
  //TODO: look into issue: when leaving the activity by tapping the greyed out area (going to the main activity) the keyboard remains open
  
@@ -19,6 +18,7 @@ TODO: hotfix/text-input
 
 
 /* TODO: vertically align doubleCounterActivity landscape template for small screens */
+    
     
    /*TODO: Update README */
    /*TODO Provide thorough documentation throughout app*/

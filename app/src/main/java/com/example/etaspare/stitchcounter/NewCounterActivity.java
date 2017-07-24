@@ -48,7 +48,7 @@ public class NewCounterActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     dismissKeyboard();
-                    String name = textProjectNameSingle.getText().toString(); //TODO put in logic to handle if text is not entered
+                    String name = textProjectNameSingle.getText().toString();
                     Intent intent = new Intent(v.getContext(), SingleCounterActivity.class);
                     intent.putExtra("name", name);
                     startActivity(intent);

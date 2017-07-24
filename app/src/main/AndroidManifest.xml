@@ -16,15 +16,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SingleCounterActivity" android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".DoubleCounterActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".SingleCounterActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".DoubleCounterActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".LibraryActivity" />
-        <activity android:name=".NewCounterActivity" android:theme="@style/Theme.MyDialog"/>
+        <activity
+            android:name=".NewCounterActivity"
+            android:theme="@style/Theme.MyDialog" />
+
         <provider
             android:name=".CounterProjectContentProvider"
             android:authorities="com.example.etaspare.stitchcounter.counterProject"
             android:exported="false" />
-        <!--TODO put minimum targetable api sdk: 21.0-->
+        <!-- TODO put minimum targetable api sdk: 21.0 -->
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>

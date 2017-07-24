@@ -12,13 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class NewCounterActivity extends AppCompatActivity {
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Allows the OnTouchEvent to recognize when outside touches occur, allows dialog and
-        // keyboard to be dismissed when grey screen is tapped.
+        // Prevents outside clicks to dismiss the dialog
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL, WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH, WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
 
@@ -103,17 +102,6 @@ public class NewCounterActivity extends AppCompatActivity {
     public void dismissDialog (View view) {
         dismissKeyboard();
         finish();
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        // If a touch notification has been received that the user has touched
-        // outside the dialog, dismiss the activity.
-        if (MotionEvent.ACTION_OUTSIDE == event.getAction()) {
-            dismissDialog(null);
-            return true;
-        }
-        return super.onTouchEvent(event);
     }
 }
 

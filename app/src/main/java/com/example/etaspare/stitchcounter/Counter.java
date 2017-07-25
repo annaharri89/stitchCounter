@@ -261,6 +261,7 @@ public class Counter extends AppCompatActivity implements Parcelable {
     */
     private void setActiveAdjustmentButtonColor (Button activeButton) {
         /* Sets Button Color */
+        /*TODO update logic to handle different theme colors. */
         if (Build.VERSION.SDK_INT < 23) {
             /* Android Support Library 22 and earlier compatible */
             ((GradientDrawable)activeButton.getBackground()).setColor(this.res.getColor(R.color.colorAccent));

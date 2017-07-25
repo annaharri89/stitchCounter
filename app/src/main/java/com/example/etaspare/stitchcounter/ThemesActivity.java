@@ -2,8 +2,11 @@ package com.example.etaspare.stitchcounter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,6 +29,7 @@ public class ThemesActivity extends AppCompatActivity {
     //TODO finish TOOLBAR setup
     private ListView mListView;
     private ArrayAdapter<Theme> mAdapter;
+    private static final String PREFS_NAME = "PrefsFile";
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,6 +41,17 @@ public class ThemesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String theme = prefs.getString("theme", "");
+        if (theme.equals("default")) {
+            setTheme(R.style.AppTheme);
+        } else if (theme.equals("pink")) {
+            setTheme(R.style.AppTheme_pink);
+        } else if (theme.equals("blue")) {
+            setTheme(R.style.AppTheme_blue);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -76,6 +92,45 @@ public class ThemesActivity extends AppCompatActivity {
 
         mListView.setAdapter(mAdapter);
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 0) {
+                    updateSharedPreferences(0);
+                    finish();
+                    startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                } else if (position == 1) {
+                    updateSharedPreferences(1);
+                    finish();
+                    startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                } else if (position == 2) {
+                    updateSharedPreferences(2);
+                    finish();
+                    startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                }
+            }
+        });
+    }
+
+    /* */
+    protected void updateSharedPreferences(int theme) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        switch (theme) {
+            default:
+            case 0:
+                editor.putString("theme", "default");
+                editor.apply();
+                break;
+            case 1:
+                editor.putString("theme", "pink");
+                editor.apply();
+                break;
+            case 2:
+                editor.putString("theme", "blue");
+                editor.apply();
+                break;
+        }
     }
 
     /* A theme is made up of a title and three colors. */

@@ -109,7 +109,7 @@ public class LibraryActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        utils.updateTheme();
+        utils.updateTheme(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);

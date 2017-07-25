@@ -19,15 +19,27 @@ public class Utils {
     }
 
     /* TODO DOCUMENT */
-    protected void updateTheme() {
+    protected void updateTheme(Boolean dialog) {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
         if (theme.equals("default")) {
-            this.mContext.setTheme(R.style.AppTheme);
+            if (dialog) {
+                this.mContext.setTheme(R.style.Theme_MyDialog);
+            } else {
+                this.mContext.setTheme(R.style.AppTheme);
+            }
         } else if (theme.equals("pink")) {
-            this.mContext.setTheme(R.style.AppTheme_pink);
+            if (dialog) {
+                this.mContext.setTheme(R.style.Theme_MyDialog_pink);
+            } else {
+                this.mContext.setTheme(R.style.AppTheme_pink);
+            }
         } else if (theme.equals("blue")) {
-            this.mContext.setTheme(R.style.AppTheme_blue);
+            if (dialog) {
+                this.mContext.setTheme(R.style.Theme_MyDialog_blue);
+            } else {
+                this.mContext.setTheme(R.style.AppTheme_blue);
+            }
         }
     }
 

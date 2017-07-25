@@ -25,6 +25,7 @@ public class ThemesActivity extends AppCompatActivity {
     //TODO find different main color for robins egg blue
     //TODO implement 3 more themes, in dark mode
     //TODO update capsule button colors in Counter
+    //TODO implement text color in styles for help bubbles (robins egg blue needs black text)
     private ListView mListView;
     private ArrayAdapter<Theme> mAdapter;
     private Utils utils = new Utils(this);
@@ -39,45 +40,30 @@ public class ThemesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        utils.updateTheme();
+        utils.updateTheme(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-
-        /* TODO REMOVE
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        */
         //Creates a back button that takes user back to settings.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         /* Setup ListView */
         mListView = (ListView) findViewById(R.id.list);
-
         ArrayList<Theme> themesList = new ArrayList<>();
         Theme _default = new Theme("Default", Color.parseColor("#3F51B5"), Color.parseColor("#303F9F"), Color.parseColor("#FF4081"));
         Theme cottonCandy = new Theme ("Cotton Candy", Color.parseColor("#F48FB1"), Color.parseColor("#F06292"), Color.parseColor("#CE93D8"));
         Theme robinsEggBlue = new Theme("Robins Egg Blue", Color.parseColor("#18FFFF"), Color.parseColor("#00E5FF"), Color.parseColor("#FFD740"));
-
         themesList.add(_default);
         themesList.add(cottonCandy);
         themesList.add(robinsEggBlue);
-
         mAdapter = new ThemeAdapter(
                 this,
                 R.layout.theme_list_item,
                 themesList) {
         };
-
         mListView.setAdapter(mAdapter);
 
         /*
@@ -126,7 +112,6 @@ public class ThemesActivity extends AppCompatActivity {
             this.color2 = color2;
             this.color3 = color3;
         }
-
     }
 
     /* Theme adapter allows the theme titles and colors to be displayed. */

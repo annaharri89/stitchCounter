@@ -17,7 +17,7 @@ public class NewCounterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        utils.updateTheme();
+        utils.updateTheme(true);
         super.onCreate(savedInstanceState);
 
         // Prevents outside clicks to dismiss the dialog

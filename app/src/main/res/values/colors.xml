@@ -11,8 +11,8 @@
     <color name="colorAccent2">#CE93D8</color>
 
     <!-- Robins Egg Blue Colors -->
-    <color name="colorPrimary3">#18FFFF</color>
-    <color name="colorPrimaryDark3">#00E5FF</color>
+    <color name="colorPrimary3">#00E5FF</color>
+    <color name="colorPrimaryDark3">#00B8D4</color>
     <color name="colorAccent3">#FFD740</color>
 
 </resources>

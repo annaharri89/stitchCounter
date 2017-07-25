@@ -5,7 +5,7 @@ TODO: feature/settings
 /* TODO: Create an About Activity in the Settings Activity*/
 
 
-/*TODO: remove references of stitchCounterMenu*/
+/*TODO: try to get stitchCounterMenu working*/
 /* TODO: remove references of readFromDb*/
 
 

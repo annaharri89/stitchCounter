@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -179,6 +180,13 @@ public class ThemesActivity extends AppCompatActivity {
             holder.color1View.setBackgroundColor(theme.color1);
             holder.color2View.setBackgroundColor(theme.color2);
             holder.color3View.setBackgroundColor(theme.color3);
+            if (position%2 == 0) {
+                holder.textView1.setTextColor(ContextCompat.getColor(this.context, R.color.black));
+                row.setBackgroundColor(Color.parseColor("#FFFAFAFA"));
+            } else {
+                holder.textView1.setTextColor(ContextCompat.getColor(this.context, R.color.white));
+                row.setBackgroundColor(Color.parseColor("#303030"));
+            }
 
             return row;
         }

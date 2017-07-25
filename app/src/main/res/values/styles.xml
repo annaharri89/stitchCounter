@@ -2,10 +2,18 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Theme Colors -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- Menu Drawables-->
+        <item name="themedMenuPlusDrawable">@drawable/ic_add_circle_outline_white_48dp</item>
+        <item name="themedMenuHelpDrawable">@drawable/ic_help_outline_white_48dp</item>
+        <item name="themedMenuDeleteDrawable">@drawable/ic_delete_white_48dp</item>
+        <!-- Annotation Drawables -->
+        <item name="themedAnnotationBubbleDrawable">@drawable/annotation_bubble_default</item>
+        <item name="themedAnnotationArrowDrawable">@drawable/annotation_arrow_default</item>
+
     </style>
 
     <!-- Dialog theme -->
@@ -19,10 +27,17 @@
 
     <!-- Cotton Candy application theme. -->
     <style name="AppTheme.pink" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Theme Colors -->
         <item name="colorPrimary">@color/colorPrimary2</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark2</item>
         <item name="colorAccent">@color/colorAccent2</item>
+        <!-- Menu Drawables-->
+        <item name="themedMenuPlusDrawable">@drawable/ic_add_circle_outline_black_48dp</item>
+        <item name="themedMenuHelpDrawable">@drawable/ic_help_outline_black_48dp</item>
+        <item name="themedMenuDeleteDrawable">@drawable/ic_delete_black_48dp</item>
+        <!-- Annotation Drawables -->
+        <item name="themedAnnotationBubbleDrawable">@drawable/annotation_bubble_pink</item>
+        <item name="themedAnnotationArrowDrawable">@drawable/annotation_arrow_pink</item>
     </style>
 
     <!-- Cotton Candy Dialog theme -->
@@ -36,10 +51,17 @@
 
     <!-- Robins egg blue application theme. -->
     <style name="AppTheme.blue" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+        <!-- Theme Colors -->
         <item name="colorPrimary">@color/colorPrimary3</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark3</item>
         <item name="colorAccent">@color/colorAccent3</item>
+        <!-- Menu Drawables-->
+        <item name="themedMenuPlusDrawable">@drawable/ic_add_circle_outline_black_48dp</item>
+        <item name="themedMenuHelpDrawable">@drawable/ic_help_outline_black_48dp</item>
+        <item name="themedMenuDeleteDrawable">@drawable/ic_delete_black_48dp</item>
+        <!-- Annotation Drawables -->
+        <item name="themedAnnotationBubbleDrawable">@drawable/annotation_bubble_blue</item>
+        <item name="themedAnnotationArrowDrawable">@drawable/annotation_arrow_blue</item>
     </style>
 
     <!-- Robins egg blue Dialog theme -->

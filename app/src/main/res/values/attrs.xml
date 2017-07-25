@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="themedMenuPlusDrawable" format="reference" />
+    <attr name="themedMenuHelpDrawable" format="reference" />
+    <attr name="themedMenuDeleteDrawable" format="reference" />
+    <attr name="themedAnnotationBubbleDrawable" format="reference" />
+    <attr name="themedAnnotationArrowDrawable" format="reference" />
+</resources>

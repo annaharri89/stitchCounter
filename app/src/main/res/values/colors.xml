@@ -15,4 +15,7 @@
     <color name="colorPrimaryDark3">#00B8D4</color>
     <color name="colorAccent3">#FFD740</color>
 
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
 </resources>

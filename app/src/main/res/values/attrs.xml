@@ -7,4 +7,5 @@
     <!-- Annotations -->
     <attr name="themedAnnotationBubbleDrawable" format="reference" />
     <attr name="themedAnnotationArrowDrawable" format="reference" />
+    <attr name="themedAnnotationTextColor" format="reference" />
 </resources>

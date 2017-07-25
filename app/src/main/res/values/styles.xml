@@ -13,6 +13,9 @@
         <!-- Annotation Drawables -->
         <item name="themedAnnotationBubbleDrawable">@drawable/annotation_bubble_default</item>
         <item name="themedAnnotationArrowDrawable">@drawable/annotation_arrow_default</item>
+        <!-- Annotation Text Color -->
+        <item name="themedAnnotationTextColor">@color/black</item>
+
     </style>
 
     <!-- Dialog theme -->
@@ -37,6 +40,8 @@
         <!-- Annotation Drawables -->
         <item name="themedAnnotationBubbleDrawable">@drawable/annotation_bubble_pink</item>
         <item name="themedAnnotationArrowDrawable">@drawable/annotation_arrow_pink</item>
+        <!-- Annotation Text Color -->
+        <item name="themedAnnotationTextColor">@color/black</item>
     </style>
 
     <!-- Cotton Candy Dialog theme -->
@@ -61,6 +66,8 @@
         <!-- Annotation Drawables -->
         <item name="themedAnnotationBubbleDrawable">@drawable/annotation_bubble_blue</item>
         <item name="themedAnnotationArrowDrawable">@drawable/annotation_arrow_blue</item>
+        <!-- Annotation Text Color -->
+        <item name="themedAnnotationTextColor">@color/black</item>
     </style>
 
     <!-- Robins egg blue Dialog theme -->

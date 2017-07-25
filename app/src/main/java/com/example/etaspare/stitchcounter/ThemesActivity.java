@@ -26,6 +26,9 @@ public class ThemesActivity extends AppCompatActivity {
     //TODO implement 3 more themes, in dark mode
     //TODO update capsule button colors in Counter
     //TODO implement text color in styles for help bubbles (robins egg blue needs black text)
+    //TODO implement help mode in settings
+    //TODO try to implement expandable list view in settings
+    //TODO implement help mode in themes activity (unless expandable list view is implemented)
     private ListView mListView;
     private ArrayAdapter<Theme> mAdapter;
     private Utils utils = new Utils(this);

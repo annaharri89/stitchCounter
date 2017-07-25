@@ -2,6 +2,8 @@ package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -16,6 +18,76 @@ public class Utils {
     /*TODO Document*/
     public Utils(Context context) {
         this.mContext = context;
+    }
+
+    /* TODO DOCUMENT */
+    protected int determineActiveCapsuleButtonColor() {
+        SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String theme = prefs.getString("theme", "");
+        switch (theme) {
+            default:
+            case "default":
+            case "default_dark":
+                return R.color.colorAccent;
+            case "pink":
+            case "pink_dark":
+                return R.color.colorAccent2;
+            case "blue":
+            case "blue_dark":
+                return R.color.colorAccent3;
+        }
+    }
+
+    /* TODO DOCUMENT */
+    protected int determineInActiveCapsuleButtonColor() {
+        SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String theme = prefs.getString("theme", "");
+        switch (theme) {
+            default:
+            case "default":
+            case "pink":
+            case "blue":
+                return R.color.lightGrey;
+            case "default_dark":
+            case "pink_dark":
+            case "blue_dark":
+                return R.color.darkGrey;
+        }
+    }
+
+    /* TODO DOCUMENT */
+    protected int determineActiveCapsuleButtonTextColor() {
+        SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String theme = prefs.getString("theme", "");
+        switch (theme) {
+            default:
+            case "default":
+            case "pink":
+            case "default_dark":
+            case "pink_dark":
+                return R.color.white;
+            case "blue":
+            case "blue_dark":
+                return R.color.black;
+        }
+    }
+
+    /* TODO DOCUMENT */
+    protected int determineInActiveCapsuleButtonTextColor() {
+        SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String theme = prefs.getString("theme", "");
+        switch (theme) {
+            default:
+            case "default":
+            case "pink":
+            case "blue":
+                return R.color.darkGrey;
+            case "default_dark":
+            case "pink_dark":
+                return R.color.white;
+            case "blue_dark":
+                return R.color.silver;
+        }
     }
 
     /* TODO DOCUMENT */

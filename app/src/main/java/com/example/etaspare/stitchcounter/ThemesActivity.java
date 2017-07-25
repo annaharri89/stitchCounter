@@ -26,11 +26,10 @@ import java.util.ArrayList;
 public class ThemesActivity extends AppCompatActivity {
 
     //TODO finish TOOLBAR setup
-    //TODO update active capsule button colors in Counter
-    //TODO update inactive capsule button colors in counter (for dark vs light themes)
     //TODO implement help mode in settings
     //TODO try to implement expandable list view in settings
     //TODO implement help mode in themes activity (unless expandable list view is implemented)
+    //TODO document utils
     private ListView mListView;
     private ArrayAdapter<Theme> mAdapter;
     private Utils utils = new Utils(this);
@@ -79,7 +78,7 @@ public class ThemesActivity extends AppCompatActivity {
 
         /*
         Updates SharedPreferences with appropriate theme string. Finishes current activity
-        and starts a new activity
+        and starts a new activity so theme can be set.
         */
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

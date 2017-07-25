@@ -260,31 +260,45 @@ public class Counter extends AppCompatActivity implements Parcelable {
         to handle getResources().getColor deprecation in Android Support Library 23.
     */
     private void setActiveAdjustmentButtonColor (Button activeButton) {
-        /* Sets Button Color */
-        /*TODO update logic to handle different theme colors. */
+        Utils utils = new Utils (this.context);
         if (Build.VERSION.SDK_INT < 23) {
             /* Android Support Library 22 and earlier compatible */
-            ((GradientDrawable)activeButton.getBackground()).setColor(this.res.getColor(R.color.colorAccent));
+            /* Sets Button Color */
+            ((GradientDrawable)activeButton.getBackground()).setColor(this.res.getColor(utils.determineActiveCapsuleButtonColor()));
+            /* Sets Font Color */
+            activeButton.setTextColor(this.res.getColor(utils.determineActiveCapsuleButtonTextColor()));
         } else {
             /* Android Support Library 23 compatible */
-            ((GradientDrawable)activeButton.getBackground()).setColor(ContextCompat.getColor(this.context, R.color.colorAccent));
+            /* Sets Button Color */
+            ((GradientDrawable)activeButton.getBackground()).setColor(ContextCompat.getColor(this.context, utils.determineActiveCapsuleButtonColor()));
+            /* Sets Font Color */
+            activeButton.setTextColor(ContextCompat.getColor(this.context, utils.determineActiveCapsuleButtonTextColor()));
         }
-
-        /* Sets Font Color */
-        activeButton.setTextColor(Color.parseColor("#FFFFFF"));
     }
 
     /*
         Sets the Inactive adjustment buttons' background and font colors.
     */
     private void setInActiveAdjustmentButtonColor (Button inactiveButton1, Button inactiveButton2) {
-        /* Sets Button Color */
-        ((GradientDrawable)inactiveButton1.getBackground()).setColor(Color.parseColor("#CFCFCF"));
-        ((GradientDrawable)inactiveButton2.getBackground()).setColor(Color.parseColor("#CFCFCF"));
+        Utils utils = new Utils (this.context);
 
-        /* Sets Font Color */
-        inactiveButton1.setTextColor(Color.parseColor("#696969"));
-        inactiveButton2.setTextColor(Color.parseColor("#696969"));
+        if (Build.VERSION.SDK_INT < 23) {
+            /* Android Support Library 22 and earlier compatible */
+            /* Sets Font Color */
+            inactiveButton1.setTextColor(this.res.getColor(utils.determineInActiveCapsuleButtonTextColor()));
+            inactiveButton2.setTextColor(this.res.getColor(utils.determineInActiveCapsuleButtonTextColor()));
+            /* Sets Button Color */
+            ((GradientDrawable)inactiveButton1.getBackground()).setColor(this.res.getColor(utils.determineInActiveCapsuleButtonColor()));
+            ((GradientDrawable)inactiveButton2.getBackground()).setColor(this.res.getColor(utils.determineInActiveCapsuleButtonColor()));
+        } else {
+            /* Android Support Library 23 compatible */
+            /* Sets Font Color */
+            inactiveButton1.setTextColor(ContextCompat.getColor(this.context, utils.determineInActiveCapsuleButtonTextColor()));
+            inactiveButton2.setTextColor(ContextCompat.getColor(this.context, utils.determineInActiveCapsuleButtonTextColor()));
+            /* Sets Button Color */
+            ((GradientDrawable)inactiveButton1.getBackground()).setColor(ContextCompat.getColor(this.context, utils.determineInActiveCapsuleButtonColor()));
+            ((GradientDrawable)inactiveButton2.getBackground()).setColor(ContextCompat.getColor(this.context, utils.determineInActiveCapsuleButtonColor()));
+        }
     }
 
     /* Save Counter */

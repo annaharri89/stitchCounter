@@ -7,6 +7,7 @@ TODO: feature/settings
 
 /*TODO: try to get stitchCounterMenu working*/
 /* TODO: remove references of readFromDb*/
+/* TODO: declare minimum sdk in app manifest */
 
 
 /* TODO: implement flag for if a counter has been saved (to prevent saving more than needed)*/

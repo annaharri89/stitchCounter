@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -23,8 +26,8 @@ import java.util.ArrayList;
 public class ThemesActivity extends AppCompatActivity {
 
     //TODO finish TOOLBAR setup
-    //TODO create dark background for dark theme list items
-    //TODO update capsule button colors in Counter
+    //TODO update active capsule button colors in Counter
+    //TODO update inactive capsule button colors in counter (for dark vs light themes)
     //TODO implement help mode in settings
     //TODO try to implement expandable list view in settings
     //TODO implement help mode in themes activity (unless expandable list view is implemented)
@@ -156,6 +159,7 @@ public class ThemesActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            Resources res = getResources();
             View row = convertView;
             ViewHolder holder = null;
 
@@ -180,11 +184,27 @@ public class ThemesActivity extends AppCompatActivity {
             holder.color1View.setBackgroundColor(theme.color1);
             holder.color2View.setBackgroundColor(theme.color2);
             holder.color3View.setBackgroundColor(theme.color3);
+            /*
+            Sets odd rows background color to darkgrey and textcolor to white, sets even rows
+            background color to white and textcolor to black
+            */
             if (position%2 == 0) {
-                holder.textView1.setTextColor(ContextCompat.getColor(this.context, R.color.black));
+                if (Build.VERSION.SDK_INT < 23) {
+                    /* Android Support Library 22 and earlier compatible */
+                    holder.textView1.setTextColor(res.getColor(R.color.black));
+                } else {
+                    /* Android Support Library 23 compatible */
+                    holder.textView1.setTextColor(ContextCompat.getColor(this.context, R.color.black));
+                }
                 row.setBackgroundColor(Color.parseColor("#FFFAFAFA"));
             } else {
-                holder.textView1.setTextColor(ContextCompat.getColor(this.context, R.color.white));
+                if (Build.VERSION.SDK_INT < 23) {
+                    /* Android Support Library 22 and earlier compatible */
+                    holder.textView1.setTextColor(res.getColor(R.color.white));
+                } else {
+                    /* Android Support Library 23 compatible */
+                    holder.textView1.setTextColor(ContextCompat.getColor(this.context, R.color.white));
+                }
                 row.setBackgroundColor(Color.parseColor("#303030"));
             }
 
@@ -192,13 +212,13 @@ public class ThemesActivity extends AppCompatActivity {
         }
     }
 
-        static class ViewHolder
-        {
-            TextView textView1;
-            View color1View;
-            View color2View;
-            View color3View;
-        }
+    static class ViewHolder
+    {
+        TextView textView1;
+        View color1View;
+        View color2View;
+        View color3View;
     }
+}
 
 

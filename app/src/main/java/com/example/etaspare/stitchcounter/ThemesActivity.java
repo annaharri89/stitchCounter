@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -20,16 +17,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ThemesActivity extends AppCompatActivity {
 
     //TODO finish TOOLBAR setup
+    //TODO find different main color for robins egg blue
+    //TODO implement 3 more themes, in dark mode
+    //TODO update capsule button colors in Counter
     private ListView mListView;
     private ArrayAdapter<Theme> mAdapter;
-    private static final String PREFS_NAME = "PrefsFile";
+    private Utils utils = new Utils(this);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,17 +39,7 @@ public class ThemesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        String theme = prefs.getString("theme", "");
-        if (theme.equals("default")) {
-            setTheme(R.style.AppTheme);
-        } else if (theme.equals("pink")) {
-            setTheme(R.style.AppTheme_pink);
-        } else if (theme.equals("blue")) {
-            setTheme(R.style.AppTheme_blue);
-        }
-
+        utils.updateTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_themes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -92,20 +80,24 @@ public class ThemesActivity extends AppCompatActivity {
 
         mListView.setAdapter(mAdapter);
 
+        /*
+        Updates SharedPreferences with appropriate theme string. Finishes current activity
+        and starts a new activity
+        */
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position == 0) {
-                    updateSharedPreferences(0);
+                    utils.updateSharedPreferences(0);
                     finish();
                     startActivity(new Intent(getBaseContext(), ThemesActivity.class));
                 } else if (position == 1) {
-                    updateSharedPreferences(1);
+                    utils.updateSharedPreferences(1);
                     finish();
                     startActivity(new Intent(getBaseContext(), ThemesActivity.class));
                 } else if (position == 2) {
-                    updateSharedPreferences(2);
+                    utils.updateSharedPreferences(2);
                     finish();
                     startActivity(new Intent(getBaseContext(), ThemesActivity.class));
                 }
@@ -113,24 +105,11 @@ public class ThemesActivity extends AppCompatActivity {
         });
     }
 
-    /* */
-    protected void updateSharedPreferences(int theme) {
-        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        switch (theme) {
-            default:
-            case 0:
-                editor.putString("theme", "default");
-                editor.apply();
-                break;
-            case 1:
-                editor.putString("theme", "pink");
-                editor.apply();
-                break;
-            case 2:
-                editor.putString("theme", "blue");
-                editor.apply();
-                break;
-        }
+    /* Starts a new settings activity so that theme changes can be applied*/
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(this, SettingsActivity.class));
     }
 
     /* A theme is made up of a title and three colors. */

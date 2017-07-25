@@ -46,6 +46,7 @@ public class LibraryActivity extends AppCompatActivity
     private ConstraintLayout layout;
     private Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
+    private Utils utils = new Utils(this);
 
     /*
     Defines a projection that specifies which columns from the database will actually
@@ -108,6 +109,7 @@ public class LibraryActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);

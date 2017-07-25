@@ -31,6 +31,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     private Counter rowCounter;
     private Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
+    private Utils utils = new Utils(this);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,6 +64,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_double_counter);
 

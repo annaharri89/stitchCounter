@@ -23,6 +23,7 @@ public class SingleCounterActivity extends AppCompatActivity {
     private Counter counter;
     private Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
+    private Utils utils = new Utils(this);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -55,6 +56,7 @@ public class SingleCounterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_counter);
 

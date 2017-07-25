@@ -19,6 +19,7 @@ public class SettingsActivity extends AppCompatActivity {
     //TODO implement help mode
     private ListView mListView;
     private ArrayAdapter<String> mAdapter;
+    private Utils utils = new Utils(this);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,6 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);

@@ -22,10 +22,8 @@ import java.util.ArrayList;
 public class ThemesActivity extends AppCompatActivity {
 
     //TODO finish TOOLBAR setup
-    //TODO find different main color for robins egg blue
-    //TODO implement 3 more themes, in dark mode
+    //TODO create dark background for dark theme list items
     //TODO update capsule button colors in Counter
-    //TODO implement text color in styles for help bubbles (robins egg blue needs black text)
     //TODO implement help mode in settings
     //TODO try to implement expandable list view in settings
     //TODO implement help mode in themes activity (unless expandable list view is implemented)
@@ -57,11 +55,17 @@ public class ThemesActivity extends AppCompatActivity {
         mListView = (ListView) findViewById(R.id.list);
         ArrayList<Theme> themesList = new ArrayList<>();
         Theme _default = new Theme("Default", Color.parseColor("#3F51B5"), Color.parseColor("#303F9F"), Color.parseColor("#FF4081"));
+        Theme _defaultDark = new Theme("Default Dark", Color.parseColor("#3F51B5"), Color.parseColor("#303F9F"), Color.parseColor("#FF4081"));
         Theme cottonCandy = new Theme ("Cotton Candy", Color.parseColor("#F48FB1"), Color.parseColor("#F06292"), Color.parseColor("#CE93D8"));
+        Theme cottonCandyDark = new Theme ("Cotton Candy Dark", Color.parseColor("#F48FB1"), Color.parseColor("#F06292"), Color.parseColor("#CE93D8"));
         Theme robinsEggBlue = new Theme("Robins Egg Blue", Color.parseColor("#18FFFF"), Color.parseColor("#00E5FF"), Color.parseColor("#FFD740"));
+        Theme robinsEggBlueDark = new Theme("Robins Egg Blue Dark", Color.parseColor("#18FFFF"), Color.parseColor("#00E5FF"), Color.parseColor("#FFD740"));
         themesList.add(_default);
+        themesList.add(_defaultDark);
         themesList.add(cottonCandy);
+        themesList.add(cottonCandyDark);
         themesList.add(robinsEggBlue);
+        themesList.add(robinsEggBlueDark);
         mAdapter = new ThemeAdapter(
                 this,
                 R.layout.theme_list_item,
@@ -76,19 +80,38 @@ public class ThemesActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (position == 0) {
-                    utils.updateSharedPreferences(0);
-                    finish();
-                    startActivity(new Intent(getBaseContext(), ThemesActivity.class));
-                } else if (position == 1) {
-                    utils.updateSharedPreferences(1);
-                    finish();
-                    startActivity(new Intent(getBaseContext(), ThemesActivity.class));
-                } else if (position == 2) {
-                    utils.updateSharedPreferences(2);
-                    finish();
-                    startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                switch (position) {
+                    default:
+                    case 0:
+                        utils.updateSharedPreferences(0);
+                        finish();
+                        startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                        break;
+                    case 1:
+                        utils.updateSharedPreferences(1);
+                        finish();
+                        startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                        break;
+                    case 2:
+                        utils.updateSharedPreferences(2);
+                        finish();
+                        startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                        break;
+                    case 3:
+                        utils.updateSharedPreferences(3);
+                        finish();
+                        startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                        break;
+                    case 4:
+                        utils.updateSharedPreferences(4);
+                        finish();
+                        startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                        break;
+                    case 5:
+                        utils.updateSharedPreferences(5);
+                        finish();
+                        startActivity(new Intent(getBaseContext(), ThemesActivity.class));
+                        break;
                 }
             }
         });

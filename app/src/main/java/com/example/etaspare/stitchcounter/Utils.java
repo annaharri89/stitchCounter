@@ -22,24 +22,48 @@ public class Utils {
     protected void updateTheme(Boolean dialog) {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
-        if (theme.equals("default")) {
-            if (dialog) {
-                this.mContext.setTheme(R.style.Theme_MyDialog);
-            } else {
-                this.mContext.setTheme(R.style.AppTheme);
-            }
-        } else if (theme.equals("pink")) {
-            if (dialog) {
-                this.mContext.setTheme(R.style.Theme_MyDialog_pink);
-            } else {
-                this.mContext.setTheme(R.style.AppTheme_pink);
-            }
-        } else if (theme.equals("blue")) {
-            if (dialog) {
-                this.mContext.setTheme(R.style.Theme_MyDialog_blue);
-            } else {
-                this.mContext.setTheme(R.style.AppTheme_blue);
-            }
+        switch (theme) {
+            case "default":
+                if (dialog) {
+                    this.mContext.setTheme(R.style.Theme_MyDialog);
+                } else {
+                    this.mContext.setTheme(R.style.AppTheme);
+                }
+                break;
+            case "default_dark":
+                if (dialog) {
+                    this.mContext.setTheme(R.style.Theme_MyDialog_dark);
+                } else {
+                    this.mContext.setTheme(R.style.AppTheme_dark);
+                }
+                break;
+            case "pink":
+                if (dialog) {
+                    this.mContext.setTheme(R.style.Theme_MyDialog_pink);
+                } else {
+                    this.mContext.setTheme(R.style.AppTheme_pink);
+                }
+                break;
+            case "pink_dark":
+                if (dialog) {
+                    this.mContext.setTheme(R.style.Theme_MyDialog_pink_dark);
+                } else {
+                    this.mContext.setTheme(R.style.AppTheme_pink_dark);
+                }
+                break;
+            case "blue":
+                if (dialog) {
+                    this.mContext.setTheme(R.style.Theme_MyDialog_blue);
+                } else {
+                    this.mContext.setTheme(R.style.AppTheme_blue);
+                }
+                break;
+            case "blue_dark":
+                if (dialog) {
+                    this.mContext.setTheme(R.style.Theme_MyDialog_blue_dark);
+                } else {
+                    this.mContext.setTheme(R.style.AppTheme_blue_dark);
+                }
         }
     }
 
@@ -53,11 +77,23 @@ public class Utils {
                 editor.apply();
                 break;
             case 1:
-                editor.putString("theme", "pink");
+                editor.putString("theme", "default_dark");
                 editor.apply();
                 break;
             case 2:
+                editor.putString("theme", "pink");
+                editor.apply();
+                break;
+            case 3:
+                editor.putString("theme", "pink_dark");
+                editor.apply();
+                break;
+            case 4:
                 editor.putString("theme", "blue");
+                editor.apply();
+                break;
+            case 5:
+                editor.putString("theme", "blue_dark");
                 editor.apply();
                 break;
         }

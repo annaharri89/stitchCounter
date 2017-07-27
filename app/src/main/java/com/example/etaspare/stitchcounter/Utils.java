@@ -15,12 +15,12 @@ public class Utils {
     private static final String PREFS_NAME = "PrefsFile";
     private Context mContext;
 
-    /*TODO Document*/
+    /* Constructor */
     public Utils(Context context) {
         this.mContext = context;
     }
 
-    /* TODO DOCUMENT */
+    /* Returns color to be used for Active Capsule Button in Counter*/
     protected int determineActiveCapsuleButtonColor() {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
@@ -38,7 +38,7 @@ public class Utils {
         }
     }
 
-    /* TODO DOCUMENT */
+    /* Returns color to be used for Inactive Capsule Button in Counter */
     protected int determineInActiveCapsuleButtonColor() {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
@@ -55,7 +55,7 @@ public class Utils {
         }
     }
 
-    /* TODO DOCUMENT */
+    /* Returns text color to be used for Active Capsule Button */
     protected int determineActiveCapsuleButtonTextColor() {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
@@ -72,7 +72,7 @@ public class Utils {
         }
     }
 
-    /* TODO DOCUMENT */
+    /* Returns text color to be used for Inactive Capsule Button */
     protected int determineInActiveCapsuleButtonTextColor() {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
@@ -90,7 +90,7 @@ public class Utils {
         }
     }
 
-    /* TODO DOCUMENT */
+    /* Set's theme based on store shared preference */
     protected void updateTheme(Boolean dialog) {
         SharedPreferences prefs = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         String theme = prefs.getString("theme", "");
@@ -139,7 +139,7 @@ public class Utils {
         }
     }
 
-    /* TODO Document*/
+    /* Updates shared preference with appropriate theme title so theme can be set */
     protected void updateSharedPreferences(int theme) {
         SharedPreferences.Editor editor = this.mContext.getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
         switch (theme) {

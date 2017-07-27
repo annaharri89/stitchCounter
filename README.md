@@ -1,9 +1,5 @@
 
 
-TODO: feature/settings
-/* TODO Create a Settings Activity */
-/* TODO: Create an About Activity in the Settings Activity*/
-
 
 /*TODO: try to get stitchCounterMenu working (try putting it in utils)*/
 /* TODO: remove references of readFromDb*/
@@ -24,9 +20,6 @@ TODO: feature/settings
    /*TODO Provide thorough documentation throughout app*/
    /* TODO: Remove unneeded import statements throughout the app */
     /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS (Lots in library, readFromDb is unneeded, stitchCounterMenu will be unneeded)*/
-    
-    
-   /* TODO: LOOK INTO LOAD BALANCERS */
     
     
    /* Look into if strResProgress is needed in Counter */

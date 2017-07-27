@@ -26,8 +26,6 @@ import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    //TODO implement help mode in settings
-    //TODO document Utils
     private ExpandableListView mListView;
     private ExpandableListAdapter mAdapter;
     private Utils utils = new Utils(this);
@@ -51,6 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         menu.findItem(R.id.action_delete).setVisible(false);
+        menu.findItem(R.id.action_help).setVisible(false);
         return true;
     }
 

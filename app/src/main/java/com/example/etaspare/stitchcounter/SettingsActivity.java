@@ -15,12 +15,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -31,8 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
     //TODO implement help mode in settings
     //TODO document Utils
     private ExpandableListView mListView;
-    private ArrayAdapter<String> mAdapter;
-    private ExpandableListAdapter mAdapter2;
+    private ExpandableListAdapter mAdapter;
     private Utils utils = new Utils(this);
 
     private static final String NAME = "NAME";
@@ -83,36 +80,6 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
-        /* Setup ListView
-        mListView = (ListView) findViewById(R.id.list);
-
-        List<String> settingsList = new ArrayList<>();
-        settingsList.add("Themes");
-        settingsList.add("About");
-
-        mAdapter = new ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_list_item_1,
-                settingsList) {
-        };
-
-        mListView.setAdapter(mAdapter);
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                    Intent intent = new Intent(getBaseContext(), ThemesActivity.class);
-                    startActivity(intent);
-                } else {
-                    //TODO CREATE ABOUTACTIVITY
-                }
-            }
-        });
-        */
-
-        mListView = (ExpandableListView) findViewById(R.id.list);
-
         /* TODO Document */
         List<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
         List<List<Map<String, String>>> childData = new ArrayList<List<Map<String, String>>>();
@@ -131,12 +98,17 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         // Set up the adapter
-        mAdapter2 = new MySimpleExpandableListAdapter(this, groupData,
+        mAdapter = new MySimpleExpandableListAdapter(
+                this,
+                groupData,
                 android.R.layout.simple_expandable_list_item_1,
-                new String[] { NAME }, new int[] { android.R.id.text1 },
+                new String[] { NAME },
+                new int[] { android.R.id.text1 },
                 childData, R.layout.list_item_theme,
-                new String[] { NAME }, new int[] { R.id.textView });
-        mListView.setAdapter(mAdapter2);
+                new String[] { NAME },
+                new int[] { R.id.textView });
+        mListView = (ExpandableListView) findViewById(R.id.list);
+        mListView.setAdapter(mAdapter);
 
         /*TODO Document */
         mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
@@ -340,22 +312,14 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                         break;
                     case 1:
-                        //TODO inflate about activity template
+                        row = inflater.inflate(R.layout.list_item_about, parent, false);
+                        String versionName = BuildConfig.VERSION_NAME;
+                        TextView textVersionName = (TextView) row.findViewById(R.id.version_name);
+                        textVersionName.setText(versionName);
                         break;
                 }
             }
             return row;
         }
-
-        /*
-        @Override
-        public  View    getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent){
-
-            final View itemRenderer = super.getGroupView(groupPosition, isExpanded, convertView, parent);
-            final TextView tv = (TextView)itemRenderer.findViewById(android.R.id.text1);
-            tv.setTextColor(0xff00ff00);
-            return itemRenderer;
-        }
-        */
     }
 }

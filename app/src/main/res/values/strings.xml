@@ -83,4 +83,5 @@
     </string>
     <string name="library_no_projects">You have no saved projects.</string>
     <string name="title_activity_themes">ThemesActivity</string>
+    <string name="version">Version</string>
 </resources>

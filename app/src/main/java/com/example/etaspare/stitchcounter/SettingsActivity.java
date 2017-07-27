@@ -31,6 +31,9 @@ public class SettingsActivity extends AppCompatActivity {
     private ExpandableListView mListView;
     private ExpandableListAdapter mAdapter;
     private Utils utils = new Utils(this);
+    int numberOfGroups;
+    boolean[] groupExpandedArray;
+    int firstVisiblePosition;
 
     private static final String NAME = "NAME";
     private String group[] = {"Themes" , "About"};
@@ -80,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(myToolbar);
 
-        /* TODO Document */
+        /* Prepares list groupData and childData for the adapter */
         List<Map<String, String>> groupData = new ArrayList<Map<String, String>>();
         List<List<Map<String, String>>> childData = new ArrayList<List<Map<String, String>>>();
         for (int i = 0; i < group.length; i++) {
@@ -110,42 +113,66 @@ public class SettingsActivity extends AppCompatActivity {
         mListView = (ExpandableListView) findViewById(R.id.list);
         mListView.setAdapter(mAdapter);
 
-        /*TODO Document */
+        /*
+        The following code expands whatever list groups that were expanded before theme change.
+        (Extras will be provided if theme change occurs.)
+        */
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            groupExpandedArray = extras.getBooleanArray("groupExpandedArray");
+            firstVisiblePosition = extras.getInt("firstVisiblePosition");
+            for (int i=0; i < groupExpandedArray.length; i++){
+                if (groupExpandedArray[i])
+                    mListView.expandGroup(i);
+            }
+            mListView.setSelection(firstVisiblePosition );
+        }
+
+        /*
+        + Records expanded items. (so they can be re expanded when the settings activity gets
+          restarted.
+        + If a child is tapped in groupPosition 0 (themes), update the theme stored in shared
+          preferences, finish this activity, start a new activity.
+        */
         mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                recordExpandedItems();
                 if (groupPosition == 0) {
+                    Intent intent = new Intent(getBaseContext(), SettingsActivity.class);
+                    intent.putExtra("groupExpandedArray", groupExpandedArray);
+                    intent.putExtra("firstVisiblePosition", firstVisiblePosition);
                     switch (childPosition) {
                         default:
                         case 0:
                             utils.updateSharedPreferences(0);
                             finish();
-                            startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                            startActivity(intent);
                             break;
                         case 1:
                             utils.updateSharedPreferences(1);
                             finish();
-                            startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                            startActivity(intent);
                             break;
                         case 2:
                             utils.updateSharedPreferences(2);
                             finish();
-                            startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                            startActivity(intent);
                             break;
                         case 3:
                             utils.updateSharedPreferences(3);
                             finish();
-                            startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                            startActivity(intent);
                             break;
                         case 4:
                             utils.updateSharedPreferences(4);
                             finish();
-                            startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                            startActivity(intent);
                             break;
                         case 5:
                             utils.updateSharedPreferences(5);
                             finish();
-                            startActivity(new Intent(getBaseContext(), SettingsActivity.class));
+                            startActivity(intent);
                             break;
                     }
                 } else if (groupPosition == 1) {
@@ -187,6 +214,16 @@ public class SettingsActivity extends AppCompatActivity {
     public void openSettings () {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
+    }
+
+    /* Records which group in mListView is expanded*/
+    public void recordExpandedItems() {
+        numberOfGroups = mAdapter.getGroupCount();
+        groupExpandedArray = new boolean[numberOfGroups];
+        for (int i = 0; i < numberOfGroups; i++){
+            groupExpandedArray[i] = mListView.isGroupExpanded(i);
+        }
+        firstVisiblePosition = mListView.getFirstVisiblePosition();
     }
 
     /* A theme is made up of a title and three colors. */
@@ -248,6 +285,7 @@ public class SettingsActivity extends AppCompatActivity {
             if (row != null) {
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 switch (type) {
+                    //Sets up Themes children views
                     default:
                     case 0:
                         row = inflater.inflate(R.layout.list_item_theme, parent, false);
@@ -259,7 +297,6 @@ public class SettingsActivity extends AppCompatActivity {
 
                         String title = data.get(0).get(childPosition).get("NAME").toString();
                         Theme theme;
-                        /* TODO: DOCUMENT */
                         switch (title) {
                             default:
                             case "_default":
@@ -311,6 +348,7 @@ public class SettingsActivity extends AppCompatActivity {
                             row.setBackgroundColor(Color.parseColor("#303030"));
                         }
                         break;
+                    //Sets up About children view
                     case 1:
                         row = inflater.inflate(R.layout.list_item_about, parent, false);
                         String versionName = BuildConfig.VERSION_NAME;

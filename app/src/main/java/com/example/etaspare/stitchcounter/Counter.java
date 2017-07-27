@@ -191,7 +191,6 @@ public class Counter extends AppCompatActivity implements Parcelable {
         this.counterNumber = this.COUNTER_MIN;
         setCounter();
         setProgress();
-        /* TODO set up alert that asks user if they're sure they want to reset the counter */
     }
 
     /*
@@ -277,7 +276,8 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-        Sets the Inactive adjustment buttons' background and font colors.
+        Sets the Inactive adjustment buttons' background and font colors. Has compatibility 'if' logic
+        to handle getResources().getColor deprecation in Android Support Library 23.
     */
     private void setInActiveAdjustmentButtonColor (Button inactiveButton1, Button inactiveButton2) {
         Utils utils = new Utils (this.context);

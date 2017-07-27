@@ -3,10 +3,8 @@ package com.example.etaspare.stitchcounter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -26,10 +24,7 @@ import java.util.ArrayList;
 public class ThemesActivity extends AppCompatActivity {
 
     //TODO finish TOOLBAR setup
-    //TODO implement help mode in settings
-    //TODO try to implement expandable list view in settings
-    //TODO implement help mode in themes activity (unless expandable list view is implemented)
-    //TODO document utils
+
     private ListView mListView;
     private ArrayAdapter<Theme> mAdapter;
     private Utils utils = new Utils(this);
@@ -71,7 +66,7 @@ public class ThemesActivity extends AppCompatActivity {
         themesList.add(robinsEggBlueDark);
         mAdapter = new ThemeAdapter(
                 this,
-                R.layout.theme_list_item,
+                R.layout.list_item_theme,
                 themesList) {
         };
         mListView.setAdapter(mAdapter);

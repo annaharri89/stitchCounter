@@ -82,6 +82,5 @@
         To delete a single project, press and hold a project to make a delete button appear.
     </string>
     <string name="library_no_projects">You have no saved projects.</string>
-    <string name="title_activity_themes">ThemesActivity</string>
     <string name="version">Version</string>
 </resources>

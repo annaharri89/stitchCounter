@@ -62,9 +62,6 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.action_library:
                 openLibrary();
                 break;
-            case R.id.action_help:
-                openHelpMode();
-                break;
             case R.id.action_settings:
                 openSettings();
                 break;
@@ -108,7 +105,7 @@ public class SettingsActivity extends AppCompatActivity {
                 new int[] { android.R.id.text1 },
                 childData, R.layout.list_item_theme,
                 new String[] { NAME },
-                new int[] { R.id.textView });
+                new int[] { R.id.theme_title });
         mListView = (ExpandableListView) findViewById(R.id.list);
         mListView.setAdapter(mAdapter);
 
@@ -194,21 +191,6 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-   Opens "help mode" Called when help button is clicked in the action bar.
-   Shows annotation bubbles.
-   */
-    public void openHelpMode() {
-        /*
-        if (!helpMode) {
-            for (View view: helpModeArray) {
-                view.setVisibility(View.VISIBLE);
-            }
-            helpMode = true;
-        }
-        */
-    }
-
     /* Called when the user taps the "Settings" button in the overflow menu */
     public void openSettings () {
         Intent intent = new Intent(this, SettingsActivity.class);
@@ -289,7 +271,7 @@ public class SettingsActivity extends AppCompatActivity {
                     case 0:
                         row = inflater.inflate(R.layout.list_item_theme, parent, false);
 
-                        TextView textView1 = (TextView) row.findViewById(R.id.textView);
+                        TextView textView1 = (TextView) row.findViewById(R.id.theme_title);
                         View color1View = row.findViewById(R.id.color_1_view);
                         View color2View = row.findViewById(R.id.color_2_view);
                         View color3View = row.findViewById(R.id.color_3_view);
@@ -351,7 +333,9 @@ public class SettingsActivity extends AppCompatActivity {
                     case 1:
                         row = inflater.inflate(R.layout.list_item_about, parent, false);
                         String versionName = BuildConfig.VERSION_NAME;
+                        TextView textVersion = (TextView) row.findViewById(R.id.version);
                         TextView textVersionName = (TextView) row.findViewById(R.id.version_name);
+                        textVersion.setText(R.string.version);
                         textVersionName.setText(versionName);
                         break;
                 }

@@ -31,6 +31,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
     private Counter rowCounter;
     private Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
+    private Utils utils = new Utils(this);
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,6 +53,9 @@ public class DoubleCounterActivity extends AppCompatActivity {
             case R.id.action_help:
                 openHelpMode();
                 break;
+            case R.id.action_settings:
+                openSettings();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -60,6 +64,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_double_counter);
 
@@ -351,9 +356,15 @@ public class DoubleCounterActivity extends AppCompatActivity {
 
     }
 
+    /* Called when the user taps the "Settings" button in the overflow menu */
+    public void openSettings () {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
     /*
-    Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
-    visible, showing the annotation bubbles.
+    Opens "help mode" Called when help button is clicked in the action bar.
+    Shows the annotation bubbles
     */
     public void openHelpMode() {
         if (!helpMode) {

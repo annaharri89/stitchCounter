@@ -15,12 +15,12 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    final private StitchCounterMenu toolBarMenu = new StitchCounterMenu(this);
     private Boolean helpMode = false;
-    private ArrayList<View> helpModeArray;;
+    private ArrayList<View> helpModeArray;
+    private Utils utils = new Utils(this);
 
     @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu) { //TODO Why can't this be implemented in StitchCounterMenu.java ?
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
         menu.findItem(R.id.action_delete).setVisible(false);
@@ -29,16 +29,28 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_help) {
-            openHelpMode();
-            return true;
-        } else {
-            return toolBarMenu.handleMenu(item);
+        switch(item.getItemId()) {
+            case R.id.action_new_counter:
+                openMainActivity();
+                break;
+            case R.id.action_library:
+                openLibrary();
+                break;
+            case R.id.action_help:
+                openHelpMode();
+                break;
+            case R.id.action_settings:
+                openSettings();
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -86,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-    Opens "help mode" Called when help button is clicked in the action bar. Shows appropriate tooltips.
-    Sets onclicklistener to dismiss the help bubbles.
+    Opens "help mode" Called when help button is clicked in the action bar.
+    Shows annotation bubbles.
     */
     public void openHelpMode() {
         if (!helpMode) {
@@ -96,5 +108,23 @@ public class MainActivity extends AppCompatActivity {
             }
             helpMode = true;
         }
+    }
+
+    /* Called when the user taps the "Settings" button in the overflow menu */
+    public void openSettings () {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    /* Called when the user taps the "+" button (new counter) in the toolbar */
+    public void openMainActivity () {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    /* Called when the user taps the "Library" button in the overflow menu */
+    public void openLibrary () {
+        Intent intent = new Intent(this, LibraryActivity.class);
+        startActivity(intent);
     }
 }

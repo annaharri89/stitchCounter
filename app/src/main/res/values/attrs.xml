@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Menu Icons -->
+    <attr name="themedMenuPlusDrawable" format="reference" />
+    <attr name="themedMenuHelpDrawable" format="reference" />
+    <attr name="themedMenuDeleteDrawable" format="reference" />
+    <!-- Annotations -->
+    <attr name="themedAnnotationBubbleDrawable" format="reference" />
+    <attr name="themedAnnotationArrowDrawable" format="reference" />
+    <attr name="themedAnnotationTextColor" format="reference" />
+</resources>

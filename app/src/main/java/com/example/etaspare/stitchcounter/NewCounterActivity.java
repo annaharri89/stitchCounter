@@ -13,8 +13,11 @@ import android.widget.EditText;
 
 public class NewCounterActivity extends AppCompatActivity {
 
+    private Utils utils = new Utils(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme(true);
         super.onCreate(savedInstanceState);
 
         // Prevents outside clicks to dismiss the dialog

@@ -46,6 +46,7 @@ public class LibraryActivity extends AppCompatActivity
     private ConstraintLayout layout;
     private Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
+    private Utils utils = new Utils(this);
 
     /*
     Defines a projection that specifies which columns from the database will actually
@@ -97,6 +98,9 @@ public class LibraryActivity extends AppCompatActivity
             case R.id.action_help:
                 openHelpMode();
                 break;
+            case R.id.action_settings:
+                openSettings();
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -105,6 +109,7 @@ public class LibraryActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        utils.updateTheme(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_library);
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_main);
@@ -350,6 +355,12 @@ public class LibraryActivity extends AppCompatActivity
         }
     }
 
+    /* Called when the user taps the "Settings" button in the overflow menu */
+    public void openSettings () {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
     /* Called when the user taps the "+" button (new counter) in the toolbar */
     public void openMainActivity () {
         Intent intent = new Intent(this, MainActivity.class);
@@ -468,6 +479,7 @@ public class LibraryActivity extends AppCompatActivity
         super.onDestroy();
     }
 
+    /* TODO Document */
     public class CounterAdapter extends SimpleCursorAdapter {
 
         Context mContext;

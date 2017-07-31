@@ -35,7 +35,7 @@ public class CounterProjectContentProvider extends ContentProvider{
     @Override
     public boolean onCreate() {
         dbHelper = new StitchCounterDbHelper(getContext());
-        db = dbHelper.getReadableDatabase(); /*TODO Look into writing logic to change this to getWritableDatabase when needed */
+        db = dbHelper.getReadableDatabase();
         return true;
     }
 

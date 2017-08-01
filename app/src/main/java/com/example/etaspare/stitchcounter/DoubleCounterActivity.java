@@ -2,12 +2,10 @@ package com.example.etaspare.stitchcounter;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Parcelable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Selection;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,8 +17,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DoubleCounterActivity extends AppCompatActivity {

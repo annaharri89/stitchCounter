@@ -3,14 +3,12 @@ package com.example.etaspare.stitchcounter;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
-
 import java.util.ArrayList;
 
 /**
  * Created by ETASpare on 7/3/2017.
  */
 
-/* TODO Provide documentation */
 public class DeleteFromDb extends AsyncTask<ArrayList<String>, Void, Integer> {
 
     private Context mContext;

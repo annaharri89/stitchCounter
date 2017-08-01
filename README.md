@@ -1,17 +1,14 @@
 
     
    /*TODO: Update README */
-   /*TODO Provide thorough documentation throughout app*/
-   /* TODO: Remove unneeded import statements throughout the app */
-    /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS (Lots in library, readFromDb is unneeded, stitchCounterMenu will be unneeded)*/
-    
+   /*TODO complete all todos in other files*/
     
    /* Look into if strResProgress is needed in Counter */
     
    /* TODO: implement new themes (rust: orange with blue accent)
    /* TODO: implement add image(s) to counter project */
     /* TODO: Implement share project to facebook, twitter, etc. */
-    /* TODO think about implementing a favorites list*/
+    /* TODO Create new Library template for large and extra large screens that uses a grid view instead of a listview*/
     
 
 ## Acknowledgements ##

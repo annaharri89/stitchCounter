@@ -15,7 +15,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class SingleCounterActivity extends AppCompatActivity {
@@ -104,7 +103,7 @@ public class SingleCounterActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 String projectName;
-                if (actionId == EditorInfo.IME_ACTION_DONE) { //TODO: what if they dismiss the keyboard without hitting the done button. Look into other IME_ACTIONs
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
                     projectName = textProjectName.getText().toString();
                     if (projectName.length() > 0) {
                         counter.setProjectName(projectName);
@@ -112,7 +111,7 @@ public class SingleCounterActivity extends AppCompatActivity {
                     //Sets textProjectName's cursor invisible
                     textProjectName.setCursorVisible(false);
                 }
-                return false;/* TODO Why does the documentation return true */
+                return false;
             }
         });
 

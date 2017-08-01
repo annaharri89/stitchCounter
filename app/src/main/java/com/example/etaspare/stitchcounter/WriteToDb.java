@@ -19,7 +19,7 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
 
     @Override
     protected Void doInBackground(Counter... counter) {
-        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(this.mContext); //TODO might be the wrong context
+        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(this.mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Gets the data repository in write mode
         try {
             ContentValues values;
@@ -40,7 +40,7 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
         return null;
     }
 
-    /* Called when a single counter opject is passed in the asynctask */
+    /* Called when a single counter object is passed in the asynctask */
     protected ContentValues singleCounterUpdate(Counter... counter) {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();

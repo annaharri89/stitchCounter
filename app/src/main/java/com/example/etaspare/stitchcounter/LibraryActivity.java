@@ -308,7 +308,7 @@ public class LibraryActivity extends AppCompatActivity
     + Calls setListConstraints to connect the bottom of list to the bottom of the constraint layout.
     + Sets the delete and cancel buttons to invisible
     */
-    protected void turnOffDeleteManyMode(View view) { //TODO look into removing view
+    protected void turnOffDeleteManyMode(View view) {
         deleteManyMode = false;
         setListConstraints(R.id.layout, ConstraintSet.BOTTOM);
         deleteMany.setVisibility(View.INVISIBLE);

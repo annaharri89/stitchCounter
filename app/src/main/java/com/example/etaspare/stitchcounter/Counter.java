@@ -31,7 +31,7 @@ public class Counter extends AppCompatActivity implements Parcelable {
     private TextView textCounter;
     private TextView textProgress;
     private String strResCounter;
-    private String strResProgress;
+    protected String strResProgress;
     protected String projectName;
     private Button btnAdjustment1;
     private Button btnAdjustment5;
@@ -89,13 +89,13 @@ public class Counter extends AppCompatActivity implements Parcelable {
     Double Counter's constructor, instantiates new instance of counter class, setting all instance variables and context.
     Handles progress related instance variables.
     */
-    public Counter (Context context, TextView textCounter, TextView textProgress, int strResCounterID, int strResProgressID, Button adjustment1, Button adjustment5, Button adjustment10, ProgressBar progress) {
+    public Counter (Context context, TextView textCounter, TextView textProgress, int strResCounterID, Button adjustment1, Button adjustment5, Button adjustment10, ProgressBar progress) {
         this.res = context.getResources();
         this.context = context;
         this.textCounter = textCounter;
         this.textProgress = textProgress;
         this.strResCounter = res.getString(strResCounterID);
-        this.strResProgress = res.getString(strResProgressID);
+        this.strResProgress = res.getString(R.string.counter_progress);
         this.btnAdjustment1 = adjustment1;
         this.btnAdjustment5 = adjustment5;
         this.btnAdjustment10 = adjustment10;
@@ -153,7 +153,7 @@ public class Counter extends AppCompatActivity implements Parcelable {
     (counterNumber / totalRows)
      */
     public void setProgress() {
-        if (this.progressBar != null && this.totalRows > 0) { /* TODO when is totalrows first set, when should it be */
+        if (this.progressBar != null && this.totalRows > 0) {
             this.progressBar.setProgress(this.counterNumber);
             String formattedProgressNumber = String.format(this.strResProgress, this.findPercent());
             this.textProgress.setText(formattedProgressNumber);

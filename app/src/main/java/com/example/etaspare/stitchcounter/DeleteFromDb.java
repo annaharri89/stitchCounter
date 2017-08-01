@@ -19,7 +19,7 @@ public class DeleteFromDb extends AsyncTask<ArrayList<String>, Void, Integer> {
 
     @Override
     protected Integer doInBackground(ArrayList<String>... ids) {
-        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(this.mContext); //TODO might be the wrong context
+        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(this.mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Gets the data repository in write mode
         try {
             for (String id: ids[0]) {

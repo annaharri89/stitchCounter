@@ -7,6 +7,3 @@
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
     android:elevation="4dp" />
-<!--TODO: if you want white, theme is "@style/AppTheme.AppBarOverlay"-->
-<!-- Black: android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" -->

@@ -3,7 +3,6 @@
    /*TODO: Update README */
    /*TODO complete all todos in other files*/
     
-   /* Look into if strResProgress is needed in Counter */
     
    /* TODO: implement new themes (rust: orange with blue accent)
    /* TODO: implement add image(s) to counter project */

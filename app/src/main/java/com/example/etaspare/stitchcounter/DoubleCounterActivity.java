@@ -1,7 +1,6 @@
 package com.example.etaspare.stitchcounter;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -187,7 +186,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         final Button buttonCapsuleBottomStitch = (Button) findViewById(R.id.button_capsule_bottom_stitch);
         final Button buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch);
 
-        stitchCounter = new Counter(this, textCounterStitch, null, R.string.counter_number_stitch, R.string.counter_progress, buttonCapsuleTopStitch, buttonCapsuleMiddleStitch, buttonCapsuleBottomStitch, null);
+        stitchCounter = new Counter(this, textCounterStitch, null, R.string.counter_number_stitch, buttonCapsuleTopStitch, buttonCapsuleMiddleStitch, buttonCapsuleBottomStitch, null);
 
         buttonPlusStitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,7 +236,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         final Button buttonCapsuleBottomRow = (Button) findViewById(R.id.button_capsule_bottom_row);
         final ProgressBar progress = (ProgressBar) findViewById(R.id.progress_bar);
 
-        rowCounter = new Counter(this, textCounterRow, textProgress, R.string.counter_number_row, R.string.counter_progress, buttonCapsuleTopRow, buttonCapsuleMiddleRow, buttonCapsuleBottomRow, progress);
+        rowCounter = new Counter(this, textCounterRow, textProgress, R.string.counter_number_row, buttonCapsuleTopRow, buttonCapsuleMiddleRow, buttonCapsuleBottomRow, progress);
 
         buttonPlusRow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -302,7 +301,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
     where needed.
     */
     protected void parseData(Bundle bundle, TextView projectName, TextView totalRows, TextView progress) {
-        Resources res = this.getResources();
         int _id = bundle.getInt("_id");
         String name = bundle.getString("name");
         int stitch_counter_number = bundle.getInt("stitch_counter_number");
@@ -341,10 +339,10 @@ public class DoubleCounterActivity extends AppCompatActivity {
         if (total_rows > 0) {
             rowCounter.setProgressBarMax(total_rows);
             rowCounter.totalRows = total_rows;
-            totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
+            totalRows.setText(Integer.toString(total_rows));
         } else {
             /* Sets default progress percent */
-            String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
+            String formattedProgressNumber = String.format(rowCounter.strResProgress, "0.0");
             progress.setText(formattedProgressNumber);
         }
 

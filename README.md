@@ -1,14 +1,6 @@
 
 
 
-
-/* TODO: remove references of readFromDb */
-/* TODO: declare minimum sdk in app manifest */
-
-
-/* TODO: implement flag for if a counter has been saved (to prevent saving more than needed)*/
-
-
 /* TODO: vertically align doubleCounterActivity landscape template for small screens */
 /* TODO: update Layout/activity_double_counter to use current help mode methodology */
 /* TODO: update layout/activity_single_counter to use current help mode methodology */

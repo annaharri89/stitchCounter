@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class SingleCounterActivity extends AppCompatActivity {
 
     private Counter counter;
-    private Boolean helpMode = false;
+    protected Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
     private Utils utils = new Utils(this);
 
@@ -37,16 +37,16 @@ public class SingleCounterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_new_counter:
-                openMainActivity();
-                break;
-            case R.id.action_library:
-                openLibrary();
+                utils.openMainActivity();
                 break;
             case R.id.action_help:
-                openHelpMode();
+                utils.openHelpMode("SingleCounterActivity", helpModeArray);
+                break;
+            case R.id.action_library:
+                utils.openLibrary("SingleCounterActivity");
                 break;
             case R.id.action_settings:
-                openSettings();
+                utils.openSettings();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -221,39 +221,6 @@ public class SingleCounterActivity extends AppCompatActivity {
             counter.counterNumber = stitch_counter_number;
             counter.setCounter();
         }
-    }
-
-    /* Called when the user taps the "Settings" button in the overflow menu */
-    public void openSettings () {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
-
-    /*
-    Opens "help mode" Called when help button is clicked in the action bar.
-    Shows the annotation bubbles.
-    */
-    public void openHelpMode() {
-        if (!helpMode) {
-            for (View view: helpModeArray) {
-                view.setVisibility(View.VISIBLE);
-            }
-            helpMode = true;
-        }
-    }
-
-    /* Called when the user taps the "+" button (new counter) in the toolbar */
-    public void openMainActivity () {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    /*
-    Called when the user taps the "Library" button in the overflow menu. Sends the stitchCounter
-    and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
-    */
-    public void openLibrary () {
-        sendResults(false);
     }
 
     /*

@@ -44,7 +44,7 @@ public class LibraryActivity extends AppCompatActivity
     private ArrayList<String> deleteManyArray = new ArrayList<>();
     private Boolean deleteManyMode = false;
     private ConstraintLayout layout;
-    private Boolean helpMode = false;
+    protected Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
     private Utils utils = new Utils(this);
 

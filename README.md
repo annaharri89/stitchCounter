@@ -1,8 +1,8 @@
 
 
 
-/*TODO: try to get stitchCounterMenu working (try putting it in utils)*/
-/* TODO: remove references of readFromDb*/
+
+/* TODO: remove references of readFromDb */
 /* TODO: declare minimum sdk in app manifest */
 
 
@@ -24,7 +24,7 @@
     
    /* Look into if strResProgress is needed in Counter */
     
-    /* TODO: implement new themes (rust: orange with blue accent)
+   /* TODO: implement new themes (rust: orange with blue accent)
    /* TODO: implement add image(s) to counter project */
     /* TODO: Implement share project to facebook, twitter, etc. */
     /* TODO think about implementing a favorites list*/

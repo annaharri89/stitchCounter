@@ -57,13 +57,13 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_new_counter:
-                openMainActivity();
+                utils.openMainActivity();
                 break;
             case R.id.action_library:
-                openLibrary();
+                utils.openLibrary("SettingsActivity");
                 break;
             case R.id.action_settings:
-                openSettings();
+                utils.openSettings();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -177,24 +177,6 @@ public class SettingsActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    /* Called when the user taps the "+" button (new counter) in the toolbar */
-    public void openMainActivity () {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    /* Called when the user taps the "Library" button in the overflow menu */
-    public void openLibrary () {
-        Intent intent = new Intent(this, LibraryActivity.class);
-        startActivity(intent);
-    }
-
-    /* Called when the user taps the "Settings" button in the overflow menu */
-    public void openSettings () {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
     }
 
     /* Records which group in mListView is expanded*/

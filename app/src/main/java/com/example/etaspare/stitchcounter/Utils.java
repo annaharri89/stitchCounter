@@ -172,8 +172,17 @@ public class Utils {
         }
     }
 
+    /* Iterates through views stored in helpModeArray and sets their visibility to visible */
+    private void setViewVisible(ArrayList<View> helpModeArray) {
+        for (View view: helpModeArray) {
+            if (view != null) {
+                view.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
     /* Called when the user taps the "+" button (new counter) in the toolbar */
-    public void openMainActivity () {
+    protected void openMainActivity () {
         Intent intent = new Intent(this.mContext, MainActivity.class);
         this.mContext.startActivity(intent);
     }
@@ -182,49 +191,33 @@ public class Utils {
     Opens "help mode" Called when help button is clicked in the action bar.
     Shows the annotation bubbles
     */
-    public void openHelpMode(String activity, ArrayList<View> helpModeArray) {
+    protected void openHelpMode(String activity, ArrayList<View> helpModeArray) {
         switch (activity) {
             case "MainActivity":
                 MainActivity mainContext = (MainActivity) this.mContext;
                 if (!mainContext.helpMode) {
-                    for (View view: helpModeArray) {
-                        if (view != null) {
-                            view.setVisibility(View.VISIBLE);
-                        }
-                    }
+                    setViewVisible(helpModeArray);
                     mainContext.helpMode = true;
                 }
                 break;
             case "DoubleCounterActivity":
                 DoubleCounterActivity doubleCounterContext = (DoubleCounterActivity) this.mContext;
                 if (!doubleCounterContext.helpMode) {
-                    for (View view: helpModeArray) {
-                        if (view != null) {
-                            view.setVisibility(View.VISIBLE);
-                        }
-                    }
+                    setViewVisible(helpModeArray);
                     doubleCounterContext.helpMode = true;
                 }
                 break;
             case "SingleCounterActivity":
                 SingleCounterActivity singleCounterContext = (SingleCounterActivity) this.mContext;
                 if (!singleCounterContext.helpMode) {
-                    for (View view: helpModeArray) {
-                        if (view != null) {
-                            view.setVisibility(View.VISIBLE);
-                        }
-                    }
+                    setViewVisible(helpModeArray);
                     singleCounterContext.helpMode = true;
                 }
                 break;
             case "LibraryActivity":
                 LibraryActivity libraryContext = (LibraryActivity) this.mContext;
                 if (!libraryContext.helpMode) {
-                    for (View view: helpModeArray) {
-                        if (view != null) {
-                            view.setVisibility(View.VISIBLE);
-                        }
-                    }
+                    setViewVisible(helpModeArray);
                     libraryContext.helpMode = true;
                 }
                 break;
@@ -242,7 +235,7 @@ public class Utils {
     + If called from singleCounterActivity, starts a new library activity and sends the counter an
       parcelable array to the LibraryActivity so it can be saved.
     */
-    public void openLibrary (String activity) {
+    protected void openLibrary (String activity) {
         switch (activity) {
             default:
             case "MainActivity":
@@ -264,7 +257,7 @@ public class Utils {
     }
 
     /* Called when the user taps the "Settings" button in the overflow menu */
-    public void openSettings () {
+    protected void openSettings () {
         Intent intent = new Intent(this.mContext, SettingsActivity.class);
         this.mContext.startActivity(intent);
     }

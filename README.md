@@ -1,7 +1,6 @@
 
 
 
-/* TODO: vertically align doubleCounterActivity landscape template for small screens */
 /* TODO: update Layout/activity_double_counter to use current help mode methodology */
 /* TODO: update layout/activity_single_counter to use current help mode methodology */
 /* TODO: update layout/activity_library to use current help mode methodology */

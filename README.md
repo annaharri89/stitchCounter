@@ -1,11 +1,4 @@
 
-
-
-/* TODO: update Layout/activity_double_counter to use current help mode methodology */
-/* TODO: update layout/activity_single_counter to use current help mode methodology */
-/* TODO: update layout/activity_library to use current help mode methodology */
-/*TODO: remove long comments from templates */
-   
     
    /*TODO: Update README */
    /*TODO Provide thorough documentation throughout app*/

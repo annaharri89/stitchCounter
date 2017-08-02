@@ -13,6 +13,9 @@ Stitch Counter
 ### Built With ###
 TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/Android/Gameboy Colour), programming language, database, ORM.
 * [Maven](https://maven.apache.org/) - Dependency Management
+* Android - Framework
+* Java - Programming Language
+* SQLite - Database
 ### Upcoming Features ###
 * New themes 
     * Rust: orange with blue accent

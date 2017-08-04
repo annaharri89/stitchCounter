@@ -318,7 +318,6 @@
         app:layout_constraintTop_toTopOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name_2"
         app:layout_constraintBottom_toBottomOf="@+id/text_project_name_2"
-        android:layout_marginLeft="148dp"
         android:layout_marginStart="148dp"/>
 
     <TextView
@@ -345,7 +344,6 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="8dp" />
 
@@ -354,7 +352,6 @@
         android:layout_width="151dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
         android:background="?attr/themedAnnotationBubbleDrawable"
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_4"
@@ -386,7 +383,6 @@
         android:text="@string/help_double_counter_activity_6"
         android:textColor="?attr/themedAnnotationTextColor"
         android:visibility="invisible"
-        android:layout_marginRight="48dp"
         app:layout_constraintRight_toRightOf="@+id/progress_bar"
         app:layout_constraintLeft_toLeftOf="@+id/progress_bar"
         android:layout_marginEnd="48dp"

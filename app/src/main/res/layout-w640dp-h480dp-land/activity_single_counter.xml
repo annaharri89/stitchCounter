@@ -106,7 +106,6 @@
         android:id="@+id/button_counter_minus"
         android:layout_width="250dp"
         android:layout_height="140dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:stateListAnimator="@null"
         android:text="@string/counter_minus_btn"
@@ -145,7 +144,6 @@
         android:visibility="invisible"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="@+id/text_project_name"
-        android:layout_marginLeft="160dp"
         android:layout_marginStart="160dp"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name"
         app:layout_constraintBottom_toBottomOf="@+id/text_project_name"
@@ -198,7 +196,6 @@
         app:layout_constraintTop_toBottomOf="@+id/button_counter_reset"
         app:layout_constraintLeft_toLeftOf="@+id/button_counter_reset"
         app:layout_constraintRight_toRightOf="@+id/button_counter_reset"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="0dp" />
 
@@ -209,7 +206,6 @@
         android:background="?attr/themedAnnotationArrowDrawable"
         android:rotation="270"
         android:visibility="invisible"
-        android:layout_marginRight="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toLeftOf="@+id/help_single_counter_activity_1"
@@ -225,11 +221,9 @@
         android:rotation="90"
         android:visibility="invisible"
         android:layout_marginTop="0dp"
-        android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintLeft_toRightOf="@+id/help_single_counter_activity_2"
         app:layout_constraintTop_toTopOf="@+id/help_single_counter_activity_2"
-        android:layout_marginLeft="0dp"
         android:layout_marginStart="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/help_single_counter_activity_2" />
 
@@ -239,7 +233,6 @@
         android:layout_height="40dp"
         android:background="?attr/themedAnnotationArrowDrawable"
         android:visibility="invisible"
-        android:layout_marginRight="0dp"
         android:layout_marginEnd="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/help_single_counter_activity_4"
         app:layout_constraintBottom_toTopOf="@+id/help_single_counter_activity_4"

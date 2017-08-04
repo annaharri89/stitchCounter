@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="@+id/button_single_counter"
         app:layout_constraintBottom_toBottomOf="@+id/button_single_counter"
         app:layout_constraintRight_toLeftOf="@+id/button_single_counter"
-        android:layout_marginRight="0dp" />
+        android:layout_marginEnd="0dp" />
 
     <TextView
         android:id="@+id/help_main_activity_2"
@@ -64,7 +64,7 @@
         app:layout_constraintLeft_toRightOf="@+id/button_double_counter"
         app:layout_constraintTop_toTopOf="@+id/button_double_counter"
         app:layout_constraintBottom_toBottomOf="@+id/button_double_counter"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         app:layout_constraintVertical_bias="0.502" />
 
@@ -79,13 +79,13 @@
         app:layout_constraintTop_toTopOf="@+id/help_main_activity_1"
         app:layout_constraintBottom_toBottomOf="@+id/help_main_activity_1"
         app:layout_constraintLeft_toRightOf="@+id/help_main_activity_1"
-        android:layout_marginLeft="0dp" />
+        android:layout_marginStart="0dp" />
 
     <View
         android:id="@+id/help_main_activity_2_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="0dp"
         android:background="?attr/themedAnnotationArrowDrawable"
         android:rotation="270"
         android:visibility="invisible"

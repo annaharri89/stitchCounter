@@ -76,13 +76,13 @@
         app:layout_constraintTop_toTopOf="@+id/help_main_activity_1"
         app:layout_constraintBottom_toBottomOf="@+id/help_main_activity_1"
         app:layout_constraintLeft_toRightOf="@+id/help_main_activity_1"
-        android:layout_marginLeft="0dp" />
+        android:layout_marginStart="0dp" />
 
     <View
         android:id="@+id/help_main_activity_2_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginTop="64dp"
         android:background="?attr/themedAnnotationArrowDrawable"
         android:rotation="270"

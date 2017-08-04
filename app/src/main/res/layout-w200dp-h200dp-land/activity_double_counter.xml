@@ -321,7 +321,6 @@
         app:layout_constraintTop_toTopOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name_2"
         app:layout_constraintBottom_toBottomOf="@+id/text_project_name_2"
-        android:layout_marginLeft="148dp"
         android:layout_marginStart="148dp"/>
 
     <TextView
@@ -372,7 +371,6 @@
         android:text="@string/help_double_counter_activity_6"
         android:textColor="?attr/themedAnnotationTextColor"
         android:visibility="invisible"
-        android:layout_marginRight="0dp"
         app:layout_constraintRight_toRightOf="@+id/progress_bar"
         app:layout_constraintLeft_toLeftOf="@+id/progress_bar"
         android:layout_marginEnd="0dp"

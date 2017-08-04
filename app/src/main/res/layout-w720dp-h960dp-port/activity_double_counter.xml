@@ -319,7 +319,6 @@
         app:layout_constraintTop_toTopOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name_2"
         app:layout_constraintBottom_toBottomOf="@+id/text_project_name_2"
-        android:layout_marginLeft="148dp"
         android:layout_marginStart="148dp"/>
 
     <TextView
@@ -350,7 +349,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_minus_row"
         android:layout_marginEnd="16dp"
         app:layout_constraintLeft_toRightOf="@+id/button_counter_plus_row"
-        android:layout_marginLeft="0dp" />
+        android:layout_marginStart="0dp" />
 
     <TextView
         android:id="@+id/help_double_counter_activity_4"

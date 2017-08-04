@@ -1,8 +1,3 @@
-
-    
-   /*TODO: Update README */
-   /*TODO complete all todos in other files*/
-    
 # General Information #
 ### Project Title ###
 Stitch Counter
@@ -12,7 +7,8 @@ Stitch Counter
 * Stitch Counter's theme is customizable through the settings page. Users have access to 6 different color themes.
 ### Built With ###
 TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/Android/Gameboy Colour), programming language, database, ORM.
-* [Maven](https://maven.apache.org/) - Dependency Management
+* [Maven](https://maven.apache.org/) - Dependency Management ?THIS MIGHT NOT BE RIGHT?
+* Gradle - Dependency Management, Build Tool ?SHOULD THIS BE INCLUDED?
 * Android - Framework
 * Java - Programming Language
 * SQLite - Database
@@ -26,6 +22,10 @@ TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/
 
 # Getting Started #
 ### Prerequisites ###
+To run on an emulator, you should have Android Studio installed.
+
+    install link here
+
 ### Installing ###
 
 # Testing #
@@ -33,6 +33,7 @@ TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/
 # Staging and Production Environments / Deployment #
 
 # Versioning #
+[Gradle](https://gradle.org/docs/) is used for versioning??????????????
 
 # Authors #
 * Anna Harrison TODO provide linkedin profile
@@ -41,13 +42,9 @@ TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/
 
 # Acknowledgements #
 * Francesco Azzola
-    * Android Listview with multiple row layout
-https://www.survivingwithandroid.com/2014/08/android-listview-with-multiple-row.html
+    * [Android Listview with multiple row layout](https://www.survivingwithandroid.com/2014/08/android-listview-with-multiple-row.html)
 * Ha Duy Trung
-    * Supporting multiple themes in your Android app (Part 1)
-http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
-    * Supporting multiple themes in your Android app (Part 2)
-http://www.hidroh.com/2015/02/25/support-multiple-themes-android-app-part-2/
+    * [Supporting multiple themes in your Android app (Part 1)](http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/)
+    * [Supporting multiple themes in your Android app (Part 2)](http://www.hidroh.com/2015/02/25/support-multiple-themes-android-app-part-2/)
 * George Mathew
-    * Android Populating ListView from SQLite database using CursorLoader, LoaderManager and Content Provider
-http://wptrafficanalyzer.in/blog/android-populating-listview-from-sqlite-database-using-cursorloader-loadermanager-and-content-provider/
+    * [Android Populating ListView from SQLite database using CursorLoader, LoaderManager and Content Provider](http://wptrafficanalyzer.in/blog/android-populating-listview-from-sqlite-database-using-cursorloader-loadermanager-and-content-provider/)

@@ -36,7 +36,7 @@ To run on an emulator, you should have Android Studio installed.
 [Gradle](https://gradle.org/docs/) is used for versioning??????????????
 
 # Authors #
-* Anna Harrison TODO provide linkedin profile
+* [Anna Harrison](https://www.linkedin.com/in/anna-harrison-83a38628/)
 
 # License #
 

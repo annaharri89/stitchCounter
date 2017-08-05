@@ -6,9 +6,7 @@ Stitch Counter
 * Stitch Counter has a library sytem that allows users to save counters and come back to them later.
 * Stitch Counter's theme is customizable through the settings page. Users have access to 6 different color themes.
 ### Built With ###
-TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/Android/Gameboy Colour), programming language, database, ORM.
-* [Maven](https://maven.apache.org/) - Dependency Management ?THIS MIGHT NOT BE RIGHT?
-* Gradle - Dependency Management, Build Tool ?SHOULD THIS BE INCLUDED?
+* Gradle - Dependency Management, Build Tool 
 * Android - Framework
 * Java - Programming Language
 * SQLite - Database
@@ -20,25 +18,11 @@ TODO: An outline of the technologies in the project. e.g.: Framework (Rails/iOS/
 * Interface to allow users to share projects to social media.
 * Grid layout for large and extra large screens for the Library.
 
-# Getting Started #
-### Prerequisites ###
-To run on an emulator, you should have Android Studio installed.
-
-    install link here
-
-### Installing ###
-
-# Testing #
-
-# Staging and Production Environments / Deployment #
-
-# Versioning #
-[Gradle](https://gradle.org/docs/) is used for versioning??????????????
-
 # Authors #
-* [Anna Harrison](https://www.linkedin.com/in/anna-harrison-83a38628/)
+* [Anna Harrison](https://github.com/annaharri89)
 
 # License #
+This project is licensed under the Apache License 2.0 - see the LICENSE.txt file for details.
 
 # Acknowledgements #
 * Francesco Azzola

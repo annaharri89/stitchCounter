@@ -22,7 +22,7 @@ Stitch Counter
 * [Anna Harrison](https://github.com/annaharri89)
 
 # License #
-This project is licensed under the Apache License 2.0 - see the LICENSE.txt file for details.
+This project is licensed under the Apache License 2.0 - see the [LICENSE.txt](https://github.com/annaharri89/stitchCounter/blob/feature/finish_out_version_1/LICENSE) file for details.
 
 # Acknowledgements #
 * Francesco Azzola

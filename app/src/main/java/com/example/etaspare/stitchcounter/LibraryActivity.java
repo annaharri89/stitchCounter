@@ -382,8 +382,7 @@ public class LibraryActivity extends AppCompatActivity
         } else if (stitchCounter != null) {
             writeToDb.execute(stitchCounter);
         }
-        setUpAdapter();
-        getSupportLoaderManager().restartLoader(0, null, this);
+        startActivity(new Intent (this, LibraryActivity.class));
     }
 
     /*

@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2017 Anna Harrison
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,231 +27,91 @@
         layout="@layout/toolbar" />
 
     <Button
-        android:id="@+id/button_basic_counter"
+        android:id="@+id/button_single_counter"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:onClick="createNewSingleCounter"
         android:text="@string/action_single_counter_btn"
+        android:stateListAnimator="@null"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button_advanced_counter"
+        app:layout_constraintBottom_toTopOf="@+id/button_double_counter"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/button_advanced_counter"
+        android:id="@+id/button_double_counter"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:onClick="createNewDoubleCounter"
         android:text="@string/action_double_counter_btn"
+        android:stateListAnimator="@null"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_basic_counter" />
-</android.support.constraint.ConstraintLayout>
+        app:layout_constraintTop_toBottomOf="@+id/button_single_counter" />
 
-    <!-- VERSION 2 TODO REMOVE AFTER USING AS TEMPLATE FOR SMALL SCREENS
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.etaspare.stitchcounter.MainActivity"
-        android:id="@+id/layout">
-
-        <include
-            android:id="@+id/toolbar_main"
-            layout="@layout/toolbar" />
-
-        <Button
-            android:id="@+id/button_basic_counter"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:onClick="createNewSingleCounter"
-            android:text="@string/action_single_counter_btn"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button_advanced_counter"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-            app:layout_constraintVertical_chainStyle="packed" />
-
-        <Button
-            android:id="@+id/button_advanced_counter"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:onClick="createNewDoubleCounter"
-            android:text="@string/action_double_counter_btn"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_basic_counter" />
-
-        Help Mode
-
-    <TextView
-    android:id="@+id/help_main_activity_1"
-    android:layout_width="200dp"
-    android:layout_height="wrap_content"
-    android:text="@string/help_main_activity_1"
-    android:background="?attr/themedAnnotationBubbleDrawable"
-    android:padding="5dp"
-    android:visibility="invisible"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintBottom_toTopOf="@+id/help_main_activity_1_connector" />
-
-    <TextView
-    android:id="@+id/help_main_activity_2"
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:background="?attr/themedAnnotationBubbleDrawable"
-    android:padding="5dp"
-    android:visibility="invisible"
-    android:text="@string/help_main_activity_2"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    app:layout_constraintTop_toBottomOf="@+id/help_main_activity_2_connector"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent" />
-
-    <View
-    android:id="@+id/help_main_activity_1_connector"
-    android:layout_width="2dp"
-    android:layout_height="36dp"
-    android:layout_marginBottom="0dp"
-    android:layout_marginTop="0dp"
-    android:layout_marginLeft="160dp"
-    android:layout_marginStart="160dp"
-    android:background="?attr/themedAnnotationArrowDrawable"
-    android:visibility="invisible"
-    app:layout_constraintBottom_toTopOf="@+id/button_basic_counter"
-    app:layout_constraintLeft_toLeftOf="parent" />
-
-    <View
-    android:id="@+id/help_main_activity_2_connector"
-    android:layout_width="2dp"
-    android:layout_height="20dp"
-    android:layout_marginEnd="160dp"
-    android:layout_marginRight="160dp"
-    android:layout_marginTop="0dp"
-    android:layout_marginBottom="0dp"
-    android:background="?attr/themedAnnotationArrowDrawable"
-    android:visibility="invisible"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/button_advanced_counter" />
-
-        </android.support.constraint.ConstraintLayout>
-    -->
-    <!-- VERSION 1
-    <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.etaspare.stitchcounter.MainActivity">
-
-    <include
-        android:id="@+id/toolbar_main"
-        layout="@layout/toolbar" />
-
-    <Button
-        android:id="@+id/button_basic_counter"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:onClick="createNewSingleCounter"
-        android:text="@string/action_single_counter_btn"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/button_advanced_counter"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_main"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:id="@+id/button_advanced_counter"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:onClick="createNewDoubleCounter"
-        android:text="@string/action_double_counter_btn"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_basic_counter" />
-
-</android.support.constraint.ConstraintLayout>
-
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.etaspare.stitchcounter.MainActivity"
-    android:visibility="invisible"
-    android:id="@+id/top_layout">
+    <!-- Help Mode -->
 
     <TextView
         android:id="@+id/help_main_activity_1"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/help_main_activity_1"
-        android:background="@drawable/annotation_bubble_default"
+        android:textColor="?attr/themedAnnotationTextColor"
+        android:background="?attr/themedAnnotationBubbleDrawable"
         android:padding="5dp"
+        android:visibility="invisible"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
+        app:layout_constraintBottom_toTopOf="@+id/button_single_counter"/>
 
     <TextView
         android:id="@+id/help_main_activity_2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/annotation_bubble_default"
+        android:background="?attr/themedAnnotationBubbleDrawable"
         android:padding="5dp"
+        android:visibility="invisible"
         android:text="@string/help_main_activity_2"
-        android:layout_marginBottom="56dp"
+        android:textColor="?attr/themedAnnotationTextColor"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <View
-        android:layout_width="2dp"
-        android:layout_height="56dp"
-        android:background="@color/colorAccent"
-        android:layout_marginLeft="160dp"
-        app:layout_constraintTop_toBottomOf="@+id/help_main_activity_1"
+        android:layout_marginEnd="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="160dp" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_double_counter"/>
 
     <View
-        android:layout_width="2dp"
-        android:layout_height="60dp"
-        android:background="@color/colorAccent"
-        android:layout_marginRight="160dp"
+        android:id="@+id/help_main_activity_1_tip"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="?attr/themedAnnotationArrowDrawable"
+        android:rotation="180"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/help_main_activity_1"
+        app:layout_constraintLeft_toLeftOf="@+id/help_main_activity_1"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/help_main_activity_1" />
+
+    <View
+        android:id="@+id/help_main_activity_2_tip"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="?attr/themedAnnotationArrowDrawable"
+        android:visibility="invisible"
+        app:layout_constraintRight_toRightOf="@+id/help_main_activity_2"
         app:layout_constraintBottom_toTopOf="@+id/help_main_activity_2"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="160dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/help_main_activity_2" />
 
 </android.support.constraint.ConstraintLayout>
-</FrameLayout>
-    -->

@@ -1,9 +1,23 @@
+/*
+   Copyright 2017 Anna Harrison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
@@ -14,8 +28,6 @@ import android.support.v4.widget.SimpleCursorAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,14 +56,14 @@ public class LibraryActivity extends AppCompatActivity
     private ArrayList<String> deleteManyArray = new ArrayList<>();
     private Boolean deleteManyMode = false;
     private ConstraintLayout layout;
-    private Boolean helpMode = false;
+    protected Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
     private Utils utils = new Utils(this);
 
     /*
     Defines a projection that specifies which columns from the database will actually
     be used for the query.
-     */
+    */
     String[] PROJECTION = {
             StitchCounterContract.CounterEntry._ID,
             StitchCounterContract.CounterEntry.COLUMN_TYPE,
@@ -87,19 +99,19 @@ public class LibraryActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_new_counter:
-                openMainActivity();
+                utils.openMainActivity();
                 break;
-            case R.id.action_library:
-                openLibrary();
+            case R.id.action_help:
+                utils.openHelpMode("LibraryActivity", helpModeArray);
                 break;
             case R.id.action_delete:
                 turnOnDeleteManyMode();
                 break;
-            case R.id.action_help:
-                openHelpMode();
+            case R.id.action_library:
+                utils.openLibrary("LibraryActivity");
                 break;
             case R.id.action_settings:
-                openSettings();
+                utils.openSettings();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -125,21 +137,11 @@ public class LibraryActivity extends AppCompatActivity
         helpModeArray.add(help2);
         helpModeArray.add(tip1);
 
-        DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
-        float screenWidth = dm.widthPixels / dm.density;
-        float screenHeight = dm.heightPixels / dm.density;
-        Log.d("width", Float.toString(screenWidth));
-        Log.d("height", Float.toString(screenHeight));
-        //TODO: nexus 5x: width 411, height 683 NORMAL SIZE layout-w340dp-h500dp-port and layout-h321dp-land
-        //TODO: galaxy s5 width 360, height 640 NORMAL SIZE layout-w340dp-h500dp-port and layout-h321dp-land
-        //TODO: LG lucky L16 width 320, height 480 NORMAL SIZE layout-w320dp-h300dp-port and layout-h320dp-land
-        //TODO: 3.4 WQVGA width 320, height 576 Normal Size layout-h500dp and layout-h320dp-land
-
-        /*TODO Document*/
+        /* Setup Delete and Cancel buttons for Delte Many Mode*/
         deleteMany = (Button) findViewById(R.id.delete_many);
         cancelMany = (Button) findViewById(R.id.cancel_many);
 
-        /* TODO: Document*/
+        /* Setup listview and adapter, setup empty view for listview*/
         TextView noSavedProjects = (TextView) findViewById(R.id.empty_list_view);
         mListView = (ListView) findViewById(R.id.list);
         mListView.setEmptyView(noSavedProjects);
@@ -321,7 +323,7 @@ public class LibraryActivity extends AppCompatActivity
     + Calls setListConstraints to connect the bottom of list to the bottom of the constraint layout.
     + Sets the delete and cancel buttons to invisible
     */
-    protected void turnOffDeleteManyMode(View view) { //TODO look into removing view
+    protected void turnOffDeleteManyMode(View view) {
         deleteManyMode = false;
         setListConstraints(R.id.layout, ConstraintSet.BOTTOM);
         deleteMany.setVisibility(View.INVISIBLE);
@@ -338,39 +340,6 @@ public class LibraryActivity extends AppCompatActivity
             }
             helpMode = false;
         }
-    }
-
-    /*
-    Opens "help mode" Called when help button is clicked in the action bar. Sets the top layer
-    visible, showing the annotation bubbles.
-    */
-    public void openHelpMode() {
-        if (!helpMode) {
-            for (View view: helpModeArray) {
-                if (view != null) {
-                    view.setVisibility(View.VISIBLE);
-                }
-            }
-            helpMode = true;
-        }
-    }
-
-    /* Called when the user taps the "Settings" button in the overflow menu */
-    public void openSettings () {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
-
-    /* Called when the user taps the "+" button (new counter) in the toolbar */
-    public void openMainActivity () {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    /* Called when the user taps the "Library" button in the overflow menu */
-    public void openLibrary () {
-        Intent intent = new Intent(this, LibraryActivity.class);
-        startActivity(intent);
     }
 
     /*
@@ -448,7 +417,6 @@ public class LibraryActivity extends AppCompatActivity
     @Override
     public void onLoadFinished(Loader<Cursor> arg0, Cursor arg1) {
         mAdapter.swapCursor(arg1);
-        DatabaseUtils.dumpCursor(mAdapter.getCursor()); //TODO: remove
     }
 
     @Override
@@ -459,7 +427,7 @@ public class LibraryActivity extends AppCompatActivity
     @Override
     public void onResume() {
         /* Allows list to function properly when accessed through back button */
-        getSupportLoaderManager().restartLoader(0, null, this); //TODO ASK tony if this should be restartLoader or initLoader
+        getSupportLoaderManager().restartLoader(0, null, this);
         super.onResume();
     }
 
@@ -479,7 +447,6 @@ public class LibraryActivity extends AppCompatActivity
         super.onDestroy();
     }
 
-    /* TODO Document */
     public class CounterAdapter extends SimpleCursorAdapter {
 
         Context mContext;
@@ -518,52 +485,57 @@ public class LibraryActivity extends AppCompatActivity
         */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View v = convertView;
+            View row = convertView;
             int type = getItemViewType(position);
             cursor = mAdapter.getCursor();
             cursor.moveToPosition(position);
-            if (v == null) {
+            if (row == null) {
                 // Inflate the layout according to the view type
                 LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 TextView textTitle;
                 CheckBox checkTitle;
                 ProgressBar progress;
                 switch(type) {
+                    //Sets up view for double counter item
                     case 0:
-                        v = inflater.inflate(R.layout.list_item_double_counter, parent, false);
+                        row = inflater.inflate(R.layout.list_item_double_counter, parent, false);
 
-                        textTitle = (TextView) v.findViewById(R.id.text2);
-                        progress = (ProgressBar) v.findViewById(R.id.progressBar_list_item);
+                        textTitle = (TextView) row.findViewById(R.id.text2);
+                        progress = (ProgressBar) row.findViewById(R.id.progressBar_list_item);
 
                         textTitle.setText(cursor.getString(2));
                         progress.setMax(cursor.getInt(7));
                         progress.setProgress(cursor.getInt(5));
                         break;
+                    //Sets up view for single counter item
                     case 1:
-                        v = inflater.inflate(R.layout.list_item_single_counter, parent, false);
+                        row = inflater.inflate(R.layout.list_item_single_counter, parent, false);
 
-                        textTitle = (TextView) v.findViewById(R.id.text1);
+                        textTitle = (TextView) row.findViewById(R.id.text1);
 
                         textTitle.setText(cursor.getString(2));
                         break;
+                    //Sets up view for double counter item in delete many mode
                     case 2:
-                        v = inflater.inflate(R.layout.list_item_double_counter_check, parent, false);
+                        row = inflater.inflate(R.layout.list_item_double_counter_check, parent, false);
 
-                        checkTitle = (CheckBox) v.findViewById(R.id.checkBox);
-                        progress = (ProgressBar) v.findViewById(R.id.progressBar_list_item);
+                        checkTitle = (CheckBox) row.findViewById(R.id.checkBox);
+                        progress = (ProgressBar) row.findViewById(R.id.progressBar_list_item);
 
                         checkTitle.setText(cursor.getString(2));
                         progress.setMax(cursor.getInt(7));
                         progress.setProgress(cursor.getInt(5));
                         break;
+                    //Sets up view for single counter item in delete many mode
                     case 3:
-                        v = inflater.inflate(R.layout.list_item_single_counter_check, parent, false);
-                        checkTitle = (CheckBox) v.findViewById(R.id.checkBox);
+                        row = inflater.inflate(R.layout.list_item_single_counter_check, parent, false);
+                        checkTitle = (CheckBox) row.findViewById(R.id.checkBox);
 
                         checkTitle.setText(cursor.getString(2));
+                        break;
                 }
             }
-            return v;
+            return row;
         }
     }
 }

@@ -1,48 +1,34 @@
+# General Information #
+### Project Title ###
+Stitch Counter
+### Project Description ###
+* Stitch Counter allows users to keep track of their knitting or crochet projects in two ways: 1) through a single counter which can be used to track stitches or rows and 2) through a double counter which has a counter for stitches and a counter for rows.
+* Stitch Counter has a library sytem that allows users to save counters and come back to them later.
+* Stitch Counter's theme is customizable through the settings page. Users have access to 6 different color themes.
+### Built With ###
+* Gradle - Dependency Management, Build Tool 
+* Android - Framework
+* Java - Programming Language
+* SQLite - Database
+### Upcoming Features ###
+* New themes 
+    * Rust: orange with blue accent
+    * Holidays: red with green accent)
+* Interface to allow users to add images to counter projects
+* Interface to allow users to share projects to social media.
+* Grid layout for large and extra large screens for the Library.
 
+# Authors #
+* [Anna Harrison](https://github.com/annaharri89)
 
+# License #
+This project is licensed under the Apache License 2.0 - see the [LICENSE.txt](https://github.com/annaharri89/stitchCounter/blob/feature/finish_out_version_1/LICENSE) file for details.
 
-/*TODO: try to get stitchCounterMenu working (try putting it in utils)*/
-/* TODO: remove references of readFromDb*/
-/* TODO: declare minimum sdk in app manifest */
-
-
-/* TODO: implement flag for if a counter has been saved (to prevent saving more than needed)*/
-
-
-/* TODO: vertically align doubleCounterActivity landscape template for small screens */
-/* TODO: update Layout/activity_double_counter to use current help mode methodology */
-/* TODO: update layout/activity_single_counter to use current help mode methodology */
-/* TODO: update layout/activity_library to use current help mode methodology */
-/*TODO: remove long comments from templates */
-   
-    
-   /*TODO: Update README */
-   /*TODO Provide thorough documentation throughout app*/
-   /* TODO: Remove unneeded import statements throughout the app */
-    /* TODO: REMOVE SUPERFLOUS CODE/COMMENTS (Lots in library, readFromDb is unneeded, stitchCounterMenu will be unneeded)*/
-    
-    
-   /* Look into if strResProgress is needed in Counter */
-    
-    /* TODO: implement new themes (rust: orange with blue accent)
-   /* TODO: implement add image(s) to counter project */
-    /* TODO: Implement share project to facebook, twitter, etc. */
-    /* TODO think about implementing a favorites list*/
-    
-
-## Acknowledgements ##
-Francesco Azzola
-Android Listview with multiple row layout
-https://www.survivingwithandroid.com/2014/08/android-listview-with-multiple-row.html
-
-Ha Duy Trung
-Supporting multiple themes in your Android app (Part 1)
-http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/
-
-Ha Duy Trung
-Supporting multiple themes in your Android app (Part 2)
-http://www.hidroh.com/2015/02/25/support-multiple-themes-android-app-part-2/
-
-George Mathew
-Android Populating ListView from SQLite database using CursorLoader, LoaderManager and Content Provider
-http://wptrafficanalyzer.in/blog/android-populating-listview-from-sqlite-database-using-cursorloader-loadermanager-and-content-provider/
+# Acknowledgements #
+* Francesco Azzola
+    * [Android Listview with multiple row layout](https://www.survivingwithandroid.com/2014/08/android-listview-with-multiple-row.html)
+* Ha Duy Trung
+    * [Supporting multiple themes in your Android app (Part 1)](http://www.hidroh.com/2015/02/16/support-multiple-themes-android-app/)
+    * [Supporting multiple themes in your Android app (Part 2)](http://www.hidroh.com/2015/02/25/support-multiple-themes-android-app-part-2/)
+* George Mathew
+    * [Android Populating ListView from SQLite database using CursorLoader, LoaderManager and Content Provider](http://wptrafficanalyzer.in/blog/android-populating-listview-from-sqlite-database-using-cursorloader-loadermanager-and-content-provider/)

@@ -1,3 +1,18 @@
+/*
+   Copyright 2017 Anna Harrison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
@@ -57,13 +72,13 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_new_counter:
-                openMainActivity();
+                utils.openMainActivity();
                 break;
             case R.id.action_library:
-                openLibrary();
+                utils.openLibrary("SettingsActivity");
                 break;
             case R.id.action_settings:
-                openSettings();
+                utils.openSettings();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -177,24 +192,6 @@ public class SettingsActivity extends AppCompatActivity {
                 return false;
             }
         });
-    }
-
-    /* Called when the user taps the "+" button (new counter) in the toolbar */
-    public void openMainActivity () {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    /* Called when the user taps the "Library" button in the overflow menu */
-    public void openLibrary () {
-        Intent intent = new Intent(this, LibraryActivity.class);
-        startActivity(intent);
-    }
-
-    /* Called when the user taps the "Settings" button in the overflow menu */
-    public void openSettings () {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
     }
 
     /* Records which group in mListView is expanded*/

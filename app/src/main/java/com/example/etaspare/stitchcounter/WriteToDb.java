@@ -1,3 +1,18 @@
+/*
+   Copyright 2017 Anna Harrison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package com.example.etaspare.stitchcounter;
 
 import android.content.ContentValues;
@@ -19,7 +34,7 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
 
     @Override
     protected Void doInBackground(Counter... counter) {
-        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(this.mContext); //TODO might be the wrong context
+        StitchCounterDbHelper dbHelper = new StitchCounterDbHelper(this.mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase(); // Gets the data repository in write mode
         try {
             ContentValues values;
@@ -40,7 +55,7 @@ public class WriteToDb extends AsyncTask<Counter, Void, Void> {
         return null;
     }
 
-    /* Called when a single counter opject is passed in the asynctask */
+    /* Called when a single counter object is passed in the asynctask */
     protected ContentValues singleCounterUpdate(Counter... counter) {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();

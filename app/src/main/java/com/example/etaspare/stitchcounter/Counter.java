@@ -1,9 +1,23 @@
+/*
+   Copyright 2017 Anna Harrison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Parcel;
@@ -32,7 +46,7 @@ public class Counter extends AppCompatActivity implements Parcelable {
     private TextView textCounter;
     private TextView textProgress;
     private String strResCounter;
-    private String strResProgress;
+    protected String strResProgress;
     protected String projectName;
     private Button btnAdjustment1;
     private Button btnAdjustment5;
@@ -63,7 +77,7 @@ public class Counter extends AppCompatActivity implements Parcelable {
     /*
     This field is needed for Android to be able to
     create new objects, individually or as arrays
-     */
+    */
     public static final Parcelable.Creator<Counter> CREATOR = new Parcelable.Creator<Counter>() {
 
         public Counter createFromParcel(Parcel in) {
@@ -87,16 +101,16 @@ public class Counter extends AppCompatActivity implements Parcelable {
         this.projectName = in.readString();
     }
     /*
-        Double Counter's constructor, instantiates new instance of counter class, setting all instance variables and context.
-        Handles progress related instance variables.
-     */
-    public Counter (Context context, TextView textCounter, TextView textProgress, int strResCounterID, int strResProgressID, Button adjustment1, Button adjustment5, Button adjustment10, ProgressBar progress) {
+    Double Counter's constructor, instantiates new instance of counter class, setting all instance variables and context.
+    Handles progress related instance variables.
+    */
+    public Counter (Context context, TextView textCounter, TextView textProgress, int strResCounterID, Button adjustment1, Button adjustment5, Button adjustment10, ProgressBar progress) {
         this.res = context.getResources();
         this.context = context;
         this.textCounter = textCounter;
         this.textProgress = textProgress;
         this.strResCounter = res.getString(strResCounterID);
-        this.strResProgress = res.getString(strResProgressID);
+        this.strResProgress = res.getString(R.string.counter_progress);
         this.btnAdjustment1 = adjustment1;
         this.btnAdjustment5 = adjustment5;
         this.btnAdjustment10 = adjustment10;
@@ -104,9 +118,9 @@ public class Counter extends AppCompatActivity implements Parcelable {
         this.setCounter();
     }
     /*
-        Single Counter's constructor, instantiates new instance of counter class, setting all instance variables and context.
-        Doesn't have progress related instance variables.
-     */
+    Single Counter's constructor, instantiates new instance of counter class, setting all instance variables and context.
+    Doesn't have progress related instance variables.
+    */
     public Counter (Context context, TextView textCounter, int strResCounterID, Button adjustment1, Button adjustment5, Button adjustment10) {
         this.res = context.getResources();
         this.context = context;
@@ -119,8 +133,8 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-       Formats the counter string with counter number. Sets the
-       counter TextView with formattedCounterNumber.
+    Formats the counter string with counter number. Sets the
+    counter TextView with formattedCounterNumber.
      */
     protected void setCounter() {
         String formattedCounterNumber = String.format(this.strResCounter, this.counterNumber);
@@ -131,17 +145,18 @@ public class Counter extends AppCompatActivity implements Parcelable {
         this.projectName = name;
     }
 
-    /* Takes counterNumber as a double and divides it by totalrows (which results in a fraction),
-       multiplies that by 100 to get percent. Rounds the percent up.
+    /*
+    Takes counterNumber as a double and divides it by totalrows (which results in a fraction),
+    multiplies that by 100 to get percent. Rounds the percent up.
     */
     private double findPercent() {
         this.progressPercent = round((double)this.counterNumber / this.totalRows * 100);
         return this.progressPercent;
     }
     /*
-        Set's the counter's totalRows to passed num and sets the passed progress bar's max num to totalRows.
-        Sets the progress.
-     */
+    Set's the counter's totalRows to passed num and sets the passed progress bar's max num to totalRows.
+    Sets the progress.
+    */
     public void setProgressBarMax(int num) {
         this.totalRows = num;
         this.progressBar.setMax(this.totalRows);
@@ -149,11 +164,11 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-        If the progress bar exists and totalRows is greater than 0, set its progress
-        (counterNumber / totalRows)
+    If the progress bar exists and totalRows is greater than 0, set its progress
+    (counterNumber / totalRows)
      */
     public void setProgress() {
-        if (this.progressBar != null && this.totalRows > 0) { /* TODO when is totalrows first set, when should it be */
+        if (this.progressBar != null && this.totalRows > 0) {
             this.progressBar.setProgress(this.counterNumber);
             String formattedProgressNumber = String.format(this.strResProgress, this.findPercent());
             this.textProgress.setText(formattedProgressNumber);
@@ -161,10 +176,10 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-       If counter number is less than max, increase it by adjustment. Then calls setCounter to get
-       the number to the appropriate TextView. If counterNumber goes above COUNTER_MAX (ex: at 9995,
-       increase by 10 to go to 10005), set counterNumber to COUNTER_MAX (9999). Sets the progress.
-       */
+    If counter number is less than max, increase it by adjustment. Then calls setCounter to get
+    the number to the appropriate TextView. If counterNumber goes above COUNTER_MAX (ex: at 9995,
+    increase by 10 to go to 10005), set counterNumber to COUNTER_MAX (9999). Sets the progress.
+    */
     public void incrementCounter() {
         if (this.counterNumber < this.COUNTER_MAX) this.counterNumber = this.counterNumber + this.adjustment;
         if (this.counterNumber > this.COUNTER_MAX) this.counterNumber = this.COUNTER_MAX;
@@ -173,10 +188,10 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-       If counter number is greater than min, decrease it by 1. Then calls setCounter to get the
-       number to the appropriate TextView. If counterNumber drops below COUNTER_MIN (ex: at 5,
-       decrease by 10 to go to -5), set counterNumber to COUNTER_MIN (0). Sets the progress.
-     */
+    If counter number is greater than min, decrease it by 1. Then calls setCounter to get the
+    number to the appropriate TextView. If counterNumber drops below COUNTER_MIN (ex: at 5,
+    decrease by 10 to go to -5), set counterNumber to COUNTER_MIN (0). Sets the progress.
+    */
     public void decrementCounter () {
         if (this.counterNumber > this.COUNTER_MIN) this.counterNumber = this.counterNumber - this.adjustment;
         if (this.counterNumber < this.COUNTER_MIN) this.counterNumber = this.COUNTER_MIN;
@@ -185,7 +200,7 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-       Resets the appropriate counter to 0 and sets the progress bar's progress
+    Resets the appropriate counter to 0 and sets the progress bar's progress
     */
     public void resetCounter() {
         this.counterNumber = this.COUNTER_MIN;
@@ -221,15 +236,15 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-        Set's the counter's adjustment number to passed num.
-     */
+    Set's the counter's adjustment number to passed num.
+    */
     public void changeAdjustmentNum (int num) {
         this.adjustment = num;
     }
 
     /*
-       Sets the counter's adjustment variable to 1, 5, or 10 and calls setAdjustmentButtonColor
-       depending on which adjustment button has been pressed.
+    Sets the counter's adjustment variable to 1, 5, or 10 and calls setAdjustmentButtonColor
+    depending on which adjustment button has been pressed.
     */
     public void changeAdjustment (int adjustmentNum) {
         switch(adjustmentNum)
@@ -255,8 +270,8 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-        Sets the Active adjustment button's background and font colors. Has compatibility 'if' logic
-        to handle getResources().getColor deprecation in Android Support Library 23.
+    Sets the Active adjustment button's background and font colors. Has compatibility 'if' logic
+    to handle getResources().getColor deprecation in Android Support Library 23.
     */
     private void setActiveAdjustmentButtonColor (Button activeButton) {
         Utils utils = new Utils (this.context);
@@ -276,8 +291,8 @@ public class Counter extends AppCompatActivity implements Parcelable {
     }
 
     /*
-        Sets the Inactive adjustment buttons' background and font colors. Has compatibility 'if' logic
-        to handle getResources().getColor deprecation in Android Support Library 23.
+    Sets the Inactive adjustment buttons' background and font colors. Has compatibility 'if' logic
+    to handle getResources().getColor deprecation in Android Support Library 23.
     */
     private void setInActiveAdjustmentButtonColor (Button inactiveButton1, Button inactiveButton2) {
         Utils utils = new Utils (this.context);
@@ -310,6 +325,5 @@ public class Counter extends AppCompatActivity implements Parcelable {
             writeToDb.execute(counter1);
         }
     }
-    //TODO: create saveCounterDebouncer function
 }
 

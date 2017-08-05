@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2017 Anna Harrison
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,7 +33,7 @@
         android:ems="10"
         android:hint="@string/counter_project_name_hint"
         android:inputType="textCapWords"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:cursorVisible="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -32,7 +47,7 @@
         android:layout_height="38dp"
         android:gravity="center"
         android:text="@string/counter_total_rows"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/text_total_rows_input"
@@ -46,7 +61,7 @@
         android:ems="10"
         android:hint="0"
         android:inputType="number"
-        android:textSize="10dp"
+        android:textSize="12sp"
         android:cursorVisible="false"
         app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toRightOf="@+id/text_total_rows"
@@ -58,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/counter_progress"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/text_project_name_2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/text_total_rows_input"
@@ -78,8 +93,8 @@
         android:id="@+id/text_stitch_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="15dp"
+        android:text="@string/counter_stitch_header"
+        android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -92,7 +107,7 @@
         android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/counter_number_stitch"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
         app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_stitch"
@@ -104,7 +119,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/counter_adjust_by"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintTop_toBottomOf="@+id/text_stitch_header"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_stitch"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_stitch"
@@ -193,7 +208,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/counter_row_header"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_bottom_stitch"
         app:layout_constraintRight_toRightOf="parent"
@@ -206,7 +221,7 @@
         android:layout_height="100dp"
         android:gravity="center"
         android:text="@string/counter_number_row"
-        android:textSize="25dp"
+        android:textSize="25sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_counter_stitch"
         app:layout_constraintRight_toLeftOf="@+id/text_adjust_by_row"
@@ -220,7 +235,7 @@
         android:layout_marginBottom="0dp"
         android:gravity="center"
         android:text="@string/counter_adjust_by"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/button_capsule_top_row"
         app:layout_constraintLeft_toRightOf="@+id/text_counter_row"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_plus_row"
@@ -318,7 +333,6 @@
         app:layout_constraintTop_toTopOf="@+id/text_project_name_2"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name_2"
         app:layout_constraintBottom_toBottomOf="@+id/text_project_name_2"
-        android:layout_marginLeft="148dp"
         android:layout_marginStart="148dp"/>
 
     <TextView
@@ -345,7 +359,6 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/help_double_counter_activity_4"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="8dp" />
 
@@ -354,7 +367,6 @@
         android:layout_width="151dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
         android:background="?attr/themedAnnotationBubbleDrawable"
         android:padding="5dp"
         android:text="@string/help_double_counter_activity_4"
@@ -386,7 +398,6 @@
         android:text="@string/help_double_counter_activity_6"
         android:textColor="?attr/themedAnnotationTextColor"
         android:visibility="invisible"
-        android:layout_marginRight="48dp"
         app:layout_constraintRight_toRightOf="@+id/progress_bar"
         app:layout_constraintLeft_toLeftOf="@+id/progress_bar"
         android:layout_marginEnd="48dp"

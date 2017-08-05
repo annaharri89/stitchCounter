@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2017 Anna Harrison
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -35,7 +50,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/counter_number_basic"
-        android:textSize="160dp"
+        android:textSize="160sp"
         app:layout_constraintBottom_toTopOf="@+id/text_adjust_by"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -61,7 +76,6 @@
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/button_capsule_left"
         android:stateListAnimator="@null"
@@ -92,7 +106,6 @@
         android:id="@+id/button_capsule_right"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="0dp"
         android:background="@drawable/button_capsule_right"
@@ -107,13 +120,12 @@
         android:id="@+id/button_counter_plus"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="8dp"
         android:text="@string/counter_plus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:stateListAnimator="@null"
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_left"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button_counter_reset"
         app:layout_constraintRight_toLeftOf="@+id/button_counter_minus" />
 
@@ -121,13 +133,12 @@
         android:id="@+id/button_counter_minus"
         android:layout_width="200dp"
         android:layout_height="150dp"
-        android:layout_marginRight="8dp"
         android:text="@string/counter_minus_btn"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:stateListAnimator="@null"
         app:layout_constraintTop_toBottomOf="@+id/button_capsule_middle"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button_counter_reset"
         app:layout_constraintLeft_toRightOf="@+id/button_counter_plus"
         app:layout_constraintVertical_bias="0.505" />
@@ -161,7 +172,7 @@
         android:visibility="invisible"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toTopOf="@+id/text_project_name"
-        android:layout_marginLeft="160dp"
+        android:layout_marginStart="160dp"
         app:layout_constraintLeft_toLeftOf="@+id/text_project_name"
         app:layout_constraintBottom_toBottomOf="@+id/text_project_name"
         android:layout_marginBottom="0dp" />
@@ -212,7 +223,7 @@
         android:layout_marginBottom="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/button_counter_reset"
         app:layout_constraintLeft_toRightOf="@+id/button_counter_reset"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintTop_toTopOf="@+id/button_counter_reset"
         android:layout_marginTop="0dp"
         app:layout_constraintVertical_bias="1.0" />
@@ -224,7 +235,7 @@
         android:background="?attr/themedAnnotationArrowDrawable"
         android:rotation="270"
         android:visibility="invisible"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintRight_toLeftOf="@+id/help_single_counter_activity_1"
         app:layout_constraintTop_toTopOf="@+id/help_single_counter_activity_1"
@@ -253,7 +264,7 @@
         android:rotation="270"
         android:visibility="invisible"
         android:layout_marginBottom="8dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/help_single_counter_activity_4"
         app:layout_constraintRight_toLeftOf="@+id/help_single_counter_activity_4"
         app:layout_constraintTop_toTopOf="@+id/help_single_counter_activity_4"

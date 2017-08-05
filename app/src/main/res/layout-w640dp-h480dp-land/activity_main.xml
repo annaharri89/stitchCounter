@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2017 Anna Harrison
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -50,7 +65,7 @@
         app:layout_constraintTop_toTopOf="@+id/button_single_counter"
         app:layout_constraintBottom_toBottomOf="@+id/button_single_counter"
         app:layout_constraintRight_toLeftOf="@+id/button_single_counter"
-        android:layout_marginRight="0dp" />
+        android:layout_marginEnd="0dp" />
 
     <TextView
         android:id="@+id/help_main_activity_2"
@@ -64,7 +79,7 @@
         app:layout_constraintLeft_toRightOf="@+id/button_double_counter"
         app:layout_constraintTop_toTopOf="@+id/button_double_counter"
         app:layout_constraintBottom_toBottomOf="@+id/button_double_counter"
-        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         app:layout_constraintVertical_bias="0.502" />
 
@@ -79,13 +94,13 @@
         app:layout_constraintTop_toTopOf="@+id/help_main_activity_1"
         app:layout_constraintBottom_toBottomOf="@+id/help_main_activity_1"
         app:layout_constraintLeft_toRightOf="@+id/help_main_activity_1"
-        android:layout_marginLeft="0dp" />
+        android:layout_marginStart="0dp" />
 
     <View
         android:id="@+id/help_main_activity_2_tip"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginRight="0dp"
+        android:layout_marginEnd="0dp"
         android:background="?attr/themedAnnotationArrowDrawable"
         android:rotation="270"
         android:visibility="invisible"

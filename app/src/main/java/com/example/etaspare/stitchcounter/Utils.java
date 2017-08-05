@@ -1,9 +1,25 @@
+/*
+   Copyright 2017 Anna Harrison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package com.example.etaspare.stitchcounter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-
+import android.view.View;
+import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
@@ -169,5 +185,95 @@ public class Utils {
                 editor.apply();
                 break;
         }
+    }
+
+    /* Iterates through views stored in helpModeArray and sets their visibility to visible */
+    private void setViewVisible(ArrayList<View> helpModeArray) {
+        for (View view: helpModeArray) {
+            if (view != null) {
+                view.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    /* Called when the user taps the "+" button (new counter) in the toolbar */
+    protected void openMainActivity () {
+        Intent intent = new Intent(this.mContext, MainActivity.class);
+        this.mContext.startActivity(intent);
+    }
+
+    /*
+    Opens "help mode" Called when help button is clicked in the action bar.
+    Shows the annotation bubbles
+    */
+    protected void openHelpMode(String activity, ArrayList<View> helpModeArray) {
+        switch (activity) {
+            case "MainActivity":
+                MainActivity mainContext = (MainActivity) this.mContext;
+                if (!mainContext.helpMode) {
+                    setViewVisible(helpModeArray);
+                    mainContext.helpMode = true;
+                }
+                break;
+            case "DoubleCounterActivity":
+                DoubleCounterActivity doubleCounterContext = (DoubleCounterActivity) this.mContext;
+                if (!doubleCounterContext.helpMode) {
+                    setViewVisible(helpModeArray);
+                    doubleCounterContext.helpMode = true;
+                }
+                break;
+            case "SingleCounterActivity":
+                SingleCounterActivity singleCounterContext = (SingleCounterActivity) this.mContext;
+                if (!singleCounterContext.helpMode) {
+                    setViewVisible(helpModeArray);
+                    singleCounterContext.helpMode = true;
+                }
+                break;
+            case "LibraryActivity":
+                LibraryActivity libraryContext = (LibraryActivity) this.mContext;
+                if (!libraryContext.helpMode) {
+                    setViewVisible(helpModeArray);
+                    libraryContext.helpMode = true;
+                }
+                break;
+        }
+
+    }
+
+    /*
+    + Called when the user taps the "Library" button in the overflow menu.
+    + If called from MainActivity, LibraryActivity, or SettingsActivity, starts a new library
+      activity.
+    + If called from doubleCounterActivity, starts a new library activity and sends the
+      stitchCounter and rowCounter in an parcelable array to the LibraryActivity so they can be
+      saved.
+    + If called from singleCounterActivity, starts a new library activity and sends the counter an
+      parcelable array to the LibraryActivity so it can be saved.
+    */
+    protected void openLibrary (String activity) {
+        switch (activity) {
+            default:
+            case "MainActivity":
+            case "LibraryActivity":
+            case "SettingsActivity":
+                Intent intent = new Intent(this.mContext, LibraryActivity.class);
+                this.mContext.startActivity(intent);
+                break;
+            case "DoubleCounterActivity":
+                DoubleCounterActivity doubleCounterContext = (DoubleCounterActivity) this.mContext;
+                doubleCounterContext.sendResults(false);
+                break;
+            case "SingleCounterActivity":
+                SingleCounterActivity singleCounterContext = (SingleCounterActivity) this.mContext;
+                singleCounterContext.sendResults(false);
+                break;
+        }
+
+    }
+
+    /* Called when the user taps the "Settings" button in the overflow menu */
+    protected void openSettings () {
+        Intent intent = new Intent(this.mContext, SettingsActivity.class);
+        this.mContext.startActivity(intent);
     }
 }

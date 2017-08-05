@@ -1,13 +1,25 @@
+/*
+   Copyright 2017 Anna Harrison
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+ */
 package com.example.etaspare.stitchcounter;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Parcelable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Selection;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,17 +31,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DoubleCounterActivity extends AppCompatActivity {
 
-    /* TODO remove cursor from edittext after input */
-
     private Counter stitchCounter;
     private Counter rowCounter;
-    private Boolean helpMode = false;
+    protected Boolean helpMode = false;
     private ArrayList<View> helpModeArray;
     private Utils utils = new Utils(this);
 
@@ -45,16 +53,16 @@ public class DoubleCounterActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_new_counter:
-                openMainActivity();
-                break;
-            case R.id.action_library:
-                openLibrary();
+                utils.openMainActivity();
                 break;
             case R.id.action_help:
-                openHelpMode();
+                utils.openHelpMode("DoubleCounterActivity", helpModeArray);
+                break;
+            case R.id.action_library:
+                utils.openLibrary("DoubleCounterActivity");
                 break;
             case R.id.action_settings:
-                openSettings();
+                utils.openSettings();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -193,7 +201,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         final Button buttonCapsuleBottomStitch = (Button) findViewById(R.id.button_capsule_bottom_stitch);
         final Button buttonResetStitch = (Button) findViewById(R.id.button_counter_reset_stitch);
 
-        stitchCounter = new Counter(this, textCounterStitch, null, R.string.counter_number_stitch, R.string.counter_progress, buttonCapsuleTopStitch, buttonCapsuleMiddleStitch, buttonCapsuleBottomStitch, null);
+        stitchCounter = new Counter(this, textCounterStitch, null, R.string.counter_number_stitch, buttonCapsuleTopStitch, buttonCapsuleMiddleStitch, buttonCapsuleBottomStitch, null);
 
         buttonPlusStitch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,7 +251,7 @@ public class DoubleCounterActivity extends AppCompatActivity {
         final Button buttonCapsuleBottomRow = (Button) findViewById(R.id.button_capsule_bottom_row);
         final ProgressBar progress = (ProgressBar) findViewById(R.id.progress_bar);
 
-        rowCounter = new Counter(this, textCounterRow, textProgress, R.string.counter_number_row, R.string.counter_progress, buttonCapsuleTopRow, buttonCapsuleMiddleRow, buttonCapsuleBottomRow, progress);
+        rowCounter = new Counter(this, textCounterRow, textProgress, R.string.counter_number_row, buttonCapsuleTopRow, buttonCapsuleMiddleRow, buttonCapsuleBottomRow, progress);
 
         buttonPlusRow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -308,7 +316,6 @@ public class DoubleCounterActivity extends AppCompatActivity {
     where needed.
     */
     protected void parseData(Bundle bundle, TextView projectName, TextView totalRows, TextView progress) {
-        Resources res = this.getResources();
         int _id = bundle.getInt("_id");
         String name = bundle.getString("name");
         int stitch_counter_number = bundle.getInt("stitch_counter_number");
@@ -347,48 +354,13 @@ public class DoubleCounterActivity extends AppCompatActivity {
         if (total_rows > 0) {
             rowCounter.setProgressBarMax(total_rows);
             rowCounter.totalRows = total_rows;
-            totalRows.setText(Integer.toString(total_rows)); //TODO: look into using string.format instead
+            totalRows.setText(Integer.toString(total_rows));
         } else {
             /* Sets default progress percent */
-            String formattedProgressNumber = String.format(res.getString(R.string.counter_progress), "0.0");
+            String formattedProgressNumber = String.format(rowCounter.strResProgress, "0.0");
             progress.setText(formattedProgressNumber);
         }
 
-    }
-
-    /* Called when the user taps the "Settings" button in the overflow menu */
-    public void openSettings () {
-        Intent intent = new Intent(this, SettingsActivity.class);
-        startActivity(intent);
-    }
-
-    /*
-    Opens "help mode" Called when help button is clicked in the action bar.
-    Shows the annotation bubbles
-    */
-    public void openHelpMode() {
-        if (!helpMode) {
-            for (View view: helpModeArray) {
-                if (view != null) {
-                    view.setVisibility(View.VISIBLE);
-                }
-            }
-            helpMode = true;
-        }
-    }
-
-    /* Called when the user taps the "+" button (new counter) in the toolbar */
-    public void openMainActivity () {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    /*
-    Called when the user taps the "Library" button in the overflow menu. Sends the stitchCounter
-    and rowCounter in an parcelable array to the LibraryActivity so they can be saved.
-    */
-    public void openLibrary () {
-        sendResults(false);
     }
 
     /*

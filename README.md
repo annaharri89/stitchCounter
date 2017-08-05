@@ -3,8 +3,8 @@
 Stitch Counter
 ### Project Description ###
 * Stitch Counter allows users to keep track of their knitting or crochet projects in two ways: 1) through a single counter which can be used to track stitches or rows and 2) through a double counter which has a counter for stitches and a counter for rows.
-* Stitch Counter has a library sytem that allows users to save counters and come back to them later.
-* Stitch Counter's theme is customizable through the settings page. Users have access to 6 different color themes.
+* Stitch Counter has a library system that allows users to save counters and come back to them later.
+* Stitch Counter's theme can be customized through the settings page. Users have access to 6 different color themes.
 ### Built With ###
 * Gradle - Dependency Management, Build Tool 
 * Android - Framework

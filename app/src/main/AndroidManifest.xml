@@ -15,7 +15,7 @@
     limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.etaspare.stitchcounter">
+    package="io.github.annaharri89.stitchcounter">
 
     <application
         android:allowBackup="true"
@@ -44,7 +44,7 @@
 
         <provider
             android:name=".CounterProjectContentProvider"
-            android:authorities="com.example.etaspare.stitchcounter.counterProject"
+            android:authorities="io.github.annaharri89.stitchcounter.counterProject"
             android:exported="false" />
         <activity android:name=".SettingsActivity" />
     </application>

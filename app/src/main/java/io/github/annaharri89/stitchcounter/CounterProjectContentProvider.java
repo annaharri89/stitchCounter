@@ -14,7 +14,7 @@
    limitations under the License.
  */
 
-package com.example.etaspare.stitchcounter;
+package io.github.annaharri89.stitchcounter;
 
 /**
  * Created by ETASpare on 7/3/2017.
@@ -30,7 +30,7 @@ import android.net.Uri;
 /* A custom Content Provider to do the database operations */
 public class CounterProjectContentProvider extends ContentProvider{
 
-    public static final String PROVIDER_NAME = "com.example.etaspare.stitchcounter.counterProject";
+    public static final String PROVIDER_NAME = "io.github.annaharri89.stitchcounter.counterProject";
 
     /* A uri to do operations on cust_master table. A content provider is identified by its uri */
     public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/projects" );

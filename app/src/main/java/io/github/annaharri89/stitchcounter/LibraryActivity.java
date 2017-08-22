@@ -140,6 +140,18 @@ public class LibraryActivity extends AppCompatActivity
         /* Setup Delete and Cancel buttons for Delte Many Mode*/
         deleteMany = (Button) findViewById(R.id.delete_many);
         cancelMany = (Button) findViewById(R.id.cancel_many);
+        deleteMany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteMany(v);
+            }
+        });
+        cancelMany.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                turnOffDeleteManyMode(v);
+            }
+        });
 
         /* Setup listview and adapter, setup empty view for listview*/
         TextView noSavedProjects = (TextView) findViewById(R.id.empty_list_view);

@@ -97,6 +97,7 @@ public class LibraryActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /*
         switch(item.getItemId()) {
             case R.id.action_new_counter:
                 utils.openMainActivity();
@@ -115,7 +116,7 @@ public class LibraryActivity extends AppCompatActivity
                 break;
             default:
                 return super.onOptionsItemSelected(item);
-        }
+        }*/
         return true;
     }
 
@@ -201,8 +202,10 @@ public class LibraryActivity extends AppCompatActivity
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*todo stitchCounterV2
                 tempCursor = (Cursor)parent.getItemAtPosition(position);
                 if (!deleteManyMode) {
+
                     int _id = tempCursor.getInt(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
                     String type = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TYPE));
                     String name = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry.COLUMN_TITLE));
@@ -247,7 +250,7 @@ public class LibraryActivity extends AppCompatActivity
                         checkBox.setChecked(true);
                         deleteManyArray.add(tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID)));
                     }
-                }
+                }*/
             }
         });
 
@@ -282,12 +285,13 @@ public class LibraryActivity extends AppCompatActivity
     private View.OnClickListener deleteClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            /*todo stitchCounterV2
             String id = tempCursor.getString(tempCursor.getColumnIndex(StitchCounterContract.CounterEntry._ID));
             ArrayList<String> ids = new ArrayList<>();
             ids.add(id);
             v.setVisibility(View.INVISIBLE);
             DeleteFromDb deleteFromDb = new DeleteFromDb(context);
-            deleteFromDb.execute(ids); //TODO look into warning
+            deleteFromDb.execute(ids); //TODO look into warning*/
         }
     };
 

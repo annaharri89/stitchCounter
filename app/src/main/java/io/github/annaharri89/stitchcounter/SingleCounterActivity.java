@@ -49,6 +49,7 @@ public class SingleCounterActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /*todo stitchCounterV2
         switch(item.getItemId()) {
             case R.id.action_new_counter:
                 utils.openMainActivity();
@@ -64,7 +65,7 @@ public class SingleCounterActivity extends AppCompatActivity {
                 break;
             default:
                 return super.onOptionsItemSelected(item);
-        }
+        }*/
         return true;
     }
 

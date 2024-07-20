@@ -70,6 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        /*todo stitchCounterV2
         switch(item.getItemId()) {
             case R.id.action_new_counter:
                 utils.openMainActivity();
@@ -82,7 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
                 break;
             default:
                 return super.onOptionsItemSelected(item);
-        }
+        }*/
         return true;
     }
 
@@ -329,11 +330,11 @@ public class SettingsActivity extends AppCompatActivity {
                     //Sets up About children view
                     case 1:
                         row = inflater.inflate(R.layout.list_item_about, parent, false);
-                        String versionName = BuildConfig.VERSION_NAME;
+                        //String versionName = BuildConfig.VERSION_NAME;//todo stitchCounterV2
                         TextView textVersion = (TextView) row.findViewById(R.id.version);
                         TextView textVersionName = (TextView) row.findViewById(R.id.version_name);
                         textVersion.setText(R.string.version);
-                        textVersionName.setText(versionName);
+                        textVersionName.setText("2.0.0");//todo stitchCounterV2
                         break;
                 }
             }
